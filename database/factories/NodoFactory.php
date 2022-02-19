@@ -28,7 +28,7 @@ class NodoFactory extends Factory
             'user_id' => User::all()->random()->id,
             'data' => $random,
             'img' => $this->faker->randomElement(
-                ['botella.jpg','cafe.jpg','azkoyen.png','logistica.jpg']
+                ['botella.jpg','cafe.jpg','azkoyen-step.jpg','logistica.jpg']
             ),
             'category_id'=> Category::all()->random()->id
         ];

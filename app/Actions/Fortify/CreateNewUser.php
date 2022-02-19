@@ -34,10 +34,15 @@ class CreateNewUser implements CreatesNewUsers
                 'name' => $input['name'],
                 'email' => $input['email'],
                 'password' => Hash::make($input['password']),
+                //Añadimos el campo cliente para Rol, para que cada usuario nuevo que se registre
+                //Sea automaticamente un rol cliente. Será el admin el encargado de crear usuarios de otros roles.
+                'rol' => 'cliente',
             ]), function (User $user) {
                 $this->createTeam($user);
             });
         });
+
+
     }
 
     /**

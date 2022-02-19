@@ -20,6 +20,5 @@ class DatabaseSeeder extends Seeder
         $this->call(category_seeder::class);
         $this->call(label_seeder::class);
         $this->call(nodo_seeder::class);
-        $this->call(comment_seeder::class);
     }
 }

@@ -24,9 +24,10 @@ class User extends Authenticatable
      * The attributes that are mass assignable.
      *
      * @var string[]
+     * Si añadimos nuevos campos a la plantilla de registro, debemos añadirnos como campso "fillable" (rellenable)
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password','rol'
     ];
 
     /**
@@ -65,8 +66,11 @@ class User extends Authenticatable
         return $this->hasMany(Nodo::class);
     }
 
-    //Relación con comentarios. Un usuario pode ter varios comentarios.
-    public function comments(){
-        return $this->hasMany(Comment::class);
+    //Relación con Vehículos. Un empleado puede conducir varios vehiculos.
+
+    public function vehicles(){
+        return $this->belongsTo(Vehicle::class);
     }
+
+
 }

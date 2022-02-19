@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\adminController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\NodoController;
 
@@ -46,6 +47,22 @@ Route::get('/labels/{label}',[NodoController::class,'labels'])->name('web.nodos.
 
 Route::get('/create',[NodoController::class,'create'])->name('web.nodos.create');
 Route::post('/create',[NodoController::class,'store'])->name('web.nodos.store');
+
+
+/*
+|--------------------------------------------------------------------------
+| Administrción.
+|--------------------------------------------------------------------------
+*/
+
+//Index
+Route::get('users',[adminController::class,'index'])->middleware('admin')->name('admin.users.index');
+//Borrar
+Route::get('destroy/{id}',[adminController::class,'destroy'])->middleware('admin')->name('admin.users.destroy');
+//actualizar
+Route::get('update/{id}',[adminController::class,'edit'])->middleware('admin')->name('admin.users.edit');
+Route::Post('update/{id}',[adminController::class,'update'])->middleware('admin')->name('admin.users.update');
+
 
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {

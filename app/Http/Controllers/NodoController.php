@@ -16,77 +16,88 @@ use Illuminate\Support\Str;
 
 class NodoController extends Controller
 {
-    public function news(){
+    public function news()
+    {
         $nodos = Nodo::latest('data')->paginate(5);
 
-        return view('web.nodos.news',compact('nodos'));
+        return view('web.nodos.news', compact('nodos'));
     }
 
-    public function show(Nodo $post){
+    public function show(Nodo $post)
+    {
 
         //Consulta que retorna la lista de Post de la misma categoria.
         //Filtrando por ID y descartando la ID del objeto Nodo que recibe la función.
         //ordenado por el mas reciente por fecha y limitado a 4 resultados
-       $equals = Nodo::where('category_id',$post->category_id)
-                        ->latest('data')
-                        ->where('id','!=',$post->id)
-                        ->take(4)
-                        ->get();
+        $equals = Nodo::where('category_id', $post->category_id)
+            ->latest('data')
+            ->where('id', '!=', $post->id)
+            ->take(4)
+            ->get();
 
-       return view('web.nodos.article',compact('post','equals'));
-
+        return view('web.nodos.article', compact('post', 'equals'));
     }
 
-    public function labels(label $label){
+    public function labels(label $label)
+    {
 
         $equals = $label->nodos()->latest('data')->paginate(5);
 
 
-        return view('web.nodos.labels',compact('equals','label'));
-
+        return view('web.nodos.labels', compact('equals', 'label'));
     }
 
-    public function create(){
+    public function create()
+    {
         //array de Categorias
         $categoria = Category::all();
         //Array de etiquetas
         $etiquetas = Label::all();
-       return view('web.nodos.create',compact('categoria','etiquetas'));
+        return view('web.nodos.create', compact('categoria', 'etiquetas'));
     }
 
-    public function store(Request $request){
-        $validate = $request->validate([
-            'title' => 'required',
-            'subtitle' => 'required',
+    public function store(Request $request)
+    {
+        $validado = $request->validate([
+            'titulo' => 'required',
+            'subtitulo' => 'required',
             'category' => 'required',
             'etiquetas' => 'required',
             'content' => 'required'
         ]);
 
 
-        if ($validate){
+        if ($validado) {
 
             //Insercion de nuevo Nodo.
             $nodos = new Nodo;
-            $nodos->titulo = $request->title;
-            $nodos->subtitulo = $request->subtitle;
-            $nodos->content = $request->content;
+            $nodos->titulo = $request->titulo;
+            $nodos->subtitulo = $request->subtitulo;
+            $nodos->contidoHTML = $request->content;
             $nodos->user_id = Auth::id();
+            $nodos->data = now();
+            $nodos->category_id = $request->category;
 
-            if ($request->hasFile('image')){
+
+            if ($request->hasFile('image')) {
                 $image = $request->file('image');
-                $imgName = Str::slug($request->title).".".$image->guessExtension();
+                $imgName = Str::slug($request->title) . "." . $image->guessExtension();
                 $route = public_path("img/post/");
-                copy($image->getRealPath(),$route.$imgName);
+                copy($image->getRealPath(), $route . $imgName);
                 $nodos->img = $imgName;
+
+            }
+
+            $nodos->save();
+
+            //$labels = Label::create($request->etiquetas);
             $nodos->Labels()->attach($request->etiquetas);
 
-        } else {
+
+         return redirect('/dashboard')->with('status', 'Noticia añadida');
+         } else {
             return back()->withInput();
         }
-    }
-
-
     }
 }
 

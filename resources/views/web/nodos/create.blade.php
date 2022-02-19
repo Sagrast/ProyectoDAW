@@ -12,14 +12,14 @@
                         @csrf
                         <div class="mb-4">
                             <label class="text-xl text-gray-600">Titulo <span class="text-red-500">*</span></label></br>
-                            <input type="text" class="border-2 border-gray-300 p-2 w-full" name="title" id="title" value="{{ old('title') }}" required>
+                            <input type="text" class="border-2 border-gray-300 p-2 w-full" name="titulo" id="titulo" value="{{ old('titulo') }}" required>
                             @error('title')
                             <p class="error-message">{{ $message}}</p>
                             @enderror
                         </div>
                         <div class="mb-4">
                             <label class="text-xl text-gray-600">Subtitulo <span class="text-red-500">*</span></label></br>
-                            <input type="text" class="border-2 border-gray-300 p-2 w-full" name="subtitle" id="subtitle" value="{{ old('subtitle') }}" required>
+                            <input type="text" class="border-2 border-gray-300 p-2 w-full" name="subtitulo" id="subtitulo" value="{{ old('subtitulo') }}" required>
                             @error('subtitle')
                             <p class="error-message">{{ $message}}</p>
                             @enderror
@@ -31,7 +31,7 @@
 
                         <div class="mb-4">
                             <label class="text-xl text-gray-600">Categoria</label></br>
-                            <select class="category border-2 border-gray-300 p-2 w-full" name="category"id="category">
+                            <select class="category border-2 border-gray-300 p-2 w-full" name="category" id="category">
                                 @foreach ($categoria as $cat)
                                     <option class="border-2 border-gray-300 p-2 w-full" value="{{$cat->id}}">{{$cat->name}}</option>
                                 @endforeach
@@ -45,8 +45,8 @@
                         <div class="mb-4">
                             <label class="text-xl text-gray-600 col-span-2">Etiquetas</label></br>
                                 @foreach ($etiquetas as $label)
-                                <input  type="checkbox" value="{{$label->id}}" id="{{$label->name}}" name="etiquetas[]">
-                                <label class="capitalize" for="{{$label->id}}">{{$label->name}}</label>
+                                <input  type="checkbox" value="{{$label->id}}" id="{{$label->labelName}}" name="etiquetas[]">
+                                <label class="capitalize" for="{{$label->id}}">{{$label->labelName}}</label>
                                 @endforeach
                                 @error('etiquetas')
                                 <p class="error-message">{{ $message }}</p>

@@ -13,11 +13,11 @@
 
                             <div>
                                 @foreach ($post->labels as $tags)
-                                    <a href="{{route('web.nodos.labels',$tags->id)}}" class="inline-block px-3 h-6 bg-{{$tags->color}}-600 text-white rounded-full" >{{$tags->labelName}}</a>
+                                    <a href="{{route('web.nodos.labels',$tags->id)}}" class="inline-block px-3 h-6 bg-{{$tags->color}}-600 text-white rounded-full capitalize" >{{$tags->labelName}}</a>
 
                                 @endforeach
                             </div>
-                            <h1 class='text-4xl text-white leading-8 font-bold mt-2'>
+                            <h1 class='text-4xl text-purple-700 capitalize leading-8 font-bold mt-2'>
                             <a href="{{route('web.nodos.show',$post)}}">
                                 {{$post->titulo}}
                             </a>

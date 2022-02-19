@@ -111,11 +111,16 @@
                 {{ __('Profile') }}
             </x-jet-dropdown-link>
 
-            @if (Session::get('rol') == 'comercial')
-            @endif
+            @if (Auth::user()->rol == 'comercial' || Auth::user()->rol == 'admin')
             <x-jet-dropdown-link href="{{ route('web.nodos.create') }}">
                 {{ __('Añadir Noticia') }}
             </x-jet-dropdown-link>
+            @endif
+            @if (Auth::user()->rol == 'admin')
+            <x-jet-dropdown-link href="{{ route('admin.users.index') }}">
+                {{ __('Control Usuarios') }}
+            </x-jet-dropdown-link>
+            @endif
 
               <form method="POST" action="{{ route('logout') }}">
                 @csrf

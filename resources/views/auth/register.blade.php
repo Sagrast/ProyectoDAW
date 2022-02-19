@@ -29,16 +29,6 @@
                 <x-jet-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required autocomplete="new-password" />
             </div>
 
-            <div class="mt-4">
-                <x-jet-label for="rol" value="{{ __('Rol') }}" />
-                <select name="rol" id="rol" class="block mt-1 w-full">
-                    <option value="empleado">Empleado</option>
-                    <option value="comercial">Comercial</option>
-                    @if (Session::get('rol') == 'admin')
-                    <option value="admin">Administrador</option>
-                    @endif
-                </select>
-            </div>
 
             @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
                 <div class="mt-4">

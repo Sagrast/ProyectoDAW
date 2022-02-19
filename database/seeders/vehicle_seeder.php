@@ -3,9 +3,8 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Models\Comment;
 
-class comment_seeder extends Seeder
+class vehicle_seeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,6 +13,6 @@ class comment_seeder extends Seeder
      */
     public function run()
     {
-        Comment::factory(10)->create();
+        //
     }
 }

@@ -8,6 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Nodo extends Model
 {
     protected $with = ['Labels','Comments','Categorys','Users'];
+
+    protected $guarded = ['id','created_at','updated_at'];
+
     use HasFactory;
 
         //Relación Nodos -> usuarios (N:1)
