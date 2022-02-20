@@ -39,15 +39,25 @@ route::get('/services', function(){
 |--------------------------------------------------------------------------
 */
 
+//Indice de noticias
 Route::get('/news',[NodoController::class,'news'])->name('web.nodos.news');
 
+//Ver noticia por ID
 Route::get('/article/{post}',[NodoController::class,'show'])->name('web.nodos.show');
 
+//Ver lista de etiquetas relacionadas
 Route::get('/labels/{label}',[NodoController::class,'labels'])->name('web.nodos.labels');
 
+//Crear nueva noticia
 Route::get('/create',[NodoController::class,'create'])->name('web.nodos.create');
 Route::post('/create',[NodoController::class,'store'])->name('web.nodos.store');
 
+//editar Noticia
+Route::get('/editArticle/{id}',[NodoController::class,'edit'])->middleware('edit')->name('web.nodos.edit');
+Route::Post('/updateArticle/{id}',[NodoController::class,'update'])->middleware('edit')->name('web.nodos.update');
+
+//Eliminar noticia.
+Route::get('destroyArticle/{id}',[NodoController::class,'destroy'])->middleware('edit')->name('web.nodos.destroy');
 
 /*
 |--------------------------------------------------------------------------
@@ -56,12 +66,13 @@ Route::post('/create',[NodoController::class,'store'])->name('web.nodos.store');
 */
 
 //Index
-Route::get('users',[adminController::class,'index'])->middleware('admin')->name('admin.users.index');
+Route::get('/users',[adminController::class,'index'])->middleware('admin')->name('admin.users.index');
+Route::post('/users',[adminController::class,'filter'])->middleware('admin')->name('admin.users.index');
 //Borrar
-Route::get('destroy/{id}',[adminController::class,'destroy'])->middleware('admin')->name('admin.users.destroy');
+Route::get('/destroy/{id}',[adminController::class,'destroy'])->middleware('admin')->name('admin.users.destroy');
 //actualizar
-Route::get('update/{id}',[adminController::class,'edit'])->middleware('admin')->name('admin.users.edit');
-Route::Post('update/{id}',[adminController::class,'update'])->middleware('admin')->name('admin.users.update');
+Route::get('/update/{id}',[adminController::class,'edit'])->middleware('admin')->name('admin.users.edit');
+Route::Post('/update/{id}',[adminController::class,'update'])->middleware('admin')->name('admin.users.update');
 
 
 

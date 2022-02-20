@@ -13,8 +13,10 @@ class VehicleFactory extends Factory
      */
     public function definition()
     {
+
         return [
-            //
+            'descripcion' => $this->faker->vehicle(),
+
         ];
     }
 }

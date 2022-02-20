@@ -90,7 +90,7 @@ class NodoController extends Controller
 
             $nodos->save();
 
-            //$labels = Label::create($request->etiquetas);
+
             $nodos->Labels()->attach($request->etiquetas);
 
 
@@ -99,5 +99,67 @@ class NodoController extends Controller
             return back()->withInput();
         }
     }
+
+    public function edit($id){
+        $nodo = Nodo::find($id);
+        //array de Categorias
+        $categoria = Category::all();
+        //Array de etiquetas
+        $etiquetas = Label::all();
+
+        return view('web.nodos.editArticle',compact('nodo','categoria','etiquetas'));
+    }
+
+    public function destroy($id){
+        $delete = Nodo::find($id);
+        $delete->delete();
+        return view('welcome');
+    }
+
+
+    public function update(Request $request,$id)
+    {
+        $validado = $request->validate([
+            'titulo' => 'required',
+            'subtitulo' => 'required',
+            'category' => 'required',
+            'etiquetas' => 'required',
+            'content' => 'required'
+        ]);
+
+
+        if ($validado) {
+
+            //Actualizacion de Nodo.
+            $update = Nodo::findOrFail($id);
+            $update->titulo = $request->titulo;
+            $update->subtitulo = $request->subtitulo;
+            $update->contidoHTML = $request->content;
+            $update->user_id = Auth::id();
+            $update->data = now();
+            $update->category_id = $request->category;
+
+
+            if ($request->hasFile('image')) {
+                $image = $request->file('image');
+                $imgName = Str::slug($request->title) . "." . $image->guessExtension();
+                $route = public_path("img/post/");
+                copy($image->getRealPath(), $route . $imgName);
+                $update->img = $imgName;
+
+            }
+
+            $update->update();
+
+
+            $update->Labels()->attach($request->etiquetas);
+
+
+         return redirect('/dashboard')->with('status', 'Noticia editada');
+         } else {
+            return back()->withInput();
+        }
+    }
+
 }
 

@@ -19,6 +19,16 @@ class adminController extends Controller
 
     }
 
+    public function filter(Request $request){
+
+        if ($request->rol != "null"){
+            $users = User::where('rol',"=",$request->rol,'AND','name','=',$request->name)->get();
+        } else {
+            $users = User::where('name','LIKE','%'.$request->name.'%')->get();
+        }
+        return view('web.admin.users',compact('users'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *

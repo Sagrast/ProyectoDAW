@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Nodo extends Model
 {
-    protected $with = ['Labels','Comments','Categorys','Users'];
+    protected $with = ['Labels','Categorys','Users'];
 
     protected $guarded = ['id','created_at','updated_at'];
 
@@ -25,11 +25,6 @@ class Nodo extends Model
             return $this->belongsToMany(Label::class);
         }
 
-        //Relación con Comentarios-> N:1 o nodo pode ter distintos comentarios.
-
-        public function Comments(){
-            return $this->hasMany(Comment::class);
-        }
 
         //Relacion con Categorias  N -> 1 . A categoría pode pertencer a varios nodos.
 
