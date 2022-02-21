@@ -69,7 +69,7 @@ class User extends Authenticatable
     //Relación con Vehículos. Un empleado puede conducir varios vehiculos.
 
     public function vehicles(){
-        return $this->belongsTo(Vehicle::class);
+        return $this->belongsToMany(Vehicle::class)->withPivot('fecha');
     }
 
 

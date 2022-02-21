@@ -12,6 +12,6 @@ class Vehicle extends Model
     //Relación con empleados. Un vehículo puede ser conducido por varios empleados.
 
     function users(){
-        return $this->belongsToMany(Users::class);
+        return $this->belongsToMany(User::class)->withPivot('fecha');
     }
 }

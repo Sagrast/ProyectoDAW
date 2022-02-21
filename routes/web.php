@@ -3,6 +3,7 @@
 use App\Http\Controllers\adminController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\NodoController;
+use App\Http\Controllers\vehicleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -70,12 +71,26 @@ Route::get('/users',[adminController::class,'index'])->middleware('admin')->name
 Route::post('/users',[adminController::class,'filter'])->middleware('admin')->name('admin.users.index');
 //Borrar
 Route::get('/destroy/{id}',[adminController::class,'destroy'])->middleware('admin')->name('admin.users.destroy');
-//actualizar
+//actualizar usuarios
 Route::get('/update/{id}',[adminController::class,'edit'])->middleware('admin')->name('admin.users.edit');
 Route::Post('/update/{id}',[adminController::class,'update'])->middleware('admin')->name('admin.users.update');
 
-
+//Control de Noticias.
+Route::get('/allNews',[NodoController::class,'list'])->middleware('edit')->name('web.admin.list');
+Route::post('/allNews',[NodoController::class,'filter'])->middleware('edit')->name('web.admin.filter');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('/web/dashboard');
 })->name('dashboard');
+
+
+/*
+|--------------------------------------------------------------------------
+| Gestión
+|--------------------------------------------------------------------------
+*/
+
+Route::get('/vehicles',[vehicleController::class,'index'])->middleware('gestor')->name('web.vehicles.index');
+Route::post('/vehicles',[vehicleController::class,'filter'])->middleware('gestor')->name('web.vehicles.filter');
+Route::get('/infoVehicle/{id}',[vehicleController::class,'show'])->middleware('gestor')->name('web.vehicles.show');
+

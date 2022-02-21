@@ -26,9 +26,6 @@
                 </a>
                 <p class="mt-2 text-sm text-justify text-gray-500">
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium
-                    at sequi cum, impedit fuga in placeat illo eum minima possimus est
-                    perferendis distinctio explicabo eos natus consequuntur blanditiis
-                    odio optio?
                 </p>
             </div>
             <div class="flex justify-center mt-4 lg:mt-2">

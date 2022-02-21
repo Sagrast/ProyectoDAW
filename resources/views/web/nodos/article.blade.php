@@ -12,7 +12,7 @@
                     <img class="w-full h-80 object-cover object-center " src="/img/post/{{ $post->img }}">
                 </figure>
                 <div class="text-base text-gray-500 mt-4">
-                    {{ $post->contidoHTML }}
+                    {!! $post->contidoHTML !!}
                 </div>
                 <div class="py-6">
                 {{-- Añadimos una condición para mostrar los botones de edicion y borrado, solo será visibles si el usuario tiene el rol adecuado

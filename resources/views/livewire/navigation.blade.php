@@ -116,6 +116,11 @@
                 {{ __('Añadir Noticia') }}
             </x-jet-dropdown-link>
             @endif
+            @if (Auth::user()->rol == 'comercial' || Auth::user()->rol == 'admin')
+            <x-jet-dropdown-link href="{{ route('web.admin.list') }}">
+                {{ __('Listar Noticias') }}
+            </x-jet-dropdown-link>
+            @endif
             @if (Auth::user()->rol == 'admin')
             <x-jet-dropdown-link href="{{ route('admin.users.index') }}">
                 {{ __('Control Usuarios') }}

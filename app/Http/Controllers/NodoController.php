@@ -116,9 +116,10 @@ class NodoController extends Controller
         return view('welcome');
     }
 
-
+//Recibe el contenido del formulario y la ID de la noticia a editar.
     public function update(Request $request,$id)
     {
+
         $validado = $request->validate([
             'titulo' => 'required',
             'subtitulo' => 'required',
@@ -160,6 +161,21 @@ class NodoController extends Controller
             return back()->withInput();
         }
     }
+
+    public function list()
+    {
+        $nodos = Nodo::all();
+
+        return view('web.admin.newsEdit', compact('nodos'));
+    }
+
+    public function filter(Request $request){
+
+        $nodos = Nodo::where('titulo',"LIKE",'%'.$request->titulo.'%')->get();
+
+        return view('web.admin.newsEdit',compact('nodos'));
+    }
+
 
 }
 
