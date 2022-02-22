@@ -86,11 +86,21 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 
 /*
 |--------------------------------------------------------------------------
-| Gestión
+| Vehiculos
 |--------------------------------------------------------------------------
 */
 
+//vehiculos
 Route::get('/vehicles',[vehicleController::class,'index'])->middleware('gestor')->name('web.vehicles.index');
 Route::post('/vehicles',[vehicleController::class,'filter'])->middleware('gestor')->name('web.vehicles.filter');
+//borrar vehiculos
+Route::get('/destroy/{id}',[vehicleController::class,'destroy'])->middleware('gestor')->name('web.vehicles.destroy');
+//gestionar Vehiculos
 Route::get('/infoVehicle/{id}',[vehicleController::class,'show'])->middleware('gestor')->name('web.vehicles.show');
-
+Route::post('/infoVehicle',[vehicleController::class,'store'])->middleware('gestor')->name('web.vehicles.store');
+//Nuevo Vehiculo
+Route::get('/addVehicle',[vehicleController::class,'create'])->middleware('gestor')->name('web.vehicles.create');
+Route::post('/addVehicle',[vehicleController::class,'add'])->middleware('gestor')->name('web.vehicles.add');
+//Editar Vehiculos
+Route::get('/editVehicle/{id}',[vehicleController::class,'edit'])->middleware('gestor')->name('web.vehicles.edit');
+Route::post('/editVehicle/{id}',[vehicleController::class,'update'])->middleware('gestor')->name('web.vehicles.update');
