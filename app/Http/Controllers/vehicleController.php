@@ -18,7 +18,7 @@ class vehicleController extends Controller
      */
     public function index()
     {
-        $vehicles = Vehicle::all();
+        $vehicles = Vehicle::paginate(10);
 
         return view('web.gestion.vehicles', compact('vehicles'));
     }
@@ -68,7 +68,7 @@ class vehicleController extends Controller
     public function store(Request $request)
     {
        DB::insert('INSERT INTO user_vehicle (user_id,vehicle_id,fecha) VALUES ('.$request->user.','.$request->vehicle.',"'.$request->fecha.'")');
-        return back();
+        return back()->with('status','Insercion correcta');
     }
 
     //Funcion de filtrado: Busca en la bdd matriculas que contengan la cadena envíada y devuelve los resultados encontrados.
@@ -76,7 +76,7 @@ class vehicleController extends Controller
     public function filter(Request $request)
     {
 
-        $vehicles = Vehicle::where('matricula', 'LIKE', '%' . $request->matricula . '%')->get();
+        $vehicles = Vehicle::where('matricula', 'LIKE', '%' . $request->matricula . '%')->paginate(5);
 
         return view('web.gestion.vehicles', compact('vehicles'));
     }
@@ -138,7 +138,7 @@ class vehicleController extends Controller
         $car->itv = $request->itv;
         $car->update();
 
-        return back()->with('status','Vehículo añadido conrrectamente');
+        return back()->with('status','Vehículo actualizado correctamente');
         } else {
             return back()->withInput();
         }
@@ -158,7 +158,7 @@ class vehicleController extends Controller
         $vehicle = Vehicle::find($id);
         $vehicle->delete();
 
-        return back();
+        return back()->with('status','Vehiculo eliminado correctamente');
     }
 
 }

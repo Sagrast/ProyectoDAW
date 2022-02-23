@@ -30,6 +30,12 @@
                 </a>
 
             </form>
+            <div class="grid place-items-end py-5">
+                <a href="{{ route('web.vehicles.create') }}">
+                    <button type="submit"
+                        class="inline-block px-6 py-2.5 bg-purple-400 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-purple-500 hover:shadow-lg focus:bg-purple-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-600 active:shadow-lg transition duration-150 ease-in-out">Nuevo</button>
+                </a>
+            </div>
 
             <p class="text-xl pb-3 flex items-center">
                 <i class="fas fa-list mr-3"></i> Usuarios
@@ -72,7 +78,7 @@
                                 <td class="py-4 px-6 border-b border-grey-light">
                                     <a href="{{ route('web.vehicles.show', $car->id) }}">
                                         <button
-                                            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">Detalles</button>
+                                            class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 border border-green-700 rounded">Detalles</button>
                                     </a>
                                 </td>
                                 <td class="py-4 px-6 border-b border-grey-light">
@@ -92,12 +98,7 @@
                     </tbody>
                 </table>
             </div>
-            <div class="grid place-items-end py-5">
-                <a href="{{ route('web.vehicles.create') }}">
-                    <button type="submit"
-                        class="inline-block px-6 py-2.5 bg-green-400 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-green-500 hover:shadow-lg focus:bg-blue-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-600 active:shadow-lg transition duration-150 ease-in-out">Nuevo</button>
-                </a>
-            </div>
+
         </div>
     </div>
 

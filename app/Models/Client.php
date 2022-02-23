@@ -16,4 +16,12 @@ class Client extends Model
     }
 
 
+    //Relación de Clientes con Máquinas. Un cliente puede poseer distintas máquinas como Café y Agua
+    //De la misma forma que por motivos de averías o cambio en las necesidades se le puede sustituir
+    //Por una versión superior o inferior a las necesidades del cliente.
+
+    public function machine(){
+        return $this->belongsToMany(Machine::class);
+    }
+
 }
