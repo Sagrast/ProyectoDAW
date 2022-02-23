@@ -4,53 +4,80 @@
             {{ __('Edicion de Usuarios') }}
         </h2>
     </x-slot>
+    @if (Auth::user()->rol == 'empleado' || Auth::user()->rol == 'admin')
+        @livewire('inner-menu')
+    @endif
     <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 py-8">
-        <form class="w-full max-w-lg mx-auto " method="POST" action="{{ route('admin.users.update', $user->id) }}">
+        <form class="w-full max-w-lg mx-auto " method="POST" action="{{ route('web.clientes.update', $client->id) }}">
             @csrf
             <div class="flex flex-wrap -mx-3 mb-6">
                 <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                     <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="name">
                         Nombre:
                     </label>
-                    <input value="{{ $user->name }}"
+                    <input value="{{ $client->nombre }}"
                         class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-                        id="name" type="text" name="name">
-                        @error('name')
-                        <p class="error-message">{{ $message}}</p>
-                        @enderror
+                        id="nombre" type="text" name="nombre">
+                    @error('nombre')
+                        <p class="error-message">{{ $message }}</p>
+                    @enderror
                 </div>
 
                 <div class="w-full md:w-1/2 px-3">
                     <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="email">
                         Email:
                     </label>
-                    <input value="{{ $user->email }} "
+                    <input value="{{ $client->email }} "
                         class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                         id="email" type="email" name="email">
-                        @error('email')
-                            <p class="error-message">{{ $message}}</p>
-                        @enderror
+                    @error('email')
+                        <p class="error-message">{{ $message }}</p>
+                    @enderror
+                </div>
+            </div>
+            <div class="flex flex-wrap -mx-3 mb-6">
+                <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                    <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="name">
+                        Direccion:
+                    </label>
+                    <input value="{{ $client->direccion }}"
+                        class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                        id="direcion" type="text" name="direccion">
+                    @error('direccion')
+                        <p class="error-message">{{ $message }}</p>
+                    @enderror
+                </div>
+
+                <div class="w-full md:w-1/2 px-3">
+                    <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="email">
+                        CIF:
+                    </label>
+                    <input value="{{ $client->CIF }} "
+                        class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                        id="cif" type="text" name="cif">
+                    @error('cif')
+                        <p class="error-message">{{ $message }}</p>
+                    @enderror
                 </div>
             </div>
 
             <div class="flex flex-wrap -mx-3 mb-2">
                 <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
                     <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-state">
-                        Rol
+                        Servicio
                     </label>
                     <div class="relative">
                         <select
                             class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                            id="rol"
-                            name="rol">
-                            <option value="cliente">Cliente</option>
-                            <option value="Comercial">Comercial</option>
-                            <option value="empleado">Empleado</option>
-                            <option value="admin">Administrador</option>
+                            id="servicio" name="servicio">
+                            <option value="agua">Agua</option>
+                            <option value="distribucion">Distribucion</option>
+                            <option value="cafe">Cafe</option>
+                            <option value="tabaco">Tabaco</option>
                         </select>
-                        @error('rol')
-                            <p class="error-message">{{ $message}}</p>
-                            @enderror
+                        @error('Servicio')
+                            <p class="error-message">{{ $message }}</p>
+                        @enderror
                         <div
                             class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
                             <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
@@ -62,12 +89,12 @@
                 <div class="flex flex-wrap -mx-3 mb-6">
                     <div class="w-full px-3">
                         <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-                            for="password">
-                            Contraseña:
+                            for="telefono">
+                            Telefono
                         </label>
                         <input
                             class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                            id="password" type="password" name="password">
+                            id="telefono" type="telefono" name="telefono" value="{{$client->telefono}}">
                     </div>
                 </div>
 

@@ -5,7 +5,7 @@
         </h2>
     </x-slot>
     @if (Auth::user()->rol == 'empleado' || Auth::user()->rol == 'admin')
-    @livewire('inner-menu')
+        @livewire('inner-menu')
     @endif
 
     <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 py-8 capitalize">
@@ -18,17 +18,25 @@
                 <input
                     class="focus:border-blue-600 appearance-none block w-1/4 bg-white text-black border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
                     name="matricula" id="matricula" placeholder="Introduce Matricula" type="text">
-                <br/>
-                <br/>
+                <br />
+                <br />
 
-                <button type="submit"
+                <button
                     class="inline-block px-6 py-2.5 bg-blue-400 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-500 hover:shadow-lg focus:bg-blue-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-600 active:shadow-lg transition duration-150 ease-in-out">Filtrar</button>
-                <a href="{{ route('admin.users.index') }}">
+                <a href="{{ route('web.vehicles.index') }}">
                     <button type="submit"
                         class="inline-block px-6 py-2.5 bg-blue-400 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-500 hover:shadow-lg focus:bg-blue-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-600 active:shadow-lg transition duration-150 ease-in-out">Ver
                         Todos</button>
                 </a>
+
             </form>
+            <div class="grid place-items-end py-5">
+                <a href="{{ route('web.vehicles.create') }}">
+                    <button type="submit"
+                        class="inline-block px-6 py-2.5 bg-purple-400 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-purple-500 hover:shadow-lg focus:bg-purple-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-600 active:shadow-lg transition duration-150 ease-in-out">Nuevo</button>
+                </a>
+            </div>
+
             <p class="text-xl pb-3 flex items-center">
                 <i class="fas fa-list mr-3"></i> Usuarios
             </p>
@@ -49,7 +57,7 @@
                             <th
                                 class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
                                 Vencimiento ITV</th>
-                                <th
+                            <th
                                 class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
                                 Detalles</th>
                             <th
@@ -70,17 +78,17 @@
                                 <td class="py-4 px-6 border-b border-grey-light">
                                     <a href="{{ route('web.vehicles.show', $car->id) }}">
                                         <button
-                                            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">Detalles</button>
+                                            class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 border border-green-700 rounded">Detalles</button>
                                     </a>
                                 </td>
                                 <td class="py-4 px-6 border-b border-grey-light">
-                                    <a href="{{ route('admin.users.edit', $car->id) }}">
+                                    <a href="{{ route('web.vehicles.edit', $car->id) }}">
                                         <button
                                             class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">Editar</button>
                                     </a>
                                 </td>
                                 <td class="py-4 px-6 border-b border-grey-light">
-                                    <a href="{{ route('admin.users.destroy', $car->id) }}">
+                                    <a href="{{ route('web.vehicles.destroy', $car->id) }}">
                                         <button
                                             class="bg-red-500 hover:bg-red-700 text-black font-bold py-2 px-4 border border-red-700 rounded">Borrar</button>
                                     </a>
@@ -90,6 +98,7 @@
                     </tbody>
                 </table>
             </div>
+
         </div>
     </div>
 

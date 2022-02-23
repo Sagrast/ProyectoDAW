@@ -113,7 +113,7 @@ class NodoController extends Controller
     public function destroy($id){
         $delete = Nodo::find($id);
         $delete->delete();
-        return view('welcome');
+        return view('welcome')->with('status','Noticia eliminada correctamente');
     }
 
 //Recibe el contenido del formulario y la ID de la noticia a editar.

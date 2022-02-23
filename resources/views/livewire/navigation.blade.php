@@ -126,6 +126,12 @@
                 {{ __('Control Usuarios') }}
             </x-jet-dropdown-link>
             @endif
+            @if (Auth::user()->rol == 'empleado' || Auth::user()->rol == 'admin')
+            <x-jet-dropdown-link href="{{ route('dashboard') }}">
+                {{ __('Gestion') }}
+            </x-jet-dropdown-link>
+            @endif
+
 
               <form method="POST" action="{{ route('logout') }}">
                 @csrf

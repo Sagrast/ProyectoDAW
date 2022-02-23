@@ -1,80 +1,69 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Edicion de Usuarios') }}
+            {{ __('Añadir Vehiculos') }}
         </h2>
     </x-slot>
+    @if (Auth::user()->rol == 'empleado' || Auth::user()->rol == 'admin')
+    @livewire('inner-menu')
+    @endif
     <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 py-8">
-        <form class="w-full max-w-lg mx-auto " method="POST" action="{{ route('admin.users.update', $user->id) }}">
+        <form class="w-full max-w-lg mx-auto " method="POST" action="{{route('web.vehicles.add')}}">
             @csrf
             <div class="flex flex-wrap -mx-3 mb-6">
                 <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                    <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="name">
-                        Nombre:
+                    <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="descripcion">
+                        Descripcion
                     </label>
-                    <input value="{{ $user->name }}"
+                    <input value="{{ old('descricpcion') }}"
                         class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-                        id="name" type="text" name="name">
-                        @error('name')
+                        id="descripcion" type="text" name="descripcion">
+                        @error('descripcion')
                         <p class="error-message">{{ $message}}</p>
                         @enderror
                 </div>
 
                 <div class="w-full md:w-1/2 px-3">
-                    <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="email">
-                        Email:
+                    <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="matricula">
+                        Matricula:
                     </label>
-                    <input value="{{ $user->email }} "
+                    <input value="{{ old('matricula') }} "
                         class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                        id="email" type="email" name="email">
-                        @error('email')
+                        id="matricula" type="text" name="matricula" min="0">
+                        @error('matricula')
                             <p class="error-message">{{ $message}}</p>
                         @enderror
                 </div>
-            </div>
-
-            <div class="flex flex-wrap -mx-3 mb-2">
-                <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
-                    <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-state">
-                        Rol
+                <div class="w-full md:w-1/2 px-3">
+                    <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="email">
+                        Kilometros
                     </label>
-                    <div class="relative">
-                        <select
-                            class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                            id="rol"
-                            name="rol">
-                            <option value="cliente">Cliente</option>
-                            <option value="Comercial">Comercial</option>
-                            <option value="empleado">Empleado</option>
-                            <option value="admin">Administrador</option>
-                        </select>
-                        @error('rol')
+                    <input value="{{ old('kilometros') }} "
+                        class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                        id="kilometros" type="number" name="kilometros">
+                        @error('kilometros')
                             <p class="error-message">{{ $message}}</p>
-                            @enderror
-                        <div
-                            class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-                            <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                                <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
-                            </svg>
-                        </div>
-                    </div>
+                        @enderror
                 </div>
                 <div class="flex flex-wrap -mx-3 mb-6">
                     <div class="w-full px-3">
                         <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-                            for="password">
-                            Contraseña:
+                            for="itv">
+                            ITV
                         </label>
                         <input
                             class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                            id="password" type="password" name="password">
+                            id="itv" type="date" name="itv">
                     </div>
                 </div>
-
             </div>
+            </div>
+            <div class="grid place-items-center">
             <button
+
                 class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded object-center"
-                type="submit">Actualizar</button>
+                type="submit">Añadir</button>
+            </div>
         </form>
         @if (session('status'))
             <div class="bg-teal-100 border-t-4 border-teal-500 rounded-b text-teal-900 px-4 py-3 shadow-md"

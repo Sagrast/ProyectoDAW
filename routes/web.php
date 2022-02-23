@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\adminController;
+use App\Http\Controllers\clienteController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\NodoController;
 use App\Http\Controllers\vehicleController;
@@ -70,7 +71,7 @@ Route::get('destroyArticle/{id}',[NodoController::class,'destroy'])->middleware(
 Route::get('/users',[adminController::class,'index'])->middleware('admin')->name('admin.users.index');
 Route::post('/users',[adminController::class,'filter'])->middleware('admin')->name('admin.users.index');
 //Borrar
-Route::get('/destroy/{id}',[adminController::class,'destroy'])->middleware('admin')->name('admin.users.destroy');
+Route::get('/destroyUser/{id}',[adminController::class,'destroy'])->middleware('admin')->name('admin.users.destroy');
 //actualizar usuarios
 Route::get('/update/{id}',[adminController::class,'edit'])->middleware('admin')->name('admin.users.edit');
 Route::Post('/update/{id}',[adminController::class,'update'])->middleware('admin')->name('admin.users.update');
@@ -86,11 +87,46 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 
 /*
 |--------------------------------------------------------------------------
-| Gestión
+| Vehiculos
 |--------------------------------------------------------------------------
 */
 
+//Listado vehiculos
 Route::get('/vehicles',[vehicleController::class,'index'])->middleware('gestor')->name('web.vehicles.index');
 Route::post('/vehicles',[vehicleController::class,'filter'])->middleware('gestor')->name('web.vehicles.filter');
+//borrar vehiculos
+Route::get('/destroyCar/{id}',[vehicleController::class,'destroy'])->middleware('gestor')->name('web.vehicles.destroy');
+//gestionar Vehiculos
 Route::get('/infoVehicle/{id}',[vehicleController::class,'show'])->middleware('gestor')->name('web.vehicles.show');
+Route::post('/infoVehicle',[vehicleController::class,'store'])->middleware('gestor')->name('web.vehicles.store');
+//Nuevo Vehiculo
+Route::get('/addVehicle',[vehicleController::class,'create'])->middleware('gestor')->name('web.vehicles.create');
+Route::post('/addVehicle',[vehicleController::class,'add'])->middleware('gestor')->name('web.vehicles.add');
+//Editar Vehiculos
+Route::get('/editVehicle/{id}',[vehicleController::class,'edit'])->middleware('gestor')->name('web.vehicles.edit');
+Route::post('/editVehicle/{id}',[vehicleController::class,'update'])->middleware('gestor')->name('web.vehicles.update');
 
+/*
+|--------------------------------------------------------------------------
+| Clientes
+|--------------------------------------------------------------------------
+*/
+//Listado de Clientes
+Route::get('/clients',[clienteController::class,'index'])->middleware('gestor')->name('web.clientes.index');
+Route::post('/clients',[clienteController::class,'filter'])->middleware('gestor')->name('web.clientes.filter');
+//Borrar Clientes
+Route::get('/destroyClient/{id}',[clienteController::class,'destroy'])->middleware('gestor')->name('web.clientes.destroy');
+//Editar Clientes
+Route::get('/editClient/{id}',[clienteController::class,'edit'])->middleware('gestor')->name('web.clientes.edit');
+Route::post('/editClient/{id}',[clienteController::class,'update'])->middleware('gestor')->name('web.clientes.update');
+//Gestion de Clientes
+Route::get('/infoClient/{id}',[clienteController::class,'show'])->middleware('gestor')->name('web.clientes.show');
+Route::post('/infoClient',[clienteController::class,'store'])->middleware('gestor')->name('web.clientes.store');
+//Nuevo cliente
+Route::get('/addClient',[clienteController::class,'create'])->middleware('gestor')->name('web.clientes.create');
+Route::post('/addClient',[clienteController::class,'add'])->middleware('gestor')->name('web.clientes.add');
+/*
+|--------------------------------------------------------------------------
+| Maquinas
+|--------------------------------------------------------------------------
+*/

@@ -72,5 +72,11 @@ class User extends Authenticatable
         return $this->belongsToMany(Vehicle::class)->withPivot('fecha');
     }
 
+    //Relación Empleados - Clientes. Un empleado puede atender a varios clientes.
+
+    public function clientes(){
+        return $this->belongsToMany(Client::class);
+    }
+
 
 }
