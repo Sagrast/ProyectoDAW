@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
 use Illuminate\Http\Request;
 
-class adminController extends Controller
+class productController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,19 +13,7 @@ class adminController extends Controller
      */
     public function index()
     {
-        $users = User::paginate(50);
-        return view('web.admin.users',compact('users'));
-
-    }
-
-    public function filter(Request $request){
-
-        if ($request->rol != "null"){
-            $users = User::where('rol',"=",$request->rol)->where('name','LIKE','%'.$request->name.'%')->paginate(50);
-        } else {
-            $users = User::where('name','LIKE','%'.$request->name.'%')->paginate(50);
-        }
-        return view('web.admin.users',compact('users'));
+        //
     }
 
     /**
@@ -69,8 +56,7 @@ class adminController extends Controller
      */
     public function edit($id)
     {
-        $user = User::find($id);
-        return view('web.admin.edit',compact('user'));
+        //
     }
 
     /**
@@ -82,26 +68,7 @@ class adminController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $validar = $request->validate([
-            'name' => 'required',
-            'rol' => 'required',
-            'email' => 'required'
-        ]);
-
-        if ($validar){
-
-        $update = User::findOrFail($id);
-        $update->name = $request->name;
-        $update->email = $request->email;
-        if ($request->password) {
-            $update->password = $request->password;
-        }
-        $update->rol = $request->rol;
-        $update->save();
-        return back()->with('status','Datos Actualizados Correctamente');
-        } else {
-        return back()->withInput();
-        }
+        //
     }
 
     /**
@@ -112,8 +79,6 @@ class adminController extends Controller
      */
     public function destroy($id)
     {
-        $delete = User::find($id);
-        $delete->delete();
-        return back();
+        //
     }
 }

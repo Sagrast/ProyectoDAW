@@ -21,7 +21,7 @@ class Client extends Model
     //Por una versión superior o inferior a las necesidades del cliente.
 
     public function machine(){
-        return $this->belongsToMany(Machine::class);
+        return $this->belongsToMany(Machine::class)->withPivot('instalacion','retirada');
     }
 
 }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateClientMachineTable extends Migration
+class CreateFailuresTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,12 @@ class CreateClientMachineTable extends Migration
      */
     public function up()
     {
-        Schema::create('client_machine', function (Blueprint $table) {
+        Schema::create('failures', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('client_id');
+            $table->text('descripcion');
+            $table->date('fecha');
+            $table->enum('estado',['Arreglado','Pendiente']);
             $table->unsignedBigInteger('machine_id');
-            $table->date('instalacion');
-            $table->date('retirada')->nullable();
-            $table->foreign('client_id')->references('id')->on('clients')->onDelete('cascade');
             $table->foreign('machine_id')->references('id')->on('machines')->onDelete('cascade');
             $table->timestamps();
         });
@@ -32,6 +31,6 @@ class CreateClientMachineTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('client_machine');
+        Schema::dropIfExists('failures');
     }
 }
