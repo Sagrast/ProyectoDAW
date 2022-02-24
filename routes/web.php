@@ -133,7 +133,7 @@ Route::post('/addClient',[clienteController::class,'add'])->middleware('gestor')
 */
 //Listado de Máquinas
 Route::get('/machines',[machineController::class,'index'])->middleware('gestor')->name('web.machines.index');
-Route::post('/manchine',[machineController::class,'filter'])->middleware('gestor')->name('web.machines.filter');
+Route::post('/machines',[machineController::class,'filter'])->middleware('gestor')->name('web.machines.filter');
 //Borrar Maquinas
 Route::get('/destroyMachine/{id}',[machineController::class,'destroy'])->middleware('gestor')->name('web.machines.destroy');
 //Editar Maquinas

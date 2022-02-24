@@ -34,8 +34,9 @@
                     <option value="agua">Agua</option>
                     <option value="cafe">Café</option>
                     <option value="tabaco">Tabaco</option>
+                    <option value="snacks">Snacks</option>
                 </select>
-                <label for="name">Nombre</label>
+                <label for="name">Fabricante</label>
                 <input
                     class="focus:border-blue-600 appearance-none block w-1/4 bg-white text-black border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
                     name="name" id="name" placeholder="Introduce nombre" type="text">

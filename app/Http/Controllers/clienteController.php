@@ -23,7 +23,7 @@ class clienteController extends Controller
 
     public function filter(Request $request){
         if ($request->servicio != 'null'){
-            $clients = Client::where('servicio','=',$request->servicio,'AND','nombre','LIKE','%'.$request->name.'%')->paginate(50);
+            $clients = Client::where('servicio','=',$request->servicio)->where('nombre','LIKE','%'.$request->name.'%')->paginate(50);
         } else {
             $clients = Client::where('nombre','LIKE','%'.$request->name.'%')->paginate(50);
         }

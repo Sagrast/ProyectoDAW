@@ -22,7 +22,7 @@ class adminController extends Controller
     public function filter(Request $request){
 
         if ($request->rol != "null"){
-            $users = User::where('rol',"=",$request->rol,'AND','name','LIKE','%'.$request->name.'%')->paginate(50);
+            $users = User::where('rol',"=",$request->rol)->where('name','LIKE','%'.$request->name.'%')->paginate(50);
         } else {
             $users = User::where('name','LIKE','%'.$request->name.'%')->paginate(50);
         }

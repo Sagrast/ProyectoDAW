@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Client;
 use App\Models\Failure;
 use App\Models\Machine;
-use App\Models\User;
 use Illuminate\Http\Request;
 
 class machineController extends Controller
@@ -18,6 +17,16 @@ class machineController extends Controller
     public function index()
     {
         $machines = Machine::paginate(25);
+        return view('web.machines.machine',compact('machines'));
+    }
+
+    public function filter(Request $request){
+
+        if ($request->servicio != 'null'){
+            $machines = Machine::where('tipo','=',$request->servicio)->where('marca','LIKE','%'.$request->name.'%')->paginate(50);
+        } else {
+            $machines = Machine::where('marca','LIKE','%'.$request->name.'%')->paginate(50);
+        }
         return view('web.machines.machine',compact('machines'));
     }
 
