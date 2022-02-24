@@ -15,7 +15,6 @@ class CreateClientUserTable extends Migration
     {
         Schema::create('client_user', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('client_id');
             $table->integer('Albaran');
@@ -23,6 +22,7 @@ class CreateClientUserTable extends Migration
             $table->string('MotivoVisita');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('client_id')->references('id')->on('clients')->onDelete('cascade');
+            $table->timestamps();
         });
     }
 

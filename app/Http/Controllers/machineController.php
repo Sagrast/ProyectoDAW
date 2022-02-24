@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Client;
+use App\Models\Failure;
+use App\Models\Machine;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class machineController extends Controller
@@ -13,7 +17,8 @@ class machineController extends Controller
      */
     public function index()
     {
-        //
+        $machines = Machine::paginate(25);
+        return view('web.machines.machine',compact('machines'));
     }
 
     /**
@@ -23,7 +28,32 @@ class machineController extends Controller
      */
     public function create()
     {
-        //
+        return view('web.machines.addMachine');
+    }
+
+    public function add(Request $request){
+        $validado = $request->validate([
+            'marca' => 'required',
+            'modelo' => 'required',
+            'lectura' => 'required',
+            'tipo' => 'required',
+            'serial' => 'required'
+        ]);
+
+        if ($validado) {
+            $machine = new Machine;
+            $machine->marca = $request->marca;
+            $machine->modelo = $request->modelo;
+            $machine->lectura = $request->lectura;
+            $machine->tipo = $request->tipo;
+            $machine->serial = $request->serial;
+            $machine->save();
+
+            return back()->with('status','Maquina añadida correctamente');
+        } else {
+            return back()->withInput();
+        }
+
     }
 
     /**
@@ -45,7 +75,13 @@ class machineController extends Controller
      */
     public function show($id)
     {
-        //
+        $machine = Machine::find($id);
+        $clients = $machine->clients()->latest('instalacion')->get();
+        $averias = $machine->failures()->latest('fecha')->get();
+
+
+        return view('web.machines.infoMachine',compact('machine','clients','averias'));
+
     }
 
     /**
@@ -56,7 +92,9 @@ class machineController extends Controller
      */
     public function edit($id)
     {
-        //
+        $machine = Machine::find($id);
+
+        return view('web.machines.editMachine', compact('machine'));
     }
 
     /**
@@ -68,7 +106,27 @@ class machineController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validado = $request->validate([
+            'marca' => 'required',
+            'modelo' => 'required',
+            'lectura' => 'required',
+            'tipo' => 'required',
+            'serial' => 'required'
+        ]);
+
+        if ($validado) {
+            $machine = Machine::find($id);
+            $machine->marca = $request->marca;
+            $machine->modelo = $request->modelo;
+            $machine->lectura = $request->lectura;
+            $machine->tipo = $request->tipo;
+            $machine->serial = $request->serial;
+            $machine->update();
+
+            return back()->with('status','Maquina añadida correctamente');
+        } else {
+            return back()->withInput();
+        }
     }
 
     /**
@@ -79,6 +137,18 @@ class machineController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $machine = Machine::find($id);
+        $machine->delete();
+
+        return back()->with('Status','Máquina eliminada correctamente');
+    }
+
+    public function close($id)
+    {
+        $failure = Failure::find($id);
+        $failure->estado = 'Arreglado';
+        $failure->update();
+
+        return back()->with('Status','Incidencia cerrada');
     }
 }

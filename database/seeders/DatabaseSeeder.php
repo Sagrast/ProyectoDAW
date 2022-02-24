@@ -6,6 +6,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use App\Models\Client;
 use App\Models\Machine;
+use App\Models\Failure;
 
 class DatabaseSeeder extends Seeder
 {
@@ -18,6 +19,7 @@ class DatabaseSeeder extends Seeder
     {
         Client::factory(100)->create();
         Machine::factory(100)->create();
+        Failure::factory(100)->create();
 
 
         $this->call(user_seeder::class);

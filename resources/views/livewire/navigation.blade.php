@@ -127,7 +127,7 @@
             </x-jet-dropdown-link>
             @endif
             @if (Auth::user()->rol == 'empleado' || Auth::user()->rol == 'admin')
-            <x-jet-dropdown-link href="{{ route('dashboard') }}">
+            <x-jet-dropdown-link href="{{ route('web.clientes.index') }}">
                 {{ __('Gestion') }}
             </x-jet-dropdown-link>
             @endif

@@ -14,7 +14,11 @@ class Machine extends Model
     //Y en la tabla pivote se almacenarán las fechas de instalación y retirada.
 
     public function clients(){
-        return $this->belongsToMany(Client::class);
+        return $this->belongsToMany(Client::class)->withPivot('instalacion','retirada');
+    }
+
+    public function failures(){
+        return $this->hasMany(Failure::class);
     }
 
 }

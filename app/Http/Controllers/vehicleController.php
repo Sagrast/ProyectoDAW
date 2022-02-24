@@ -23,6 +23,8 @@ class vehicleController extends Controller
         return view('web.gestion.vehicles', compact('vehicles'));
     }
 
+    //Metodo que añade en la base de datos un nuevo vehículo
+
     public function add(Request $request){
 
         $validado = $request->validate([

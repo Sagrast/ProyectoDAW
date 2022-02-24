@@ -5,6 +5,7 @@ use App\Http\Controllers\clienteController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\NodoController;
 use App\Http\Controllers\vehicleController;
+use App\Http\Controllers\machineController;
 
 /*
 |--------------------------------------------------------------------------
@@ -130,3 +131,19 @@ Route::post('/addClient',[clienteController::class,'add'])->middleware('gestor')
 | Maquinas
 |--------------------------------------------------------------------------
 */
+//Listado de Máquinas
+Route::get('/machines',[machineController::class,'index'])->middleware('gestor')->name('web.machines.index');
+Route::post('/manchine',[machineController::class,'filter'])->middleware('gestor')->name('web.machines.filter');
+//Borrar Maquinas
+Route::get('/destroyMachine/{id}',[machineController::class,'destroy'])->middleware('gestor')->name('web.machines.destroy');
+//Editar Maquinas
+Route::get('/editMachine/{id}',[machineController::class,'edit'])->middleware('gestor')->name('web.machines.edit');
+Route::post('/editMachine/{id}',[machineController::class,'update'])->middleware('gestor')->name('web.machines.update');
+//Gestion Máquinas
+Route::get('/infoMachine/{id}',[machineController::class,'show'])->middleware('gestor')->name('web.machines.show');
+Route::post('/infoMachine',[machineController::class,'store'])->middleware('gestor')->name('web.machines.store');
+//Nueva Máquina
+Route::get('/addMachine',[machineController::class,'create'])->middleware('gestor')->name('web.machines.create');
+Route::post('/addMachine',[machineController::class,'add'])->middleware('gestor')->name('web.machines.add');
+//Cerrar incidencias
+Route::get('/failure/{id}',[machineController::class,'close'])->middleware('gestor')->name('web.machines.close');
