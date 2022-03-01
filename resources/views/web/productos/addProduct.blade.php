@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Añadir Maquina') }}
+            {{ __('Añadir Producto') }}
         </h2>
     </x-slot>
     @if (Auth::user()->rol == 'empleado' || Auth::user()->rol == 'admin')
@@ -22,29 +22,29 @@
         </div>
     @endif
     <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 py-8">
-        <form class="w-full max-w-lg mx-auto " method="POST" action="{{ route('web.machines.add') }}">
+        <form class="w-full max-w-lg mx-auto " method="POST" action="{{ route('web.products.add') }}">
             @csrf
             <div class="flex flex-wrap -mx-3 mb-6">
                 <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                    <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="marca">
-                        Fabricante
+                    <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="nombre">
+                        nombre
                     </label>
-                    <input value="{{ old('marca') }}"
+                    <input value="{{ old('nombre') }}"
                         class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-                        id="marca" type="text" name="marca">
-                    @error('marca')
+                        id="nombre" type="text" name="nombre">
+                    @error('nombre')
                         <p class="error-message">{{ $message }}</p>
                     @enderror
                 </div>
 
                 <div class="w-full md:w-1/2 px-3">
-                    <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="modelo">
-                        modelo
+                    <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="stock">
+                        stock
                     </label>
-                    <input value="{{ old('modelo') }} "
+                    <input value="{{ old('stock') }} "
                         class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                        id="modelo" type="text" name="modelo" min="0">
-                    @error('modelo')
+                        id="stock" type="text" name="stock" min="0">
+                    @error('stock')
                         <p class="error-message">{{ $message }}</p>
                     @enderror
                 </div>
@@ -52,14 +52,14 @@
                 <div class="flex flex-wrap -mx-3 mb-6">
                     <div class="w-full px-3">
                         <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-                            for="lectura">
-                            lectura
+                            for="lote">
+                            lote
                         </label>
-                        <input value="{{ old('lectura') }}"
+                        <input value="{{ old('lote') }}"
                             class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                            id="lectura" type="text" name="lectura">
+                            id="lote" type="text" name="lote">
                     </div>
-                    @error('lectura')
+                    @error('lote')
                         <p class="error-message">{{ $message }}</p>
                     @enderror
                 </div>
@@ -72,7 +72,7 @@
                         <select
                             class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                             id="tipo" name="tipo">
-                            <option value="">Selecciona Servicio</option>
+                            <option value="">Selecciona Tipo</option>
                             <option value="agua">Agua</option>
                             <option value="cafe">Cafe</option>
                             <option value="tabaco">Tabaco</option>
@@ -93,14 +93,14 @@
                 </div>
                 <div class="flex flex-wrap -mx-3 mb-6">
                     <div class="w-full px-3">
-                        <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="serial">
-                            serial
+                        <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="fecha">
+                            Fecha de Caducidad
                         </label>
-                        <input value="{{ old('serial') }}"
+                        <input value="{{ old('fecha') }}"
                             class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                            id="serial" type="number" name="serial">
+                            id="fecha" type="date" name="fecha">
                     </div>
-                    @error('serial')
+                    @error('fecha')
                         <p class="error-message">{{ $message }}</p>
                     @enderror
 

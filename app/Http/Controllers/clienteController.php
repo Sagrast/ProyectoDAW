@@ -7,6 +7,7 @@ use App\Models\Client;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 
+
 class clienteController extends Controller
 {
     /**
@@ -176,4 +177,9 @@ class clienteController extends Controller
         $cliente->delete();
         return back()->with('status','Cliente eliminado correctamente.');
     }
+
+
+
+
+
 }

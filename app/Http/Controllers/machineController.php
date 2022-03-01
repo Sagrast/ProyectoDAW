@@ -6,6 +6,7 @@ use App\Models\Client;
 use App\Models\Failure;
 use App\Models\Machine;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class machineController extends Controller
 {
@@ -159,5 +160,18 @@ class machineController extends Controller
         $failure->update();
 
         return back()->with('Status','Incidencia cerrada');
+    }
+
+
+    //Funcion que retira una máquina de un cliente. Añade una fecha de baja y cambia el estado de la máquina a disponible.
+
+    public function withdraw($id,$cliente) {
+
+
+          DB::table('client_machine')->where('machine_id','=',$id,'AND','cliente_id','=',$cliente)->update(array('retirada' => now()));
+
+
+
+        return back();
     }
 }

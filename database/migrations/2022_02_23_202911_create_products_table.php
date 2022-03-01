@@ -18,6 +18,8 @@ class CreateProductsTable extends Migration
             $table->string('nombre');
             $table->enum('tipo',['Tabaco','Agua','Distribucion','Cafe','Snack']);
             $table->integer('stock');
+            $table->date('fechaCaducidad')->nullable();
+            $table->integer('lote');
             $table->timestamps();
         });
     }

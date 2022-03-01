@@ -7,6 +7,7 @@ use Illuminate\Database\Seeder;
 use App\Models\Client;
 use App\Models\Machine;
 use App\Models\Failure;
+use App\Models\Product;
 
 class DatabaseSeeder extends Seeder
 {
@@ -20,6 +21,7 @@ class DatabaseSeeder extends Seeder
         Client::factory(100)->create();
         Machine::factory(100)->create();
         Failure::factory(100)->create();
+        Product::factory(100)->create();
 
 
         $this->call(user_seeder::class);
@@ -29,5 +31,6 @@ class DatabaseSeeder extends Seeder
         $this->call(vehicle_seeder::class);
         $this->call(client_user_seeder::class);
         $this->call(client_machine_seeder::class);
+        $this->call(machine_product_seeder::class);
     }
 }
