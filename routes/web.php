@@ -7,7 +7,9 @@ use App\Http\Controllers\NodoController;
 use App\Http\Controllers\vehicleController;
 use App\Http\Controllers\machineController;
 use App\Http\Controllers\productController;
-use App\Http\Controllers\controlController;
+
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -28,9 +30,9 @@ Route::get('/location', function(){
     return view('/web/location');
 });
 
-Route::get('/contact', function(){
-    return view('/web/contact');
-});
+Route::get('/contact',[NodoController::class,'contact'])->name('web.nodos.contact');
+Route::post('/contact',[NodoController::class,'correo'])->name('web.nodos.mail');
+
 
 route::get('/services', function(){
     return view('/web/services');
@@ -145,6 +147,7 @@ Route::post('/editMachine/{id}',[machineController::class,'update'])->middleware
 Route::get('/infoMachine/{id}',[machineController::class,'show'])->middleware('gestor')->name('web.machines.show');
 Route::post('/infoMachine',[machineController::class,'store'])->middleware('gestor')->name('web.machines.store');
 Route::get('/withdraw/{id}/{cliente}',[machineController::class,'withdraw'])->middleware('gestor')->name('web.machines.withdraw');
+Route::get('/install/{id}/{cliente}',[machineController::class,'install'])->middleware('gestor')->name('web.machines.install');
 //Nueva Máquina
 Route::get('/addMachine',[machineController::class,'create'])->middleware('gestor')->name('web.machines.create');
 Route::post('/addMachine',[machineController::class,'add'])->middleware('gestor')->name('web.machines.add');
@@ -166,7 +169,6 @@ Route::get('/editProduct/{id}',[productController::class,'edit'])->middleware('g
 Route::post('/editProduct/{id}',[productController::class,'update'])->middleware('gestor')->name('web.products.update');
 //Gestion Productos
 Route::get('/infoProduct/{id}',[productController::class,'show'])->middleware('gestor')->name('web.products.show');
-Route::post('/infoProduct',[productController::class,'store'])->middleware('gestor')->name('web.products.store');
 //Nueva Productos
 Route::get('/addProduct',[productController::class,'create'])->middleware('gestor')->name('web.products.create');
 Route::post('/addProduct',[productController::class,'add'])->middleware('gestor')->name('web.products.add');
@@ -177,6 +179,7 @@ Route::post('/addProduct',[productController::class,'add'])->middleware('gestor'
 |--------------------------------------------------------------------------
 */
 
-Route::get('/cargas',[controlController::class,'index'])->middleware('gestor')->name('web.control.index');
+Route::get('/cargas/{id}',[productController::class,'show'])->middleware('gestor')->name('web.products.show');
+Route::post('/cargas',[productController::class,'store'])->middleware('gestor')->name('web.products.store');
 
 

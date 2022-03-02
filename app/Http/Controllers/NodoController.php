@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\contactMail;
 use Illuminate\Http\Request;
 use App\Models\Nodo;
 use App\Models\Label;
 use App\Models\Category;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
+
 
 
 /*
@@ -174,6 +177,23 @@ class NodoController extends Controller
         $nodos = Nodo::where('titulo',"LIKE",'%'.$request->titulo.'%')->get();
 
         return view('web.admin.newsEdit',compact('nodos'));
+    }
+
+
+    public function correo(Request $request){
+
+        $destinatario = 'hellheimvending@gmail.com';
+
+        $correo = new contactMail($request->all());
+        Mail::to($destinatario)->send($correo);
+
+        return back();
+
+    }
+
+
+    public function contact(){
+        return view('web.contact');
     }
 
 

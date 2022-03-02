@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Client;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class productController extends Controller
 {
@@ -15,17 +17,18 @@ class productController extends Controller
     public function index()
     {
         $products = Product::paginate(50);
-        return view('web.productos.products',compact('products'));
+        return view('web.productos.products', compact('products'));
     }
 
-    public function filter(Request $request){
+    public function filter(Request $request)
+    {
 
-        if ($request->servicio != 'null'){
-            $products = Product::where('tipo','=',$request->servicio)->where('lote','LIKE','%'.$request->lote.'%')->paginate(50);
+        if ($request->servicio != 'null') {
+            $products = Product::where('tipo', '=', $request->servicio)->where('lote', 'LIKE', '%' . $request->lote . '%')->paginate(50);
         } else {
-            $products = Product::where('lote','LIKE','%'.$request->lote.'%')->paginate(50);
+            $products = Product::where('lote', 'LIKE', '%' . $request->lote . '%')->paginate(50);
         }
-        return view('web.productos.products',compact('products'));
+        return view('web.productos.products', compact('products'));
     }
 
     /**
@@ -38,7 +41,8 @@ class productController extends Controller
         return view('web.productos.addProduct');
     }
 
-    public function add(Request $request){
+    public function add(Request $request)
+    {
         $validado = $request->validate([
             'nombre' => 'required',
             'tipo' => 'required',
@@ -56,11 +60,10 @@ class productController extends Controller
             $product->lote = $request->lote;
             $product->save();
 
-            return back()->with('status','Producto añadido correctamente');
+            return back()->with('status', 'Producto añadido correctamente');
         } else {
             return back()->withInput();
         }
-
     }
 
 
@@ -69,21 +72,49 @@ class productController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
+     *
+     * Función que añade la carga de los productos en las máquinas del cliente escogido.
      */
     public function store(Request $request)
     {
-        //
+        $validar = $request->validate([
+            "fecha" => 'required'
+        ]);
+
+        if ($validar) {
+
+            for ($i = 0; $i < count($request->carga); $i++) {
+                $producto = Product::find($request->id[$i]);
+                if ($producto->stock >= $request->carga[$i]) {
+                    DB::insert('INSERT INTO machine_product (machine_id,product_id,fechaCarga,unidades) VALUES (' . $request->maquina . ',' . $request->id[$i] . ',"' . $request->fecha . '",' . $request->carga[$i] . ')');
+                    DB::update('UPDATE products SET stock = stock - ' . $request->carga[$i] . ' WHERE id = ' . $request->id[$i]);
+                } else {
+                    return back()->with('status', $producto->nombre . ': Stock insuficiente');
+                }
+            }
+            return back()->with('status','Carga realizada correctamente');
+        } else {
+            return back()->withInput();
+        }
     }
+
+
 
     /**
      * Display the specified resource.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
+     *
+     * //Devuelve el formulario de insercion de productos en máquinas.
      */
     public function show($id)
     {
-        //
+        $client = Client::find($id);
+        $machine = $client->machine()->where('estado', '=', 'produccion')->get();
+        $products = Product::where('tipo', '=', $client->servicio)->get();
+
+        return view('web.cargas.cargas', compact('client', 'products', 'machine'));
     }
 
     /**
@@ -96,7 +127,7 @@ class productController extends Controller
     {
         $product = Product::find($id);
 
-        return view('web.productos.editProduct',compact('product'));
+        return view('web.productos.editProduct', compact('product'));
     }
 
     /**
@@ -125,7 +156,7 @@ class productController extends Controller
             $product->lote = $request->lote;
             $product->save();
 
-            return back()->with('status','Producto editado correctamente');
+            return back()->with('status', 'Producto editado correctamente');
         } else {
             return back()->withInput();
         }
@@ -142,7 +173,6 @@ class productController extends Controller
         $product = Product::find($id);
         $product->delete();
 
-        return back()->with('Status','Producto eliminado correctamente');
-
+        return back()->with('Status', 'Producto eliminado correctamente');
     }
 }

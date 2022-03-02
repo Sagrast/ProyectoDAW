@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Client;
+use App\Models\Machine;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 
@@ -113,8 +114,16 @@ class clienteController extends Controller
         $data = $cliente->users()->latest('fecha')->get();
         $users = User::where('rol','!=','cliente')->get();
         $machine = $cliente->machine()->get();
+        $cargas = DB::select('SELECT * FROM products inner join machine_product ON products.id = machine_product.product_id WHERE machine_id = '.$machine[0]->id.'');
 
-        return view('web.clientes.infoClient',compact('cliente','data','users','machine'));
+        if ($cargas > 0){
+            return view('web.clientes.infoClient',compact('cliente','data','users','machine','cargas'));
+        } else {
+            return view('web.clientes.infoClient',compact('cliente','data','users','machine'));
+        }
+
+
+
     }
 
     /**
@@ -126,8 +135,9 @@ class clienteController extends Controller
     public function edit($id)
     {
         $client = Client::find($id);
+        $machine = Machine::where('tipo','=',$client->servicio)->where('estado','=','disponible')->get();
 
-        return view('web.clientes.editCliente',compact('client'));
+        return view('web.clientes.editCliente',compact('client','machine'));
     }
 
     /**

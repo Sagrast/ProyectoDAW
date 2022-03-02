@@ -1,2 +1,0 @@
-Configuracion de usuario por defecto.
-app\Fortify\CreateNewUser

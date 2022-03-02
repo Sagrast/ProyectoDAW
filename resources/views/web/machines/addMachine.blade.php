@@ -76,7 +76,7 @@
                             <option value="agua">Agua</option>
                             <option value="cafe">Cafe</option>
                             <option value="tabaco">Tabaco</option>
-                            <option value="snack">Snacks</option>
+                            <option value="snacks">Snacks</option>
                         </select>
                         @error('tipo')
                             <p class="error-message">{{ $message }}</p>

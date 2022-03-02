@@ -20,7 +20,7 @@ class CreateMachinesTable extends Migration
             $table->enum('tipo',['tabaco','agua','cafe','snacks']);
             $table->integer('lectura');
             $table->string('serial');
-            $table->enum('estado',['disponible','operativa','averiada']);
+            $table->enum('estado',['disponible','produccion','averiada']);
             $table->timestamps();
         });
     }

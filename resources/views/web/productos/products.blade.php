@@ -105,25 +105,47 @@
                     </thead>
                     <tbody>
                         @foreach ($products as $product)
+                        @if ($product->stock < 100)
                             <tr class="hover:bg-grey-lighter">
-                                <td class="py-4 px-6 border-b border-grey-light">{{ $product->nombre }}</td>
-                                <td class="py-4 px-6 border-b border-grey-light">{{ $product->stock }}</td>
-                                <td class="py-4 px-6 border-b border-grey-light">{{ $product->tipo }}</td>
-                                <td class="py-4 px-6 border-b border-grey-light">{{ $product->fechaCaducidad }}</td>
-                                <td class="py-4 px-6 border-b border-grey-light">{{ $product->lote }}</td>
-                                <td class="py-4 px-6 border-b border-grey-light">
+                                <td class="py-4 px-6 border-b bg-red-400 border-grey-light">{{ $product->nombre }}</td>
+                                <td class="py-4 px-6 border-b bg-red-400 border-grey-light">{{ $product->stock }}</td>
+                                <td class="py-4 px-6 border-b bg-red-400 border-grey-light">{{ $product->tipo }}</td>
+                                <td class="py-4 px-6 border-b bg-red-400 border-grey-light">{{ $product->fechaCaducidad }}</td>
+                                <td class="py-4 px-6 border-b bg-red-400 border-grey-light">{{ $product->lote }}</td>
+                                <td class="py-4 px-6 border-b bg-red-400 border-grey-light">
                                     <a href="{{ route('web.products.edit', $product->id) }}">
                                         <button
                                             class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">Editar</button>
                                     </a>
                                 </td>
-                                <td class="py-4 px-6 border-b border-grey-light">
+                                <td class="py-4 px-6 border-b  bg-red-400 border-grey-light">
                                     <a href="{{ route('web.products.destroy', $product->id) }}">
                                         <button
                                             class="bg-red-500 hover:bg-red-700 text-black font-bold py-2 px-4 border border-red-700 rounded">Borrar</button>
                                     </a>
                                 </td>
                             </tr>
+                        @else
+                        <tr class="hover:bg-grey-lighter">
+                            <td class="py-4 px-6 border-b border-grey-light">{{ $product->nombre }}</td>
+                            <td class="py-4 px-6 border-b border-grey-light">{{ $product->stock }}</td>
+                            <td class="py-4 px-6 border-b border-grey-light">{{ $product->tipo }}</td>
+                            <td class="py-4 px-6 border-b border-grey-light">{{ $product->fechaCaducidad }}</td>
+                            <td class="py-4 px-6 border-b border-grey-light">{{ $product->lote }}</td>
+                            <td class="py-4 px-6 border-b border-grey-light">
+                                <a href="{{ route('web.products.edit', $product->id) }}">
+                                    <button
+                                        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">Editar</button>
+                                </a>
+                            </td>
+                            <td class="py-4 px-6 border-b border-grey-light">
+                                <a href="{{ route('web.products.destroy', $product->id) }}">
+                                    <button
+                                        class="bg-red-500 hover:bg-red-700 text-black font-bold py-2 px-4 border border-red-700 rounded">Borrar</button>
+                                </a>
+                            </td>
+                        </tr>
+                        @endif
                         @endforeach
                     </tbody>
                 </table>

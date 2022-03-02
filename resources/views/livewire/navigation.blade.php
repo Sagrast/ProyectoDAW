@@ -18,7 +18,7 @@
         [
             'name' => 'Contacto',
             'route' => '/contact',
-            'active' => request()->routeIs('contact')
+            'active' => request()->routeIs('web.nodos.contact')
         ],
         [
             'name' => 'Localización',

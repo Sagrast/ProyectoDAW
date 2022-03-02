@@ -19,7 +19,7 @@ class MachineFactory extends Factory
             'tipo' => $this->faker->randomElement(['Cafe','Snacks','Tabaco','Agua']),
             'lectura' => $this->faker->numerify('#####'),
             'serial' => $this->faker->macAddress(),
-            'estado' => $this->faker->randomElement(['disponible','operativa','averiada'])
+            'estado' => $this->faker->randomElement(['disponible','produccion','averiada'])
         ];
     }
 }

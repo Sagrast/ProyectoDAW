@@ -90,6 +90,9 @@
                                 Servicio</th>
                             <th
                                 class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
+                                Cargas</th>
+                            <th
+                                class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
                                 Informacion</th>
 
                             <th
@@ -106,6 +109,12 @@
                                 <td class="py-4 px-6 border-b border-grey-light">{{ $client->nombre }}</td>
                                 <td class="py-4 px-6 border-b border-grey-light">{{ $client->telefono }}</td>
                                 <td class="py-4 px-6 border-b border-grey-light">{{ $client->servicio }}</td>
+                                <td class="py-4 px-6 border-b border-grey-light">
+                                    <a href="{{ route('web.products.show', $client->id) }}">
+                                        <button
+                                            class="bg-amber-500 hover:bg-amber-700 text-white font-bold py-2 px-4 border border-amber-700 rounded">Cargas</button>
+                                    </a>
+                                </td>
                                 <td class="py-4 px-6 border-b border-grey-light">
                                     <a href="{{ route('web.clientes.show', $client->id) }}">
                                         <button

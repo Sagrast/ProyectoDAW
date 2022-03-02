@@ -18,10 +18,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        Client::factory(100)->create();
+       /*  Client::factory(100)->create();
         Machine::factory(100)->create();
         Failure::factory(100)->create();
-        Product::factory(100)->create();
+        Product::factory(100)->create(); */
 
 
         $this->call(user_seeder::class);
@@ -29,8 +29,8 @@ class DatabaseSeeder extends Seeder
         $this->call(label_seeder::class);
         $this->call(nodo_seeder::class);
         $this->call(vehicle_seeder::class);
-        $this->call(client_user_seeder::class);
+        /* $this->call(client_user_seeder::class);
         $this->call(client_machine_seeder::class);
-        $this->call(machine_product_seeder::class);
+        $this->call(machine_product_seeder::class); */
     }
 }
