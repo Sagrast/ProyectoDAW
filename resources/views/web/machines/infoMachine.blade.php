@@ -46,55 +46,7 @@
                             </tr>
                         </tbody>
                     </table>
-                   {{--  <form method="POST" action="{{route('web.machines.store')}}">
-                        @csrf
-                    <table class="text-left w-full border-collapse py-6">
-                        <!--Border collapse doesn't work on this site yet but it's available in newer tailwind versions -->
-                        <thead>
-                            <tr>
-                                <th colspan="4" class="bg-black text-white text-center py-2 ">Añadir Averias</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>
-                            <select class="category border-2 border-gray-300 p-2 w-full" name="user" id="user">
-                               @foreach ($users as $user)
-                                    <option class="border-2 border-gray-300 p-2 w-full" value="{{$user->id}}">{{$user->name}}</option>
-                                @endforeach
-                            </select>
-                                </td>
-                                <td>
-                                    <input class="border-2 border-gray-300 p-2 w-full" type="date" name="fecha" id="fecha">
-                                    @error('fecha')
-                            <p class="error-message">{{ $message}}</p>
-                            @enderror
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <input class="border-2 border-gray-300 p-2 w-full" type="text" name="motivo" id="motivo" placeholder="Motivo de la Visita">
-                                    @error('motivo')
-                            <p class="error-message">{{ $message}}</p>
-                            @enderror
-                                </td>
-                                <td>
-                                    <input class="border-2 border-gray-300 p-2 w-full" type="number" name="albaran" id="albaran" placeholder="Numero de Albaran" min="0">
-                                    @error('albaran')
-                            <p class="error-message">{{ $message}}</p>
-                            @enderror
-                                </td>
-                            </tr>
-                            <tr>
-                                <td align="center" colspan="2">
-                                    <button role="submit" class="bg-purple-500 hover:bg-purple-700 text-white font-bold px-4 border border-purple-700 rounded py-2" required>Añadir</button>
-                                </td>
-                            </tr>
-                            <input type="hidden" name="cliente" value={{$cliente->id}}>
 
-                        </tbody>
-                    </table>
-                </form> --}}
                     <table class="text-left w-full border-collapse py-6">
                         <!--Border collapse doesn't work on this site yet but it's available in newer tailwind versions -->
                         <thead>
@@ -175,7 +127,7 @@
 
 
                     <div class="py-6 grid place-items-center">
-                        <a href="{{ route('web.vehicles.index') }}">
+                        <a href="{{ route('web.machines.index') }}">
                             <button
                                 class="bg-blue-500 hover:bg-blue-700 text-white font-bold px-4 border border-blue-700 rounded py-2">Volver</button>
                         </a>

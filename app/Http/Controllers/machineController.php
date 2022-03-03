@@ -6,6 +6,7 @@ use App\Models\Client;
 use App\Models\Failure;
 use App\Models\Machine;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class machineController extends Controller
 {
@@ -159,5 +160,32 @@ class machineController extends Controller
         $failure->update();
 
         return back()->with('Status','Incidencia cerrada');
+    }
+
+
+    //Funcion que retira una máquina de un cliente. Añade una fecha de baja y cambia el estado de la máquina a disponible.
+
+    public function withdraw($id,$cliente) {
+
+        DB::table('client_machine')->where('machine_id','=',$id,'AND','cliente_id','=',$cliente)->update(array('retirada' => now()));
+
+        $machine = Machine::find($id);
+        $machine->estado = "disponible";
+        $machine->update();
+
+        return back();
+    }
+
+    //Funcion que asocia una máquina a un cliente. Añade una fecha de instalacion y cambia el estado de la máquina a produccion.
+    public function install($id, $cliente) {
+
+        DB::insert('INSERT INTO client_machine (machine_id,client_id,instalacion) VALUES ('.$id.','.$cliente.',"'.now().'")');
+
+        $machine = Machine::find($id);
+        $machine->estado = "produccion";
+        $machine->update();
+
+        return back()->with('status','Maquina asociada correctamente');
+
     }
 }

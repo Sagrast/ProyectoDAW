@@ -14,6 +14,9 @@
                     <i class="fas fa-list mr-3"></i> Información de Clientes
                 </p>
                 <div class="bg-white overflow-auto">
+                    {{-- ------------------------------------------------------------------------------------------------------------------------------------
+                                                    INFORMACION DE CLIENTE
+                         -----------------------------------------------------------------------------------------------------------------------------------}}
                     <table class="text-left w-full border-collapse">
                         <!--Border collapse doesn't work on this site yet but it's available in newer tailwind versions -->
                         <thead>
@@ -50,6 +53,52 @@
                             </tr>
                         </tbody>
                     </table>
+
+                    {{-- ------------------------------------------------------------------------------------------------------------------------------------
+                                                            Visitas realizadas
+                         -----------------------------------------------------------------------------------------------------------------------------------}}
+
+                         <table class="text-left w-full border-collapse py-6">
+                            <!--Border collapse doesn't work on this site yet but it's available in newer tailwind versions -->
+                            <thead>
+                                <tr>
+                                    <th colspan="6" class="bg-black text-white text-center py-2 ">Visitas</th>
+                                </tr>
+                                <tr>
+                                    <th
+                                        class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
+                                        Nombre</th>
+                                    <th
+                                        class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
+                                        rol</th>
+                                    <th
+                                        class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
+                                        Fecha</th>
+                                        <th
+                                        class="py- px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
+                                        Motivo</th>
+                                        <th
+                                        class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
+                                        Albaran</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                 @foreach ($data as $pivote)
+                                <tr class="hover:bg-grey-lighter">
+                                    <td class="py-4 px-6 border-b border-grey-light">{{ $pivote->name }}</td>
+                                    <td class="py-4 px-6 border-b border-grey-light">{{ $pivote->rol }}</td>
+                                    <td class="py-4 px-6 border-b border-grey-light">{{ $pivote->pivot->Fecha }}</td>
+                                    <td class="py-4 px-6 border-b border-grey-light">{{ $pivote->pivot->MotivoVisita }}</td>
+                                    <td class="py-4 px-6 border-b border-grey-light">{{ $pivote->pivot->Albaran }}</td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+
+
+                    {{-- ------------------------------------------------------------------------------------------------------------------------------------
+                                                    Añadir Visitas de Empleados
+                         -----------------------------------------------------------------------------------------------------------------------------------}}
                     <form method="POST" action="{{route('web.clientes.store')}}">
                         @csrf
                     <table class="text-left w-full border-collapse py-6">
@@ -99,11 +148,16 @@
                         </tbody>
                     </table>
                 </form>
+
+                 {{-- ------------------------------------------------------------------------------------------------------------------------------------
+                                                        Máquinas Instaladas
+                         -----------------------------------------------------------------------------------------------------------------------------------}}
+
                     <table class="text-left w-full border-collapse py-6">
                         <!--Border collapse doesn't work on this site yet but it's available in newer tailwind versions -->
                         <thead>
                             <tr>
-                                <th colspan="6" class="bg-black text-white text-center py-2 ">Máquinas Instaladas</th>
+                                <th colspan="8" class="bg-black text-white text-center py-2 ">Máquinas Instaladas</th>
                             </tr>
                             <tr>
                                 <th
@@ -124,6 +178,12 @@
                                     <th
                                     class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
                                     Fecha Instalacion</th>
+                                    <th
+                                    class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
+                                    Fecha Retirada</th>
+                                    <th
+                                    class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
+                                    Retirar</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -134,45 +194,16 @@
                                 <td class="py-4 px-6 border-b border-grey-light">{{ $mach->lectura }}</td>
                                 <td class="py-4 px-6 border-b border-grey-light">{{ $mach->serial }}</td>
                                 <td class="py-4 px-6 border-b border-grey-light">{{ $mach->tipo }}</td>
-
-
-                            </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-
-                    <table class="text-left w-full border-collapse py-6">
-                        <!--Border collapse doesn't work on this site yet but it's available in newer tailwind versions -->
-                        <thead>
-                            <tr>
-                                <th colspan="6" class="bg-black text-white text-center py-2 ">Visitas</th>
-                            </tr>
-                            <tr>
-                                <th
-                                    class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
-                                    Nombre</th>
-                                <th
-                                    class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
-                                    rol</th>
-                                <th
-                                    class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
-                                    Fecha</th>
-                                    <th
-                                    class="py- px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
-                                    Motivo</th>
-                                    <th
-                                    class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
-                                    Albaran</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                             @foreach ($data as $pivote)
-                            <tr class="hover:bg-grey-lighter">
-                                <td class="py-4 px-6 border-b border-grey-light">{{ $pivote->name }}</td>
-                                <td class="py-4 px-6 border-b border-grey-light">{{ $pivote->rol }}</td>
-                                <td class="py-4 px-6 border-b border-grey-light">{{ $pivote->pivot->Fecha }}</td>
-                                <td class="py-4 px-6 border-b border-grey-light">{{ $pivote->pivot->MotivoVisita }}</td>
-                                <td class="py-4 px-6 border-b border-grey-light">{{ $pivote->pivot->Albaran }}</td>
+                                <td class="py-4 px-6 border-b border-grey-light">{{ $mach->pivot->instalacion }}</td>
+                                <td class="py-4 px-6 border-b border-grey-light">{{ $mach->pivot->retirada }}</td>
+                                @if (empty($mach->pivot->retirada))
+                                <td>
+                                <a href="{{ route('web.machines.withdraw', [$mach->id,$cliente->id]) }}">
+                                    <button
+                                        class="bg-red-500 hover:bg-red-700 text-black font-bold  border border-red-700 rounded">Retirar Máquina</button>
+                                </a>
+                                </td>
+                                @endif
                             </tr>
                             @endforeach
                         </tbody>

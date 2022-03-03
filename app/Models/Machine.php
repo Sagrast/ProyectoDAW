@@ -21,4 +21,8 @@ class Machine extends Model
         return $this->hasMany(Failure::class);
     }
 
+    public function products(){
+        return $this->belongsToMany(Product::class)->withPivot('unidades','fechaCarga');
+    }
+
 }

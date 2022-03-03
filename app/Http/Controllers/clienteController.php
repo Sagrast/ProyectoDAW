@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Client;
+use App\Models\Machine;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
+
 
 class clienteController extends Controller
 {
@@ -18,16 +20,17 @@ class clienteController extends Controller
     {
         $clients = Client::paginate(25);
 
-        return view('web.clientes.client',compact('clients'));
+        return view('web.clientes.client', compact('clients'));
     }
 
-    public function filter(Request $request){
-        if ($request->servicio != 'null'){
-            $clients = Client::where('servicio','=',$request->servicio)->where('nombre','LIKE','%'.$request->name.'%')->paginate(50);
+    public function filter(Request $request)
+    {
+        if ($request->servicio != 'null') {
+            $clients = Client::where('servicio', '=', $request->servicio)->where('nombre', 'LIKE', '%' . $request->name . '%')->paginate(50);
         } else {
-            $clients = Client::where('nombre','LIKE','%'.$request->name.'%')->paginate(50);
+            $clients = Client::where('nombre', 'LIKE', '%' . $request->name . '%')->paginate(50);
         }
-        return view('web.clientes.client',compact('clients'));
+        return view('web.clientes.client', compact('clients'));
     }
 
     /**
@@ -44,11 +47,12 @@ class clienteController extends Controller
 
     //Metodo que añade en la base de datos un nuevo cliente
 
-    public function add(Request $request){
+    public function add(Request $request)
+    {
 
         $validado = $request->validate([
             'nombre' => 'required',
-            'direccion'=> 'required',
+            'direccion' => 'required',
             'cif' => 'required|max:9',
             'telefono' => 'required',
             'email' => 'required',
@@ -56,20 +60,19 @@ class clienteController extends Controller
         ]);
 
         if ($validado) {
-        $client = new Client;
-        $client->nombre = $request->nombre;
-        $client->direccion = $request->direccion;
-        $client->cif = $request->cif;
-        $client->telefono = $request->telefono;
-        $client->email = $request->email;
-        $client->servicio = $request->servicio;
-        $client->save();
+            $client = new Client;
+            $client->nombre = $request->nombre;
+            $client->direccion = $request->direccion;
+            $client->cif = $request->cif;
+            $client->telefono = $request->telefono;
+            $client->email = $request->email;
+            $client->servicio = $request->servicio;
+            $client->save();
 
-        return back()->with('status','Cliente añadido conrrectamente');
+            return back()->with('status', 'Cliente añadido conrrectamente');
         } else {
             return back()->withInput();
         }
-
     }
 
 
@@ -92,9 +95,9 @@ class clienteController extends Controller
             'cliente' => 'required'
         ]);
 
-        if ($validar){
-        DB::insert('INSERT INTO client_user (user_id,client_id,Fecha,MotivoVisita,Albaran) VALUES ('.$request->user.','.$request->cliente.',"'.$request->fecha.'","'.$request->motivo.'",'.$request->albaran.')');
-        return back()->with('status','Insercion correcta');
+        if ($validar) {
+            DB::insert('INSERT INTO client_user (user_id,client_id,Fecha,MotivoVisita,Albaran) VALUES (' . $request->user . ',' . $request->cliente . ',"' . $request->fecha . '","' . $request->motivo . '",' . $request->albaran . ')');
+            return back()->with('status', 'Insercion correcta');
         } else {
             return back()->withInput();
         }
@@ -110,10 +113,11 @@ class clienteController extends Controller
     {
         $cliente = Client::find($id);
         $data = $cliente->users()->latest('fecha')->get();
-        $users = User::where('rol','!=','cliente')->get();
+        $users = User::where('rol', '!=', 'cliente')->get();
         $machine = $cliente->machine()->get();
 
-        return view('web.clientes.infoClient',compact('cliente','data','users','machine'));
+
+        return view('web.clientes.infoClient', compact('cliente', 'data', 'users', 'machine'));
     }
 
     /**
@@ -125,8 +129,9 @@ class clienteController extends Controller
     public function edit($id)
     {
         $client = Client::find($id);
+        $machine = Machine::where('tipo', '=', $client->servicio)->where('estado', '=', 'disponible')->get();
 
-        return view('web.clientes.editCliente',compact('client'));
+        return view('web.clientes.editCliente', compact('client', 'machine'));
     }
 
     /**
@@ -140,7 +145,7 @@ class clienteController extends Controller
     {
         $validado = $request->validate([
             'nombre' => 'required',
-            'email'=> 'required',
+            'email' => 'required',
             'direccion' => 'required',
             'cif' => 'required',
             'servicio' => 'required',
@@ -148,20 +153,19 @@ class clienteController extends Controller
         ]);
 
         if ($validado) {
-        $client = Client::find($id);
-        $client->nombre = $request->nombre;
-        $client->email = $request->email;
-        $client->direccion = $request->direccion;
-        $client->cif = $request->cif;
-        $client->servicio = $request->servicio;
-        $client->telefono = $request->telefono;
-        $client->update();
+            $client = Client::find($id);
+            $client->nombre = $request->nombre;
+            $client->email = $request->email;
+            $client->direccion = $request->direccion;
+            $client->cif = $request->cif;
+            $client->servicio = $request->servicio;
+            $client->telefono = $request->telefono;
+            $client->update();
 
-        return back()->with('status','Cliente actualizado conrrectamente');
+            return back()->with('status', 'Cliente actualizado conrrectamente');
         } else {
             return back()->withInput();
         }
-
     }
 
     /**
@@ -174,6 +178,6 @@ class clienteController extends Controller
     {
         $cliente = Client::find($id);
         $cliente->delete();
-        return back()->with('status','Cliente eliminado correctamente.');
+        return back()->with('status', 'Cliente eliminado correctamente.');
     }
 }

@@ -6,6 +6,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\NodoController;
 use App\Http\Controllers\vehicleController;
 use App\Http\Controllers\machineController;
+use App\Http\Controllers\productController;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -27,9 +30,9 @@ Route::get('/location', function(){
     return view('/web/location');
 });
 
-Route::get('/contact', function(){
-    return view('/web/contact');
-});
+Route::get('/contact',[NodoController::class,'contact'])->name('web.nodos.contact');
+Route::post('/contact',[NodoController::class,'correo'])->name('web.nodos.mail');
+
 
 route::get('/services', function(){
     return view('/web/services');
@@ -123,6 +126,7 @@ Route::post('/editClient/{id}',[clienteController::class,'update'])->middleware(
 //Gestion de Clientes
 Route::get('/infoClient/{id}',[clienteController::class,'show'])->middleware('gestor')->name('web.clientes.show');
 Route::post('/infoClient',[clienteController::class,'store'])->middleware('gestor')->name('web.clientes.store');
+
 //Nuevo cliente
 Route::get('/addClient',[clienteController::class,'create'])->middleware('gestor')->name('web.clientes.create');
 Route::post('/addClient',[clienteController::class,'add'])->middleware('gestor')->name('web.clientes.add');
@@ -142,8 +146,44 @@ Route::post('/editMachine/{id}',[machineController::class,'update'])->middleware
 //Gestion Máquinas
 Route::get('/infoMachine/{id}',[machineController::class,'show'])->middleware('gestor')->name('web.machines.show');
 Route::post('/infoMachine',[machineController::class,'store'])->middleware('gestor')->name('web.machines.store');
+Route::get('/withdraw/{id}/{cliente}',[machineController::class,'withdraw'])->middleware('gestor')->name('web.machines.withdraw');
+Route::get('/install/{id}/{cliente}',[machineController::class,'install'])->middleware('gestor')->name('web.machines.install');
 //Nueva Máquina
 Route::get('/addMachine',[machineController::class,'create'])->middleware('gestor')->name('web.machines.create');
 Route::post('/addMachine',[machineController::class,'add'])->middleware('gestor')->name('web.machines.add');
 //Cerrar incidencias
 Route::get('/failure/{id}',[machineController::class,'close'])->middleware('gestor')->name('web.machines.close');
+
+/*
+|--------------------------------------------------------------------------
+| Productos
+|--------------------------------------------------------------------------
+*/
+//Listado de Productos
+Route::get('/products',[productController::class,'index'])->middleware('gestor')->name('web.products.index');
+Route::post('/products',[productController::class,'filter'])->middleware('gestor')->name('web.products.filter');
+//Borrar Productos
+Route::get('/destroyProduct/{id}',[productController::class,'destroy'])->middleware('gestor')->name('web.products.destroy');
+//Editar Productos
+Route::get('/editProduct/{id}',[productController::class,'edit'])->middleware('gestor')->name('web.products.edit');
+Route::post('/editProduct/{id}',[productController::class,'update'])->middleware('gestor')->name('web.products.update');
+//Gestion Productos
+Route::get('/infoProduct/{id}',[productController::class,'show'])->middleware('gestor')->name('web.products.show');
+//Nueva Productos
+Route::get('/addProduct',[productController::class,'create'])->middleware('gestor')->name('web.products.create');
+Route::post('/addProduct',[productController::class,'add'])->middleware('gestor')->name('web.products.add');
+
+/*
+|--------------------------------------------------------------------------
+| Cargas, incidencias y otras cosas.
+|--------------------------------------------------------------------------
+*/
+
+Route::get('/cargas/{id}',[productController::class,'show'])->middleware('gestor')->name('web.products.show');
+Route::post('/cargas',[productController::class,'store'])->middleware('gestor')->name('web.products.store');
+//Historico de Cargas y filtro
+Route::get('/history/{id}',[productController::class,'history'])->middleware('gestor')->name('web.products.history');
+Route::post('/history',[productController::class,'filterLoadDate'])->middleware('gestor')->name('web.products.filterLoadDate');
+
+
+

@@ -18,7 +18,7 @@ class CreateClientsTable extends Migration
             $table->string('direccion');
             $table->string('CIF',9)->unique();
             $table->string('nombre');
-            $table->enum('servicio',['Tabaco','Agua','Distribucion','Cafe','Snack']);
+            $table->enum('servicio',['Tabaco','Agua','Cafe','Snacks']);
             $table->string('telefono',15);
             $table->string('email');
             $table->timestamps();

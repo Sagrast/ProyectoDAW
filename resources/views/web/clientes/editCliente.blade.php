@@ -103,6 +103,54 @@
                 class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded object-center"
                 type="submit">Actualizar</button>
         </form>
+        <br>
+        <table class="text-left w-full border-collapse py-6 text-center">
+            <!--Border collapse doesn't work on this site yet but it's available in newer tailwind versions -->
+            <thead>
+                <tr>
+                    <th colspan="5" class="bg-black text-white text-center py-2 ">Instalar Máquina</th>
+                </tr>
+                <tr>
+                    <th
+                        class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
+                        Marca</th>
+                    <th
+                        class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
+                        Modelo</th>
+                        <th
+                        class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
+                        Servicio</th>
+                        <th
+                        class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
+                        Información Completa</th>
+                        <th
+                        class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
+                        Instalar</th>
+                </tr>
+            </thead>
+            <tbody>
+                 @foreach ($machine as $mach)
+                <tr class="hover:bg-grey-lighter">
+                    <td class="py-4 px-6 border-b border-grey-light">{{ $mach->marca }}</td>
+                    <td class="py-4 px-6 border-b border-grey-light">{{ $mach->modelo }}</td>
+                    <td class="py-4 px-6 border-b border-grey-light">{{ $mach->tipo }}</td>
+                    <td>
+                        <a href="{{ route('web.machines.show', $mach->id) }}">
+                            <button
+                                class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 border border-green-700 rounded">Detalles</button>
+                        </a>
+                        </td>
+                    <td>
+                    <a href="{{ route('web.machines.install', [$mach->id,$client->id]) }}">
+                        <button
+                            class="bg-blue-500 hover:bg-blue-700 text-white font-bold px-4 border border-blue-700 rounded py-2">Asociar</button>
+                    </a>
+                    </td>
+
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
         @if (session('status'))
             <div class="bg-teal-100 border-t-4 border-teal-500 rounded-b text-teal-900 px-4 py-3 shadow-md"
                 role="alert">
