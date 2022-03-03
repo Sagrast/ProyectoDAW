@@ -92,7 +92,7 @@ class productController extends Controller
                     return back()->with('status', $producto->nombre . ': Stock insuficiente');
                 }
             }
-            return back()->with('status','Carga realizada correctamente');
+            return back()->with('status', 'Carga realizada correctamente');
         } else {
             return back()->withInput();
         }
@@ -114,7 +114,11 @@ class productController extends Controller
         $machine = $client->machine()->where('estado', '=', 'produccion')->get();
         $products = Product::where('tipo', '=', $client->servicio)->get();
 
-        return view('web.cargas.cargas', compact('client', 'products', 'machine'));
+        if (count($machine) > 0) {
+            return view('web.cargas.cargas', compact('client', 'products', 'machine'));
+        } else {
+            return back()->with('status', 'El cliente seleccionado no tiene ninguna máquina asociada');
+        }
     }
 
     /**
@@ -174,5 +178,27 @@ class productController extends Controller
         $product->delete();
 
         return back()->with('Status', 'Producto eliminado correctamente');
+    }
+
+
+    //Función que devuelve el historico de Cargas del cliente seleccionado
+    public function history($id)
+    {
+
+        $fechas = DB::select('SELECT DISTINCT fechaCarga from machine_product');
+        $cargas = DB::select('SELECT * FROM products inner join machine_product ON products.id = machine_product.product_id WHERE machine_id = ' . $id . '');
+        if (count($cargas) > 0) {
+            return view('web.cargas.history', compact('cargas','fechas'));
+        } else {
+            return back()->with('status', 'Este Cliente aún no tiene cargas realizadas');
+        }
+    }
+
+
+    public function filterLoadDate(Request $request)
+    {
+        $fechas = DB::select('SELECT DISTINCT fechaCarga from machine_product');
+        $cargas = DB::select('SELECT * FROM products inner join machine_product ON products.id = machine_product.product_id WHERE fechaCarga = "' . $request->fecha . '"');
+        return view('web.cargas.history', compact('cargas','fechas'));
     }
 }

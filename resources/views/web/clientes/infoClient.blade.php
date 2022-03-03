@@ -208,38 +208,7 @@
                             @endforeach
                         </tbody>
                     </table>
-                    {{-- ------------------------------------------------------------------------------------------------------------------------------------
-                                                        Cargas
-                         -----------------------------------------------------------------------------------------------------------------------------------}}
 
-                         <table class="text-left w-full border-collapse py-6">
-                            <!--Border collapse doesn't work on this site yet but it's available in newer tailwind versions -->
-                            <thead>
-                                <tr>
-                                    <th colspan="8" class="bg-black text-white text-center py-2 ">Cargas Realizadas</th>
-                                </tr>
-                                <tr>
-                                    <th
-                                        class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
-                                        Marca</th>
-                                    <th
-                                        class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
-                                        Cantidad</th>
-                                    <th
-                                        class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
-                                        Fecha</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                 @foreach ($cargas as $load)
-                                <tr class="hover:bg-grey-lighter">
-                                    <td class="py-4 px-6 border-b border-grey-light">{{ $load->nombre }}</td>
-                                    <td class="py-4 px-6 border-b border-grey-light">{{ $load->unidades }}</td>
-                                    <td class="py-4 px-6 border-b border-grey-light">{{ $load->fechaCarga }}</td>
-                                </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
 
                     <div class="py-6 grid place-items-center">
                         <a href="{{ route('web.vehicles.index') }}">

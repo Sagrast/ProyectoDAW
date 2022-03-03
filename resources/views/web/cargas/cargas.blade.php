@@ -21,10 +21,14 @@
             </div>
         </div>
     @endif
+
     <div class="max-w-7xl mx-auto py-3 px-4 sm:px-6 lg:px-8 py-8 capitalize">
         <div class="w-full mt-12">
             <h1 class="text-3xl">{{ $client->nombre }}</h1>
             <h1 class="text-3xl">{{ $client->servicio }}</h1>
+            <a href="{{route('web.products.history',$machine[0]->id)}}">
+            <button type="button" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 border border-green-700 rounded object-center">Historico</button>
+            </a>
         </div>
         <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 py-8">
         <form action="{{ route('web.products.store') }}" method="post">

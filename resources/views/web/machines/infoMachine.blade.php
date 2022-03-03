@@ -127,7 +127,7 @@
 
 
                     <div class="py-6 grid place-items-center">
-                        <a href="{{ route('web.vehicles.index') }}">
+                        <a href="{{ route('web.machines.index') }}">
                             <button
                                 class="bg-blue-500 hover:bg-blue-700 text-white font-bold px-4 border border-blue-700 rounded py-2">Volver</button>
                         </a>

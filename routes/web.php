@@ -181,5 +181,9 @@ Route::post('/addProduct',[productController::class,'add'])->middleware('gestor'
 
 Route::get('/cargas/{id}',[productController::class,'show'])->middleware('gestor')->name('web.products.show');
 Route::post('/cargas',[productController::class,'store'])->middleware('gestor')->name('web.products.store');
+//Historico de Cargas y filtro
+Route::get('/history/{id}',[productController::class,'history'])->middleware('gestor')->name('web.products.history');
+Route::post('/history',[productController::class,'filterLoadDate'])->middleware('gestor')->name('web.products.filterLoadDate');
+
 
 
