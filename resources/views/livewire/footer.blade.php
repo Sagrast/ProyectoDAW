@@ -11,7 +11,7 @@
         lg:items-start
         md:flex-row md:flex-nowrap
       ">
-            <div class="flex-shrink-0 w-64 mx-auto text-center md:mx-0 md:text-left">
+            {{-- <div class="flex-shrink-0 w-64 mx-auto text-center md:mx-0 md:text-left">
                 <a
                     class="
             flex
@@ -27,7 +27,7 @@
                 <p class="mt-2 text-sm text-justify text-gray-500">
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium
                 </p>
-            </div>
+            </div> --}}
             <div class="flex justify-center mt-4 lg:mt-2">
                 <a>
                     <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
