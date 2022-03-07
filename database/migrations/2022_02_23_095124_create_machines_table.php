@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use phpDocumentor\Reflection\Types\Nullable;
 
 class CreateMachinesTable extends Migration
 {
@@ -17,10 +18,14 @@ class CreateMachinesTable extends Migration
             $table->id();
             $table->string('marca');
             $table->string('modelo');
-            $table->enum('tipo',['tabaco','agua','cafe','snacks']);
+            $table->enum('tipo',['tabaco','agua','cafe','snacks','combi']);
             $table->integer('lectura');
             $table->string('serial');
             $table->enum('estado',['disponible','produccion','averiada']);
+            $table->integer('carriles')->nullable();
+            $table->integer('espirales')->nullable();
+            $table->boolean('AguaCaliente')->nullable();
+            $table->boolean('infusiones')->nullable();
             $table->timestamps();
         });
     }
