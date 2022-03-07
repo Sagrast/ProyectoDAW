@@ -24,4 +24,11 @@ class Client extends Model
         return $this->belongsToMany(Machine::class)->withPivot('instalacion','retirada');
     }
 
+    //Relacion cliente con persona de contacto. Se fuerza 1:1 para el ejemplo del proyecto.
+    //Ya que un cliente podría tener una o varias personas de contacto.
+
+    public function contactPerson(){
+        return $this->belongsTo(contactPerson::class);
+    }
+
 }

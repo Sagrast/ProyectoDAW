@@ -12,7 +12,7 @@
 */
 
 return [
-    'failed'   => 'Estas credenciales no coinciden con nuestros registros.',
-    'password' => 'La contraseña ingresada no es correcta.',
-    'throttle' => 'Demasiados intentos de acceso. Por favor intente nuevamente en :seconds segundos.',
+    'failed'   => 'Estas credenciais non coinciden cos nosos rexistros.',
+    'password' => 'The provided password is incorrect.',
+    'throttle' => 'Demasiados intentos de acceso. Por favor, inténtao de novo en :seconds segundos.',
 ];

@@ -182,6 +182,15 @@ class NodoController extends Controller
 
     public function correo(Request $request){
 
+        return $request;
+
+        $validado = $request->validate([
+            'nombre' => 'required',
+            'apellido' => 'required',
+            'email' => 'required | email',
+            'message' => 'required'
+        ]);
+
         $destinatario = 'hellheimvending@gmail.com';
 
         $correo = new contactMail($request->all());

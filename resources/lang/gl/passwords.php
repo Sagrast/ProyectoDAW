@@ -12,9 +12,9 @@
 */
 
 return [
-    'reset'     => '¡Su contraseña ha sido restablecida!',
-    'sent'      => '¡Le hemos enviado por correo electrónico el enlace para restablecer su contraseña!',
-    'throttled' => 'Por favor espere antes de intentar de nuevo.',
-    'token'     => 'El token de restablecimiento de contraseña es inválido.',
-    'user'      => 'No encontramos ningún usuario con ese correo electrónico.',
+    'reset'     => 'O teu contrasinal foi restablecido!',
+    'sent'      => 'Enviámosche por correo electrónico o enlace para restablecer o teu contrasinal!',
+    'throttled' => 'Por favor, agarde antes de repetir.',
+    'token'     => 'Este token de restablecemento do contrasinal non é válido.',
+    'user'      => 'Non podemos encontrar un usuario con esa dirección de correo electrónico.',
 ];

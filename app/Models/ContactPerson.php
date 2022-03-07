@@ -5,11 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Product extends Model
+class ContactPerson extends Model
 {
     use HasFactory;
 
-    public function machines(){
-        return $this->belongsToMany(Machine::class)->withPivot('unidades','fechaCarga');
+    public function client(){
+        return $this->belongsTo(Client::class);
     }
 }
