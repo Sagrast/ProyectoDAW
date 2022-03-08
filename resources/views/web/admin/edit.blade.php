@@ -7,29 +7,75 @@
     <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 py-8">
         <form class="w-full max-w-lg mx-auto " method="POST" action="{{ route('admin.users.update', $user->id) }}">
             @csrf
+            <input type="hidden" name="id" value="{{$user->id}}">
             <div class="flex flex-wrap -mx-3 mb-6">
                 <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                     <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="name">
                         Nombre:
                     </label>
-                    <input value="{{ $user->name }}"
+                    <input value="{{ $user->name }}" required
                         class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
                         id="name" type="text" name="name">
-                        @error('name')
-                        <p class="error-message">{{ $message}}</p>
-                        @enderror
+                    @error('name')
+                        <p class="error-message">{{ $message }}</p>
+                    @enderror
                 </div>
 
                 <div class="w-full md:w-1/2 px-3">
                     <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="email">
                         Email:
                     </label>
-                    <input value="{{ $user->email }} "
+                    <input value="{{ $user->email }}"
                         class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                        id="email" type="email" name="email">
-                        @error('email')
-                            <p class="error-message">{{ $message}}</p>
+                        id="email" type="email" name="email" required>
+                    @error('email')
+                        <p class="error-message">{{ $message }}</p>
+                    @enderror
+                </div>
+            </div>
+
+            <div class="flex flex-wrap -mx-3 mb-6">
+                <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                    <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="telefono">
+                        Telefono:
+                    </label>
+                    @if (isset($user->perfils->telefono))
+                        <input value="{{ $user->perfils->telefono }}"
+                            class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                            id="telefono" type="number" name="telefono" maxlength="9" required>
+                        @error('name')
+                            <p class="error-message">{{ $message }}</p>
                         @enderror
+                    @else
+                        <input
+                            class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                            id="telefono" type="text" name="telefono" required>
+                        @error('name')
+                            <p class="error-message">{{ $message }}</p>
+                        @enderror
+                    @endif
+                </div>
+
+
+                <div class="w-full md:w-1/2 px-3">
+                    <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="dni">
+                        DNI
+                    </label>
+                    @if (isset($user->perfils->DNI))
+                        <input value="{{ $user->perfils->DNI }} "
+                            class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                            id="dni" type="text" name="dni" required>
+                        @error('dni')
+                            <p class="error-message">{{ $message }}</p>
+                        @enderror
+                    @else
+                        <input
+                            class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                            id="dni" type="text" name="dni" required>
+                        @error('dni')
+                            <p class="error-message">{{ $message }}</p>
+                        @enderror
+                    @endif
                 </div>
             </div>
 
@@ -39,18 +85,17 @@
                         Rol
                     </label>
                     <div class="relative">
-                        <select
+                        <select required
                             class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                            id="rol"
-                            name="rol">
+                            id="rol" name="rol">
                             <option value="cliente">Cliente</option>
                             <option value="Comercial">Comercial</option>
                             <option value="empleado">Empleado</option>
                             <option value="admin">Administrador</option>
                         </select>
                         @error('rol')
-                            <p class="error-message">{{ $message}}</p>
-                            @enderror
+                            <p class="error-message">{{ $message }}</p>
+                        @enderror
                         <div
                             class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
                             <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
@@ -59,7 +104,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="flex flex-wrap -mx-3 mb-6">
+                <div class="flex flex-wrap -mx-3 mb-6 w-1/2">
                     <div class="w-full px-3">
                         <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
                             for="password">
@@ -70,7 +115,30 @@
                             id="password" type="password" name="password">
                     </div>
                 </div>
+                <div class="flex flex-wrap -mx-3 mb-6 w-full">
+                    <div class="w-full md:full px-3 mb-6 md:mb-0">
+                        <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                            for="direccion">
+                            Direccion:
+                        </label>
+                        @if (isset($user->perfils->direccion))
+                            <input value="{{ $user->perfils->direccion }}"
+                                class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                                id="direccion" type="text" name="direccion" required>
+                            @error('name')
+                                <p class="error-message">{{ $message }}</p>
+                            @enderror
+                        @else
+                            <input value=""
+                                class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                                id="direccion" type="text" name="direccion" required>
+                            @error('name')
+                                <p class="error-message">{{ $message }}</p>
+                            @enderror
+                        @endif
 
+                    </div>
+                </div>
             </div>
             <button
                 class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded object-center"

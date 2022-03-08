@@ -17,12 +17,31 @@ class Machine extends Model
         return $this->belongsToMany(Client::class)->withPivot('instalacion','retirada');
     }
 
+    //Relacion con Averías. Una máquina puede sufrir distintas averías.
+
     public function failures(){
         return $this->hasMany(Failure::class);
     }
 
+    //Relación con productos. Una máquina puede cargar distintas clases de productos.
+
     public function products(){
         return $this->belongsToMany(Product::class)->withPivot('unidades','fechaCarga');
     }
+
+    //Relaciónes con especializacion
+
+    public function machineTobacco(){
+        return $this->hasMany(MachineTobacco::class);
+    }
+
+    public function machineSnack(){
+        return $this->hasMany(MachineSnack::class);
+    }
+
+    public function machineWater(){
+        return $this->hasMany(MachineWater::class);
+    }
+
 
 }

@@ -22,10 +22,6 @@ class CreateMachinesTable extends Migration
             $table->integer('lectura');
             $table->string('serial');
             $table->enum('estado',['disponible','produccion','averiada']);
-            $table->integer('carriles')->nullable();
-            $table->integer('espirales')->nullable();
-            $table->boolean('AguaCaliente')->nullable();
-            $table->boolean('infusiones')->nullable();
             $table->timestamps();
         });
     }

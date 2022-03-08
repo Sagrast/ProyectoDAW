@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class adminController extends Controller
 {
@@ -15,18 +16,18 @@ class adminController extends Controller
     public function index()
     {
         $users = User::paginate(50);
-        return view('web.admin.users',compact('users'));
-
+        return view('web.admin.users', compact('users'));
     }
 
-    public function filter(Request $request){
+    public function filter(Request $request)
+    {
 
-        if ($request->rol != "null"){
-            $users = User::where('rol',"=",$request->rol)->where('name','LIKE','%'.$request->name.'%')->paginate(50);
+        if ($request->rol != "null") {
+            $users = User::where('rol', "=", $request->rol)->where('name', 'LIKE', '%' . $request->name . '%')->paginate(50);
         } else {
-            $users = User::where('name','LIKE','%'.$request->name.'%')->paginate(50);
+            $users = User::where('name', 'LIKE', '%' . $request->name . '%')->paginate(50);
         }
-        return view('web.admin.users',compact('users'));
+        return view('web.admin.users', compact('users'));
     }
 
     /**
@@ -58,7 +59,9 @@ class adminController extends Controller
      */
     public function show($id)
     {
-        //
+        $user = User::find($id);
+
+        return view('web.admin.infoUser', compact('user'));
     }
 
     /**
@@ -70,7 +73,7 @@ class adminController extends Controller
     public function edit($id)
     {
         $user = User::find($id);
-        return view('web.admin.edit',compact('user'));
+        return view('web.admin.edit', compact('user'));
     }
 
     /**
@@ -82,25 +85,37 @@ class adminController extends Controller
      */
     public function update(Request $request, $id)
     {
+
+
         $validar = $request->validate([
             'name' => 'required',
             'rol' => 'required',
-            'email' => 'required'
+            'email' => 'required',
+            'telefono' => 'required',
+            'dni' => 'required',
+            'direccion' => 'required'
         ]);
 
-        if ($validar){
+        if ($validar) {
 
-        $update = User::findOrFail($id);
-        $update->name = $request->name;
-        $update->email = $request->email;
-        if ($request->password) {
-            $update->password = $request->password;
-        }
-        $update->rol = $request->rol;
-        $update->save();
-        return back()->with('status','Datos Actualizados Correctamente');
+            $update = User::findOrFail($id);
+            $update->name = $request->name;
+            $update->email = $request->email;
+            if ($request->password) {
+                $update->password = $request->password;
+            }
+            $update->rol = $request->rol;
+            $update->save();
+
+            if (!isset($update->perfils->id)) {
+                DB::insert('INSERT INTO `perfils`(`id`, `created_at`, `updated_at`, `DNI`, `direccion`, `telefono`, `user_id`)
+                VALUES (NULL,"' . now() . '","' . now() . '","' . $request->dni . '","' . $request->direccion . '",' . $request->telefono . ',' . $request->id . ')');
+            } else {
+                DB::update('UPDATE `perfils` SET updated_at="' . now() . '",DNI="' . $request->dni . '",direccion="' . $request->direccion . '",telefono="' . $request->telefono . '" WHERE user_id = ' . $request->id . '');
+            }
+            return back()->with('status', 'Datos Actualizados Correctamente');
         } else {
-        return back()->withInput();
+            return back()->withInput();
         }
     }
 

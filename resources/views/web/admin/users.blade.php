@@ -83,6 +83,9 @@
                                 Rol</th>
                             <th
                                 class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
+                                Informacion Detallada</th>
+                                <th
+                                class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
                                 Editar</th>
                             <th
                                 class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
@@ -97,6 +100,12 @@
                                 <td class="py-4 px-6 border-b border-grey-light">{{ $user->name }}</td>
                                 <td class="py-4 px-6 border-b border-grey-light">{{ $user->email }}</td>
                                 <td class="py-4 px-6 border-b border-grey-light">{{ $user->rol }}</td>
+                                <td class="py-4 px-6 border-b border-grey-light">
+                                    <a href="{{ route('admin.users.show', $user->id) }}">
+                                        <button
+                                            class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 border border-green-700 rounded">Detalles</button>
+                                    </a>
+                                </td>
                                 <td class="py-4 px-6 border-b border-grey-light">
                                     <a href="{{ route('admin.users.edit', $user->id) }}">
                                         <button
