@@ -32,15 +32,15 @@ class Machine extends Model
     //Relaciónes con especializacion
 
     public function machineTobacco(){
-        return $this->hasMany(MachineTobacco::class);
+        return $this->belongsTo(MachineTobacco::class);
     }
 
     public function machineSnack(){
-        return $this->hasMany(MachineSnack::class);
+        return $this->belongsTo(MachineSnack::class);
     }
 
     public function machineWater(){
-        return $this->hasMany(MachineWater::class);
+        return $this->belongsTo(MachineWater::class);
     }
 
 

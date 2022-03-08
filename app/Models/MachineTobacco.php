@@ -10,6 +10,6 @@ class MachineTobacco extends Model
     use HasFactory;
 
     public function machines(){
-        return $this->belongsTo(Machine::class);
+        return $this->hasOne(Machine::class);
     }
 }
