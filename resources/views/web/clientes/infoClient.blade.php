@@ -11,7 +11,7 @@
     <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 py-8 capitalize">
         <div class="w-full mt-12">
                <p class="text-xl pb-3 flex items-center">
-                    <i class="fas fa-list mr-3"></i> Información de Clientes
+                    <i class="fas fa-list mr-3"></i> {{__('InformacionCliente')}}
                 </p>
                 <div class="bg-white overflow-auto">
                     {{-- ------------------------------------------------------------------------------------------------------------------------------------
@@ -23,22 +23,22 @@
                             <tr>
                                 <th
                                     class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
-                                    Empresa</th>
+                                    {{__('Empresa')}}</th>
                                 <th
                                     class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
-                                    Direccion</th>
+                                    {{__('Direccion')}}</th>
                                 <th
                                     class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
                                     CIF</th>
                                 <th
                                     class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
-                                    Servicio</th>
+                                    {{__('Servicio')}}</th>
                                     <th
                                     class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
-                                    Telefono</th>
+                                    {{__('Telefono')}}</th>
                                     <th
                                     class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
-                                    Email</th>
+                                    {{__('Email')}}</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -62,24 +62,24 @@
                             <!--Border collapse doesn't work on this site yet but it's available in newer tailwind versions -->
                             <thead>
                                 <tr>
-                                    <th colspan="6" class="bg-black text-white text-center py-2 ">Visitas</th>
+                                    <th colspan="6" class="bg-black text-white text-center py-2 ">{{__('Visitas')}}</th>
                                 </tr>
                                 <tr>
                                     <th
                                         class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
-                                        Nombre</th>
+                                        {{__('Nombre')}}</th>
                                     <th
                                         class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
                                         rol</th>
                                     <th
                                         class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
-                                        Fecha</th>
+                                        {{__('Fecha')}}</th>
                                         <th
                                         class="py- px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
-                                        Motivo</th>
+                                        {{__('Motivo')}}</th>
                                         <th
                                         class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
-                                        Albaran</th>
+                                        {{__('Albaran')}}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -105,7 +105,7 @@
                         <!--Border collapse doesn't work on this site yet but it's available in newer tailwind versions -->
                         <thead>
                             <tr>
-                                <th colspan="4" class="bg-black text-white text-center py-2 ">Añadir Visita</th>
+                                <th colspan="4" class="bg-black text-white text-center py-2 ">{{__('AñadirVisitas')}}</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -157,33 +157,33 @@
                         <!--Border collapse doesn't work on this site yet but it's available in newer tailwind versions -->
                         <thead>
                             <tr>
-                                <th colspan="8" class="bg-black text-white text-center py-2 ">Máquinas Instaladas</th>
+                                <th colspan="8" class="bg-black text-white text-center py-2 ">{{__('MaquinasInstaladas')}}</th>
                             </tr>
                             <tr>
                                 <th
                                     class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
-                                    Marca</th>
+                                    {{__('Marca')}}</th>
                                 <th
                                     class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
-                                    Modelo</th>
+                                    {{__('Modelo')}}</th>
                                 <th
                                     class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
-                                    Lectura</th>
+                                    {{__('Lectura')}}</th>
                                     <th
                                     class="py- px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
-                                    Numero de Serie</th>
+                                    {{__('NumeSerie')}}</th>
                                     <th
                                     class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
-                                    Tipo</th>
+                                    {{__('Tipo')}}</th>
                                     <th
                                     class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
-                                    Fecha Instalacion</th>
+                                    {{__('FechaInstalacion')}}</th>
                                     <th
                                     class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
-                                    Fecha Retirada</th>
+                                    {{__('FechaRetirada')}}</th>
                                     <th
                                     class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
-                                    Retirar</th>
+                                    {{__('Retirar')}}</th>
                             </tr>
                         </thead>
                         <tbody>

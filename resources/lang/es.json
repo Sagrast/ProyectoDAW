@@ -744,8 +744,6 @@
     "Horas": "Lunes - Viernes 09:00 - 19:00",
     "FinSemana": "Sabado y Domingo: 24 horas en el contestador automatico.",
     "Enviar": "Enviar",
-    "Editar": "Editar",
-    "Borrar": "Borrar",
     "TemasRelacionados": "Temas Relacionados",
     "CrearNoticia": "Crear Noticia",
     "Titulo": "Titulo",
@@ -780,6 +778,8 @@
     "Servicio": "Servicio",
     "FechaInstalacion": "Fecha de Instalacion",
     "FechaRetirada": "Fecha de Retirada",
+    "InstalarMaquina": "Instalar Máquina",
+    "Instalar": "Instalar",
     "Fecha": "Fecha",
     "Averias": "Averias",
     "Descripcion": "Descripción",
@@ -788,7 +788,29 @@
     "Volver": "Volver",
     "Disponible": "Disponible",
     "Produccion": "Produccion",
-    "Averiada": "Averiada"
+    "Averiada": "Averiada",
+    "Matricula": "Matricula",
+    "Kilometros": "Kilometros",
+    "AñadirConductor": "Añadir Conductor",
+    "Conductores": "Conductores",
+    "InformacionVehiculo": "Información del Vehiculo",
+    "Actualizar": "Actualizar",
+    "Filtrar": "Filtrar",
+    "Usuarios": "Usuarios",
+    "InformacionCliente": "Información de Clientes",
+    "Empresa": "Empresa",
+    "Visitas": "Visitas",
+    "AñadirVisitas": "Añadir Visitas",
+    "Motivo": "Motivo",
+    "Albaran": "Albaran",
+    "MaquinasInstaladas": "Máquinas Instaladas",
+    "Retirar": "Retirar",
+    "Asociar": "Asociar",
+    "Clientes": "Clientes",
+    "Cargas": "Cargas",
+    "Informacion": "Informacion"
+
+
 
 
 }

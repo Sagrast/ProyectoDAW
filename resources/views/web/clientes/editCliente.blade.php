@@ -13,7 +13,7 @@
             <div class="flex flex-wrap -mx-3 mb-6">
                 <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                     <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="name">
-                        Nombre:
+                        {{__('Nombre')}}:
                     </label>
                     <input value="{{ $client->nombre }}"
                         class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
@@ -25,7 +25,7 @@
 
                 <div class="w-full md:w-1/2 px-3">
                     <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="email">
-                        Email:
+                        {{__('Email')}}:
                     </label>
                     <input value="{{ $client->email }} "
                         class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
@@ -38,7 +38,7 @@
             <div class="flex flex-wrap -mx-3 mb-6">
                 <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                     <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="name">
-                        Direccion:
+                        {{__('Direccion')}}:
                     </label>
                     <input value="{{ $client->direccion }}"
                         class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
@@ -64,16 +64,16 @@
             <div class="flex flex-wrap -mx-3 mb-2">
                 <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
                     <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-state">
-                        Servicio
+                        {{__('Servicio')}}
                     </label>
                     <div class="relative">
                         <select
                             class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                             id="servicio" name="servicio">
-                            <option value="agua">Agua</option>
-                            <option value="distribucion">Distribucion</option>
-                            <option value="cafe">Cafe</option>
-                            <option value="tabaco">Tabaco</option>
+                            <option value="agua">{{__('Agua')}}</option>
+                            <option value="distribucion">{{__('Distribucion')}}</option>
+                            <option value="cafe">{{__('Cafe')}}</option>
+                            <option value="tabaco">{{__('Snacks')}}</option>
                         </select>
                         @error('Servicio')
                             <p class="error-message">{{ $message }}</p>
@@ -90,7 +90,7 @@
                     <div class="w-full px-3">
                         <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
                             for="telefono">
-                            Telefono
+                            {{__('Telefono')}}
                         </label>
                         <input
                             class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
@@ -101,31 +101,31 @@
             </div>
             <button
                 class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded object-center"
-                type="submit">Actualizar</button>
+                type="submit">{{__('Actualizar')}}</button>
         </form>
         <br>
         <table class="text-left w-full border-collapse py-6 text-center">
             <!--Border collapse doesn't work on this site yet but it's available in newer tailwind versions -->
             <thead>
                 <tr>
-                    <th colspan="5" class="bg-black text-white text-center py-2 ">Instalar Máquina</th>
+                    <th colspan="5" class="bg-black text-white text-center py-2 ">{{__('InstalarMaquina')}}</th>
                 </tr>
                 <tr>
                     <th
                         class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
-                        Marca</th>
+                        {{__('Marca')}}</th>
                     <th
                         class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
-                        Modelo</th>
+                        {{__('Modelo')}}</th>
                         <th
                         class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
-                        Servicio</th>
+                        {{__('Servicio')}}</th>
                         <th
                         class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
-                        Información Completa</th>
+                        {{__('Detalles')}}</th>
                         <th
                         class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
-                        Instalar</th>
+                        {{__('Instalar')}}</th>
                 </tr>
             </thead>
             <tbody>
@@ -137,13 +137,13 @@
                     <td>
                         <a href="{{ route('web.machines.show', $mach->id) }}">
                             <button
-                                class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 border border-green-700 rounded">Detalles</button>
+                                class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 border border-green-700 rounded">{{__('Detalles')}}</button>
                         </a>
                         </td>
                     <td>
                     <a href="{{ route('web.machines.install', [$mach->id,$client->id]) }}">
                         <button
-                            class="bg-blue-500 hover:bg-blue-700 text-white font-bold px-4 border border-blue-700 rounded py-2">Asociar</button>
+                            class="bg-blue-500 hover:bg-blue-700 text-white font-bold px-4 border border-blue-700 rounded py-2">{{__('Asociar')}}</button>
                     </a>
                     </td>
 

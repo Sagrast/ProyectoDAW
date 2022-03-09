@@ -13,7 +13,7 @@
             <div class="flex flex-wrap -mx-3 mb-6">
                 <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                     <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="descripcion">
-                        Descripcion
+                        {{__('Descripcion')}}
                     </label>
                     <input value="{{ $vehicle->descripcion }}"
                         class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
@@ -25,7 +25,7 @@
 
                 <div class="w-full md:w-1/2 px-3">
                     <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="matricula">
-                        Matricula:
+                        {{__('Matricula')}}:
                     </label>
                     <input  value="{{$vehicle->matricula}}" "
                         class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
@@ -36,7 +36,7 @@
                 </div>
                 <div class="w-full md:w-1/2 px-3">
                     <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="email">
-                        Kilometros
+                        {{__('Kilometros')}}
                     </label>
                     <input value="{{ $vehicle->kilometros }} "
                         class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
@@ -62,7 +62,7 @@
             <button
 
                 class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded object-center"
-                type="submit">Actualizar</button>
+                type="submit">{{__('Actualizar')}}</button>
             </div>
         </form>
         @if (session('status'))

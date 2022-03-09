@@ -27,7 +27,7 @@
 
             <form action="{{ route('web.clientes.filter') }}" method="post">
                 @csrf
-                <label for="servicio">Filtros: </label>
+                <label for="servicio">{{__('Filtros')}}: </label>
                 <select name="servicio" id="servicio"
                     class="orm-select appearance-none
                 block
@@ -44,13 +44,13 @@
                 ease-in-out
                 m-0
                 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none">
-                    <option value="null">Escoge Servicio</option>
-                    <option value="agua">Agua</option>
-                    <option value="cafe">Café</option>
-                    <option value="distribucion">Distribucion</option>
-                    <option value="tabaco">Tabaco</option>
+                    <option value="null">{{__('Servicio')}}</option>
+                    <option value="agua">{{__('Agua')}}</option>
+                    <option value="cafe">{{__('Cafe')}}</option>
+                    <option value="distribucion">{{__('Distribucion')}}</option>
+                    <option value="tabaco">{{__('Tabaco')}}</option>
                 </select>
-                <label for="name">Nombre</label>
+                <label for="name">{{__('Nombre')}}</label>
                 <input
                     class="focus:border-blue-600 appearance-none block w-1/4 bg-white text-black border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
                     name="name" id="name" placeholder="Introduce nombre" type="text">
@@ -58,21 +58,20 @@
                 <br />
 
                 <button type="submit"
-                    class="inline-block px-6 py-2.5 bg-blue-400 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-500 hover:shadow-lg focus:bg-blue-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-600 active:shadow-lg transition duration-150 ease-in-out">Filtrar</button>
+                    class="inline-block px-6 py-2.5 bg-blue-400 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-500 hover:shadow-lg focus:bg-blue-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-600 active:shadow-lg transition duration-150 ease-in-out">{{__('Filtrar')}}</button>
                 <a href="{{ route('web.clientes.index') }}">
                     <button type="submit"
-                        class="inline-block px-6 py-2.5 bg-blue-400 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-500 hover:shadow-lg focus:bg-blue-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-600 active:shadow-lg transition duration-150 ease-in-out">Ver
-                        Todos</button>
+                        class="inline-block px-6 py-2.5 bg-blue-400 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-500 hover:shadow-lg focus:bg-blue-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-600 active:shadow-lg transition duration-150 ease-in-out">{{__('VerTodos')}}</button>
                 </a>
             </form>
             <div class="py-6 grid place-items-end">
                 <a href="{{ route('web.clientes.create') }}">
                     <button
-                    class="inline-block px-6 py-2.5 bg-purple-400 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-purple-500 hover:shadow-lg focus:bg-purple-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-600 active:shadow-lg transition duration-150 ease-in-out">Añadir</button>
+                    class="inline-block px-6 py-2.5 bg-purple-400 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-purple-500 hover:shadow-lg focus:bg-purple-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-600 active:shadow-lg transition duration-150 ease-in-out">{{__('Add')}}</button>
                 </a>
             </div>
             <p class="text-xl pb-3 flex items-center">
-                <i class="fas fa-list mr-3"></i> Clientes
+                <i class="fas fa-list mr-3"></i> {{__('Clientes')}}
             </p>
             <div class="bg-white overflow-auto">
                 <table class="text-left w-full border-collapse">
@@ -81,26 +80,26 @@
                         <tr>
                             <th
                                 class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
-                                Empresa</th>
+                                {{__('Empresa')}}</th>
                             <th
                                 class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
-                                Telefono</th>
+                                {{__('Telefono')}}</th>
                             <th
                                 class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
-                                Servicio</th>
+                                {{__('Servicio')}}</th>
                             <th
                                 class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
-                                Cargas</th>
+                                {{__('Cargas')}}</th>
                             <th
                                 class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
-                                Informacion</th>
+                                {{__('Informacion')}}</th>
 
                             <th
                                 class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
-                                Editar</th>
+                                {{__('Edit')}}</th>
                             <th
                                 class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
-                                Borrar</th>
+                                {{__('Delete')}}</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -112,13 +111,13 @@
                                 <td class="py-4 px-6 border-b border-grey-light">
                                     <a href="{{ route('web.products.show', $client->id) }}">
                                         <button
-                                            class="bg-amber-500 hover:bg-amber-700 text-white font-bold py-2 px-4 border border-amber-700 rounded">Cargas</button>
+                                            class="bg-amber-500 hover:bg-amber-700 text-white font-bold py-2 px-4 border border-amber-700 rounded">{{__('Cargas')}}</button>
                                     </a>
                                 </td>
                                 <td class="py-4 px-6 border-b border-grey-light">
                                     <a href="{{ route('web.clientes.show', $client->id) }}">
                                         <button
-                                            class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 border border-green-700 rounded">Info</button>
+                                            class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 border border-green-700 rounded">{{__('Informacion')}}</button>
                                     </a>
                                 </td>
                                 <td class="py-4 px-6 border-b border-grey-light">

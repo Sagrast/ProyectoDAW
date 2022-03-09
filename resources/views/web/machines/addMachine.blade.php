@@ -27,7 +27,7 @@
             <div class="flex flex-wrap -mx-3 mb-6">
                 <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                     <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="marca">
-                        Fabricante
+                        {{__('Fabricante')}}
                     </label>
                     <input value="{{ old('marca') }}" required
                         class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
@@ -39,7 +39,7 @@
 
                 <div class="w-full md:w-1/2 px-3">
                     <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="modelo">
-                        modelo
+                        {{__('Modelo')}}
                     </label>
                     <input value="{{ old('modelo') }} " required
                         class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
@@ -53,7 +53,7 @@
                         <div class="w-full px-3">
                             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
                                 for="lectura">
-                                Numero de Serie
+                                {{__('Serial')}}
                             </label>
                             <input value="{{ old('lectura') }}" required
                                 class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
@@ -73,11 +73,11 @@
                         <select required
                             class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                             id="tipo" name="tipo">
-                            <option value="">Selecciona Servicio</option>
-                            <option value="agua">Agua</option>
-                            <option value="cafe">Cafe</option>
-                            <option value="tabaco">Tabaco</option>
-                            <option value="snacks">Snacks</option>
+                            <option value="">{{__('Servicio')}}</option>
+                            <option value="agua">{{__('Agua')}}</option>
+                            <option value="cafe">{{__('Cafe')}}</option>
+                            <option value="tabaco">{{__('Tabaco')}}</option>
+                            <option value="snacks">{{__('Snacks')}}</option>
                         </select>
                         @error('tipo')
                             <p class="error-message">{{ $message }}</p>
@@ -90,7 +90,7 @@
                         <div class="w-full px-3">
                             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
                                 for="lectura">
-                                lectura
+                                {{__('Lectura')}}
                             </label>
                             <input value="{{ old('lectura') }}" required
                                 class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
@@ -104,16 +104,16 @@
 
                 <div class="flex flex-wrap -mx-3 mb-6">
                     <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-state">
-                        Estado
+                        {{__('Estado')}}
                     </label><br>
                     <div class="relative">
                         <select required
                             class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                             id="estado" name="estado">
-                            <option value="">Selecciona Estado</option>
-                            <option value="disponible">Disponible</option>
-                            <option value="produccion">Produccion</option>
-                            <option value="averiada">Averiada</option>
+                            <option value="">{{__('Estado')}}</option>
+                            <option value="disponible">{{__('Disponible')}}</option>
+                            <option value="produccion">{{__('Produccion')}}</option>
+                            <option value="averiada">{{__('Averiada')}}</option>
                         </select>
                         @error('estado')
                             <p class="error-message">{{ $message }}</p>
@@ -126,7 +126,7 @@
                         <div class="w-full px-3">
                             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
                                 for="carriles">
-                                carriles
+                                {{__('Carriles')}}
                             </label>
                             <input value="{{ old('carriles') }}" placeholder="Cubrir Para Máquinas de Tabaco"
                                 class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
@@ -140,7 +140,7 @@
                         <div class="w-full px-3">
                             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
                                 for="espirales">
-                                espirales
+                                {{__('Espirales')}}
                             </label>
                             <input value="{{ old('espirales') }}" placeholder="Cubrir Para Máquinas de Snacks"
                                 class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
@@ -160,8 +160,7 @@
                                             type="radio" name="water" id="water" value="1">
                                         <label class="form-check-label inline-block text-gray-800"
                                             for="flexRadioDefault1">
-                                            Agua Caliente
-                                        </label>
+                                            {{__('AguaCaliente')}}                                        </label>
                                     </div>
                                     <div class="form-check">
                                         <input
@@ -169,8 +168,7 @@
                                             type="radio" name="water" id="water" value="0" checked>
                                         <label class="form-check-label inline-block text-gray-800"
                                             for="flexRadioDefault2">
-                                            Agua Fría
-                                        </label>
+                                            {{__('AguaFria')}}                                        </label>
                                     </div>
                                 </div>
                             </div>
@@ -184,7 +182,7 @@
             <div class="grid place-items-center">
                 <button
                     class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded object-center"
-                    type="submit">Añadir</button>
+                    type="submit">{{__('Add')}}</button>
             </div>
         </form>
 

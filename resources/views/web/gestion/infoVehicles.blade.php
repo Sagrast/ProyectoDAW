@@ -11,7 +11,7 @@
     <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 py-8 capitalize">
         <div class="w-full mt-12">
                <p class="text-xl pb-3 flex items-center">
-                    <i class="fas fa-list mr-3"></i> Información de Vehiculo
+                    <i class="fas fa-list mr-3"></i> {{__('InformacionVehiculo')}}
                 </p>
                 <div class="bg-white overflow-auto">
                     <table class="text-left w-full border-collapse">
@@ -20,16 +20,19 @@
                             <tr>
                                 <th
                                     class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
-                                    Modelo</th>
+                                    {{__('Modelo')}}:
+                                </th>
                                 <th
                                     class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
-                                    Matricula</th>
+                                    {{__('Matricula')}}:
+                                </th>
                                 <th
                                     class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
-                                    Kilometros</th>
+                                    {{__('Kilometros')}}:
+                                </th>
                                 <th
                                     class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
-                                    Vencimiento ITV</th>
+                                    ITV</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -47,18 +50,20 @@
                         <!--Border collapse doesn't work on this site yet but it's available in newer tailwind versions -->
                         <thead>
                             <tr>
-                                <th colspan="4" class="bg-black text-white text-center py-2 ">Conductores</th>
+                                <th colspan="4" class="bg-black text-white text-center py-2 ">{{__('Conductores')}}</th>
                             </tr>
                             <tr>
                                 <th
                                     class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
-                                    Nombre</th>
+                                    {{__('nombre')}}:
+                                </th>
                                 <th
                                     class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
                                     rol</th>
                                 <th
                                     class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
-                                    Fecha</th>
+                                    {{__('Fecha')}}:
+                                </th>
                             </tr>
                         </thead>
                         <tbody>
@@ -67,7 +72,6 @@
                                 <td class="py-4 px-6 border-b border-grey-light">{{ $driver->name }}</td>
                                 <td class="py-4 px-6 border-b border-grey-light">{{ $driver->rol }}</td>
                                 <td class="py-4 px-6 border-b border-grey-light">{{ $driver->pivot->fecha }}</td>
-                                {{-- <td class="py-4 px-6 border-b border-grey-light">{{ $vehicles->itv }}</td> --}}
                             </tr>
                             @endforeach
                         </tbody>
@@ -78,7 +82,8 @@
                         <!--Border collapse doesn't work on this site yet but it's available in newer tailwind versions -->
                         <thead>
                             <tr>
-                                <th colspan="4" class="bg-black text-white text-center py-2 ">Añadir Conductor</th>
+                                <th colspan="4" class="bg-black text-white text-center py-2 "> {{__('AñadirConductor')}}:
+                                </th>
                             </tr>
                         </thead>
                         <tbody>
@@ -96,7 +101,8 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <button role="submit" class="p-3 bg-blue-500 text-white hover:bg-blue-400" required>Añadir</button>
+                                    <button role="submit" class="p-3 bg-blue-500 text-white hover:bg-blue-400" required> {{__('Add')}}:
+                                    </button>
                                 </td>
                             </tr>
                             <input type="hidden" name="vehicle" value={{$vehicles->id}}>
@@ -107,7 +113,7 @@
                     <div class="py-6 grid place-items-center">
                         <a href="{{ route('web.vehicles.index') }}">
                             <button
-                                class="bg-blue-500 hover:bg-blue-700 text-white font-bold px-4 border border-blue-700 rounded py-2">Volver</button>
+                                class="bg-blue-500 hover:bg-blue-700 text-white font-bold px-4 border border-blue-700 rounded py-2">{{__('Volver')}}</button>
                         </a>
                     </div>
                 </div>
