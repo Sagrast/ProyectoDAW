@@ -33,6 +33,20 @@
                                 <th
                                     class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
                                     Numero de Serie</th>
+                                @if ($machine->tipo == 'tabaco')
+                                <th
+                                class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
+                                Carriles</th>
+
+                                @elseif ($machine->tipo == 'agua')
+                                <th
+                                class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
+                                Agua Caliente</th>
+                                @elseif ($machine->tipo == 'snacks')
+                                <th
+                                class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
+                                espirales</th>
+                                @endif
                             </tr>
                         </thead>
                         <tbody>
@@ -43,6 +57,13 @@
                                 <td class="py-4 px-6 border-b border-grey-light">{{ $machine->tipo }}</td>
                                 <td class="py-4 px-6 border-b border-grey-light">{{ $machine->lectura }}</td>
                                 <td class="py-4 px-6 border-b border-grey-light">{{ $machine->serial }}</td>
+                                @if ($machine->tipo == 'tabaco')
+                                <td class="py-4 px-6 border-b border-grey-light">{{ $tipo->carriles }}</td>
+                                @elseif ($machine->tipo == 'agua')
+                                <td class="py-4 px-6 border-b border-grey-light">@if ($tipo->aguaCaliente == 1 ) <span>Si</span> @else <span>No</span> @endif</td>
+                                @elseif ($machine->tipo == 'snacks')
+                                <td class="py-4 px-6 border-b border-grey-light">{{ $tipo->espirales }}</td>
+                                @endif
                             </tr>
                         </tbody>
                     </table>

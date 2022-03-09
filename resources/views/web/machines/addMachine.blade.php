@@ -110,7 +110,7 @@
                         <select required
                             class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                             id="estado" name="estado">
-                            <option value="">Selecciona Servicio</option>
+                            <option value="">Selecciona Estado</option>
                             <option value="disponible">Disponible</option>
                             <option value="produccion">Produccion</option>
                             <option value="averiada">Averiada</option>
@@ -156,17 +156,26 @@
                                 <div>
                                     <div class="form-check">
                                         <input
-                                            class="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
-                                            type="checkbox" value="1" name="water" id="water">
+                                            class="form-check-input appearance-none rounded-full h-4 w-4 border border-gray-300 bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
+                                            type="radio" name="water" id="water" value="1">
                                         <label class="form-check-label inline-block text-gray-800"
-                                            for="flexCheckDefault">
-                                            Agua Caliente.
+                                            for="flexRadioDefault1">
+                                            Agua Caliente
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input
+                                            class="form-check-input appearance-none rounded-full h-4 w-4 border border-gray-300 bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
+                                            type="radio" name="water" id="water" value="0" checked>
+                                        <label class="form-check-label inline-block text-gray-800"
+                                            for="flexRadioDefault2">
+                                            Agua Fría
                                         </label>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        @error('espirales')
+                        @error('water')
                             <p class="error-message">{{ $message }}</p>
                         @enderror
                     </div>

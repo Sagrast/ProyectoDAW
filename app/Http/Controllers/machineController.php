@@ -102,9 +102,17 @@ class machineController extends Controller
         $machine = Machine::find($id);
         $clients = $machine->clients()->latest('instalacion')->get();
         $averias = $machine->failures()->latest('fecha')->get();
+        $tipo = "";
 
+        if ($machine->tipo == 'tabaco'){
+            $tipo = $machine->machineTobacco;
+        } else if ($machine->tipo == 'snacks'){
+            $tipo = $machine->machineSnack;
+        } else if ($machine->tipo == 'agua') {
+            $tipo = $machine->machineWater;
+        }
 
-        return view('web.machines.infoMachine', compact('machine', 'clients', 'averias'));
+        return view('web.machines.infoMachine', compact('machine', 'clients', 'averias','tipo'));
     }
 
     /**
@@ -116,8 +124,17 @@ class machineController extends Controller
     public function edit($id)
     {
         $machine = Machine::find($id);
+        $tipo = "";
 
-        return view('web.machines.editMachine', compact('machine'));
+        if ($machine->tipo == 'tabaco'){
+            $tipo = $machine->machineTobacco;
+        } else if ($machine->tipo == 'snacks'){
+            $tipo = $machine->machineSnack;
+        } else if ($machine->tipo == 'agua') {
+            $tipo = $machine->machineWater;
+        }
+
+        return view('web.machines.editMachine', compact('machine','tipo'));
     }
 
     /**
@@ -134,7 +151,7 @@ class machineController extends Controller
             'modelo' => 'required',
             'lectura' => 'required',
             'tipo' => 'required',
-            'serial' => 'required'
+            'serial' => 'required',
         ]);
 
         if ($validado) {
@@ -146,7 +163,15 @@ class machineController extends Controller
             $machine->serial = $request->serial;
             $machine->update();
 
-            return back()->with('status', 'Maquina añadida correctamente');
+            if ($request->tipo == 'tabaco' && isset($request->carriles)){
+                DB::update('update machine_tobaccos set carriles = '.$request->carriles.' where machine_id = '.$id.'');
+            } else if($request->tipo == 'snacks' && isset($request->espirales)) {
+                DB::update('update machine_snacks set espirales = '.$request->espirales.' where machine_id = '.$id.'');
+            } else if ($request->tipo == 'agua' && isset($request->water)) {
+                DB::update('update machine_tobaccos set carriles = '.$request->water.' where machine_id = '.$id.'');
+            }
+
+            return back()->with('status', 'Maquina editada correctamente');
         } else {
             return back()->withInput();
         }
