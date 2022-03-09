@@ -23,11 +23,11 @@
                 @if (Auth::user()->rol == 'comercial' || Auth::user()->rol == 'admin')
                     <a href="{{ route('web.nodos.edit', $post->id) }}">
                         <button
-                            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">Editar</button>
+                            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">{{ __('Editar') }}</button>
                     </a>
                     <a href="{{ route('web.nodos.destroy', $post->id) }}">
                         <button
-                            class="bg-red-500 hover:bg-red-700 text-black font-bold py-2 px-4 border border-red-700 rounded">Borrar</button>
+                            class="bg-red-500 hover:bg-red-700 text-black font-bold py-2 px-4 border border-red-700 rounded">{{ __('Borrar') }}</button>
                     </a>
                 @endif
                 @endauth
@@ -36,7 +36,7 @@
 
             {{-- Contenido relacionado --}}
             <aside>
-                <h1 class="text-2xl font-bold text-gray-600 mb-4">Temas relacionados: </h1>
+                <h1 class="text-2xl font-bold text-gray-600 mb-4">{{ __('TemasRelacionados') }}: </h1>
                 <ul>
                     @foreach ($equals as $equal)
                         <li class="mb-4">

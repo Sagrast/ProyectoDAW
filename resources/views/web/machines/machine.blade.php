@@ -2,7 +2,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Máquinas Expendedoras') }}
+            {{ __('Expendedoras') }}
         </h2>
     </x-slot>
     @if (Auth::user()->rol == 'empleado' || Auth::user()->rol == 'admin')
@@ -27,7 +27,7 @@
 
             <form action="{{ route('web.machines.filter') }}" method="post">
                 @csrf
-                <label for="servicio">Filtros: </label>
+                <label for="servicio">{{ __('Filtros') }}: </label>
                 <select name="servicio" id="servicio"
                     class="orm-select appearance-none
                 block
@@ -44,13 +44,13 @@
                 ease-in-out
                 m-0
                 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none">
-                    <option value="null">Escoge Tipo</option>
-                    <option value="agua">Agua</option>
-                    <option value="cafe">Café</option>
-                    <option value="tabaco">Tabaco</option>
-                    <option value="snacks">Snacks</option>
+                    <option value="null">{{ __('EscogeTipo') }}</option>
+                    <option value="agua">{{ __('Agua') }}</option>
+                    <option value="cafe">{{ __('Cafe') }}</option>
+                    <option value="tabaco">{{ __('Tabaco') }}</option>
+                    <option value="snacks">{{ __('Snacks') }}</option>
                 </select>
-                <label for="name">Fabricante</label>
+                <label for="name">{{ __('Fabricante') }}</label>
                 <input
                     class="focus:border-blue-600 appearance-none block w-1/4 bg-white text-black border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
                     name="name" id="name" placeholder="Introduce nombre" type="text">
@@ -58,11 +58,10 @@
                 <br />
 
                 <button type="submit"
-                    class="inline-block px-6 py-2.5 bg-blue-400 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-500 hover:shadow-lg focus:bg-blue-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-600 active:shadow-lg transition duration-150 ease-in-out">Filtrar</button>
+                    class="inline-block px-6 py-2.5 bg-blue-400 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-500 hover:shadow-lg focus:bg-blue-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-600 active:shadow-lg transition duration-150 ease-in-out">{{ __('Aplicar') }}</button>
                 <a href="{{ route('web.machines.index') }}">
                     <button type="submit"
-                        class="inline-block px-6 py-2.5 bg-blue-400 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-500 hover:shadow-lg focus:bg-blue-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-600 active:shadow-lg transition duration-150 ease-in-out">Ver
-                        Todos</button>
+                        class="inline-block px-6 py-2.5 bg-blue-400 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-500 hover:shadow-lg focus:bg-blue-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-600 active:shadow-lg transition duration-150 ease-in-out">{{__('VerTodos')}}</button>
                 </a>
             </form>
             <div class="py-6 grid place-items-end">
@@ -72,7 +71,7 @@
                 </a>
             </div>
             <p class="text-xl pb-3 flex items-center">
-                <i class="fas fa-list mr-3"></i> Maquinas Expendedoras
+                <i class="fas fa-list mr-3"></i> {{ __('Expendedoras') }}
             </p>
             <div class="bg-white overflow-auto">
                 <table class="text-left w-full border-collapse">
@@ -81,23 +80,23 @@
                         <tr>
                             <th
                                 class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
-                                marca</th>
+                                {{ __('Marca') }}</th>
                             <th
                                 class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
-                                modelo</th>
+                                {{ __('Modelo') }}</th>
                             <th
                                 class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
-                                tipo</th>
+                                {{ __('Tipo') }}</th>
                                 <th
                                 class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
-                                Detalles</th>
+                                {{ __('Detalles') }}</th>
 
                             <th
                                 class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
-                                Editar</th>
+                                {{ __('Editar') }}</th>
                             <th
                                 class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
-                                Borrar</th>
+                                {{ __('Borrar') }}</th>
                         </tr>
                     </thead>
                     <tbody>

@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Bienvenid@') }}
+            {{ __('bienvenido') }}
         </h2>
     </x-slot>
     <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
@@ -11,11 +11,10 @@
                 <div class="flex flex-1 flex-col items-center lg:items-start">
                     {{-- Texto robado vilmente de: https://www.olevending.es/dentro-de-la-empresa/ --}}
                     <h2 class="text-bookmark-blue text-3xl md:text-4 lg:text-5xl text-center lg:text-left mb-6">
-                        Soluciones para tu empresa.
+                        {{ __('solucionesParaEmpresa') }}
                     </h2>
                     <p class="text-bookmark-grey text-lg text-center lg:text-left mb-6">
-                        Ahora puede aumentar su facturación, dar un mejor servicio a sus clientes y empleados, y servir
-                        productos a cualquier hora del día.
+                        {{ __('solucionesDesc') }}
                     </p>
 
                 </div>
@@ -36,10 +35,9 @@
                     </div>
                     <!-- Content -->
                     <div class=" flex flex-1 flex-col items-center lg:items-start">
-                        <h1 class="text-3xl text-bookmark-blue">Áreas de descanso</h1>
+                        <h1 class="text-3xl text-bookmark-blue">{{ __('areadescanso') }}</h1>
                         <p class="text-bookmark-grey my-4 text-center lg:text-left sm:w-3/4 lg:w-full">
-                            Reinventamos offices y áreas de break convirtiéndolos en <strong>espacios de interiorismo atractivos</strong> y funcionales, llevando a otro nivel mucho
-                            más premium la <strong>experiencia de usuario</strong>.
+                            {!!  __('areadescansoDesc') !!}
                         </p>
                     </div>
                 </div>
