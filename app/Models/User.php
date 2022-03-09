@@ -78,5 +78,11 @@ class User extends Authenticatable
         return $this->belongsToMany(Client::class);
     }
 
+    //Relación 1:1 con Perfil.
+
+    public function perfils() {
+        return $this->hasOne(Perfil::class);
+    }
+
 
 }

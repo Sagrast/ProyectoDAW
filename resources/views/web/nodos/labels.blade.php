@@ -1,6 +1,6 @@
 <x-app-layout>
     <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 py-8">
-        <h1 class="uppercase text-center text-3xl font-bold">Etiquetas Relacionadas</h1>
+        <h1 class="uppercase text-center text-3xl font-bold">{{ __('Etiquetas') }} {{ __('Relacionadas') }} </h1>
         @foreach ($equals as $equal)
             <article class="mb-8 bg-white shadow-lg rounded-lg overflow-hidden">
                 <img class="w-full h-72 object-cover object-center" src="/img/post/{{$equal->img}}">

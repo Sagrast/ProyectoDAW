@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class adminController extends Controller
 {
@@ -58,7 +59,9 @@ class adminController extends Controller
      */
     public function show($id)
     {
-        //
+        $user = User::find($id);
+
+        return view('web.admin.infoUser', compact('user'));
     }
 
     /**
@@ -82,10 +85,15 @@ class adminController extends Controller
      */
     public function update(Request $request, $id)
     {
+
+
         $validar = $request->validate([
             'name' => 'required',
             'rol' => 'required',
-            'email' => 'required'
+            'email' => 'required',
+            'telefono' => 'required',
+            'dni' => 'required',
+            'direccion' => 'required'
         ]);
 
         if ($validar) {
@@ -98,6 +106,13 @@ class adminController extends Controller
             }
             $update->rol = $request->rol;
             $update->save();
+
+            if (!isset($update->perfils->id)) {
+                DB::insert('INSERT INTO `perfils`(`id`, `created_at`, `updated_at`, `DNI`, `direccion`, `telefono`, `user_id`)
+                VALUES (NULL,"' . now() . '","' . now() . '","' . $request->dni . '","' . $request->direccion . '",' . $request->telefono . ',' . $request->id . ')');
+            } else {
+                DB::update('UPDATE `perfils` SET updated_at="' . now() . '",DNI="' . $request->dni . '",direccion="' . $request->direccion . '",telefono="' . $request->telefono . '" WHERE user_id = ' . $request->id . '');
+            }
             return back()->with('status', 'Datos Actualizados Correctamente');
         } else {
             return back()->withInput();

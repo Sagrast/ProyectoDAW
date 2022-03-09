@@ -5,11 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class ContactPerson extends Model
+class MachineTobacco extends Model
 {
     use HasFactory;
 
-    public function client(){
-        return $this->belongsTo(Client::class);
+    public function machines(){
+        return $this->hasOne(Machine::class);
     }
 }

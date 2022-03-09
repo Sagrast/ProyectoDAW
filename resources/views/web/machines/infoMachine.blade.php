@@ -20,19 +20,33 @@
                             <tr>
                                 <th
                                     class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
-                                    Fabricante</th>
+                                    {{ __('Fabricante') }}</th>
                                 <th
                                     class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
-                                    Modelo</th>
+                                    {{ __('Modelo') }}</th>
                                 <th
                                     class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
-                                    Servicio</th>
+                                    {{ __('Servicio') }}</th>
                                 <th
                                     class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
-                                    lectura</th>
+                                    {{ __('Lectura') }}</th>
                                 <th
                                     class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
-                                    Numero de Serie</th>
+                                    {{ __('NumSerie') }}</th>
+                                @if ($machine->tipo == 'tabaco')
+                                <th
+                                class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
+                                {{ __('Carriles') }}</th>
+
+                                @elseif ($machine->tipo == 'agua')
+                                <th
+                                class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
+                                {{ __('AguaCaliente') }}</th>
+                                @elseif ($machine->tipo == 'snacks')
+                                <th
+                                class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
+                                {{ __('Espirales') }}</th>
+                                @endif
                             </tr>
                         </thead>
                         <tbody>
@@ -43,6 +57,13 @@
                                 <td class="py-4 px-6 border-b border-grey-light">{{ $machine->tipo }}</td>
                                 <td class="py-4 px-6 border-b border-grey-light">{{ $machine->lectura }}</td>
                                 <td class="py-4 px-6 border-b border-grey-light">{{ $machine->serial }}</td>
+                                @if ($machine->tipo == 'tabaco')
+                                <td class="py-4 px-6 border-b border-grey-light">{{ $tipo->carriles }}</td>
+                                @elseif ($machine->tipo == 'agua')
+                                <td class="py-4 px-6 border-b border-grey-light">@if ($tipo->aguaCaliente == 1 ) <span>{{ __('Si') }}</span> @else <span>{{ __('No') }}</span> @endif</td>
+                                @elseif ($machine->tipo == 'snacks')
+                                <td class="py-4 px-6 border-b border-grey-light">{{ $tipo->espirales }}</td>
+                                @endif
                             </tr>
                         </tbody>
                     </table>
@@ -51,27 +72,27 @@
                         <!--Border collapse doesn't work on this site yet but it's available in newer tailwind versions -->
                         <thead>
                             <tr>
-                                <th colspan="6" class="bg-black text-white text-center py-2 ">Historial de Instalaciones</th>
+                                <th colspan="6" class="bg-black text-white text-center py-2 ">{{ __('HistorialInstalaciones') }}</th>
                             </tr>
                             <tr>
                                 <th
                                     class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
-                                    Nombre</th>
+                                    {{ __('Nombre') }}</th>
                                 <th
                                     class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
-                                    Direccion</th>
+                                    {{ __('Direccion') }}</th>
                                 <th
                                     class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
-                                    Servicio</th>
+                                    {{ __('Servicio') }}</th>
                                     <th
                                     class="py- px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
-                                    Telefono</th>
+                                    {{ __('Telefono') }}</th>
                                     <th
                                     class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
-                                    Fecha Instalacion</th>
+                                    {{ __('FechaInstalacion') }}</th>
                                     <th
                                     class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
-                                    Fecha Retirada</th>
+                                    {{ __('FechaRetirada') }}</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -92,18 +113,18 @@
                         <!--Border collapse doesn't work on this site yet but it's available in newer tailwind versions -->
                         <thead>
                             <tr>
-                                <th colspan="6" class="bg-black text-white text-center py-2 ">Averias</th>
+                                <th colspan="6" class="bg-black text-white text-center py-2 ">{{ __('Averias') }}</th>
                             </tr>
                             <tr>
                                 <th
                                     class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
-                                    Descripcion</th>
+                                    {{ __('Descripcion') }}</th>
                                 <th
                                     class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
-                                    Estado</th>
+                                    {{ __('Estado') }}</th>
                                 <th
                                     class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
-                                    Fecha</th>
+                                    {{ __('Fecha') }}</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -116,7 +137,7 @@
                                 @if($fail->estado == 'Pendiente')
                                 <a href="{{ route('web.machines.close', $fail->id) }}">
                                     <button
-                                        class="bg-red-500 hover:bg-red-700 text-black font-bold  border border-red-700 rounded">Cerrar Incidencia</button>
+                                        class="bg-red-500 hover:bg-red-700 text-black font-bold  border border-red-700 rounded">{{ __('CerrarIncidencia') }}</button>
                                 </a>
                                 </td>
                                 @endif
@@ -129,7 +150,7 @@
                     <div class="py-6 grid place-items-center">
                         <a href="{{ route('web.machines.index') }}">
                             <button
-                                class="bg-blue-500 hover:bg-blue-700 text-white font-bold px-4 border border-blue-700 rounded py-2">Volver</button>
+                                class="bg-blue-500 hover:bg-blue-700 text-white font-bold px-4 border border-blue-700 rounded py-2">{{ __('Volver') }}</button>
                         </a>
                     </div>
                 </div>

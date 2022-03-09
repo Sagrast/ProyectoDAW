@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Crear Noticia') }}
+            {{ __('CrearNoticia') }}
         </h2>
     </x-slot>
     <div class="py-12">
@@ -11,26 +11,26 @@
                     <form method="POST" action="{{route('web.nodos.create')}}" enctype="multipart/form-data">
                         @csrf
                         <div class="mb-4">
-                            <label class="text-xl text-gray-600">Titulo <span class="text-red-500">*</span></label></br>
+                            <label class="text-xl text-gray-600">{{ __('Titulo') }} <span class="text-red-500">*</span></label></br>
                             <input type="text" class="border-2 border-gray-300 p-2 w-full" name="titulo" id="titulo" value="{{ old('titulo') }}" required>
                             @error('title')
                             <p class="error-message">{{ $message}}</p>
                             @enderror
                         </div>
                         <div class="mb-4">
-                            <label class="text-xl text-gray-600">Subtitulo <span class="text-red-500">*</span></label></br>
+                            <label class="text-xl text-gray-600">{{ __('Subtitulo') }} <span class="text-red-500">*</span></label></br>
                             <input type="text" class="border-2 border-gray-300 p-2 w-full" name="subtitulo" id="subtitulo" value="{{ old('subtitulo') }}" required>
                             @error('subtitle')
                             <p class="error-message">{{ $message}}</p>
                             @enderror
                         </div>
                         <div class="mb-4">
-                            <label class="text-xl text-gray-600">Imagen <span class="text-red-500">*</span></label></br>
+                            <label class="text-xl text-gray-600">{{ __('imagen') }}  <span class="text-red-500">*</span></label></br>
                             <input type="file" name="image" id="image">
                         </div>
 
                         <div class="mb-4">
-                            <label class="text-xl text-gray-600">Categoria</label></br>
+                            <label class="text-xl text-gray-600">{{ __('Categoria') }} </label></br>
                             <select class="category border-2 border-gray-300 p-2 w-full" name="category" id="category">
                                 @foreach ($categoria as $cat)
                                     <option class="border-2 border-gray-300 p-2 w-full" value="{{$cat->id}}">{{$cat->name}}</option>
@@ -43,7 +43,7 @@
 
 
                         <div class="mb-4">
-                            <label class="text-xl text-gray-600 col-span-2">Etiquetas</label></br>
+                            <label class="text-xl text-gray-600 col-span-2">{{ __('Etiquetas') }} </label></br>
                                 @foreach ($etiquetas as $label)
                                 <input  type="checkbox" value="{{$label->id}}" id="{{$label->labelName}}" name="etiquetas[]">
                                 <label class="capitalize" for="{{$label->id}}">{{$label->labelName}}</label>
@@ -55,7 +55,7 @@
                         </div>
 
                         <div class="mb-8">
-                            <label class="text-xl text-gray-600 col-span-4">Contenido <span class="text-red-500">*</span></label></br>
+                            <label class="text-xl text-gray-600 col-span-4">{{ __('Mensaje') }}  <span class="text-red-500">*</span></label></br>
                             <textarea name="content" class="border-2 border-gray-500 w-full" value="{{ old('content') }}">
 
                             </textarea>

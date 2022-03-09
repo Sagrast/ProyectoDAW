@@ -5,7 +5,7 @@
         </h2>
     </x-slot>
     <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 py-8">
-        <h1 class="font-semibold text-4xl text-gray-800 leading-tight py-6 text-center"> Dónde estamos? </h1>
+        <h1 class="font-semibold text-4xl text-gray-800 leading-tight py-6 text-center"> {{__('DondeEstamos')}}? </h1>
         <div class="grid grid-cols-1 gap-6 lg:grid-cols-3 mx-auto">
                         <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                 <div class="lg:col-span-3 mx-auto px-6">
@@ -17,15 +17,15 @@
                 </div>
             </div>
             <aside">
-                <h1 class="text-4xl font-bold text-gray-600 mb-4 text-center">Dirección</h1>
+                <h1 class="text-4xl font-bold text-gray-600 mb-4 text-center">{{__('Direccion')}}</h1>
                 <h1 class="text-1xl font-bold text-gray-600 mb-4 text-center"> Av. De Castelao, 64</h1>
                 <h1 class="text-1xl font-bold text-gray-600 mb-4 text-center"> 15404, Ferrol</h1>
-                <h1 class="text-3xl font-bold text-gray-600 mb-4 text-center">Contacto</h1>
-                <h1 class="text-1xl font-bold text-gray-600 mb-4 text-center"> Telefono : +34 555-2368 </h1>
-                <h1 class="text-1xl font-bold text-gray-600 mb-4 text-center"> Email : contacto@hellheimvending.com </h1>
-                <h1 class="text-3xl font-bold text-gray-600 mb-4 text-center">Horario</h1>
-                <h1 class="text-1xl font-bold text-gray-600 mb-4 text-center"> Lunes - Viernes 09:00 - 19:00</h1>
-                <h1 class="text-1xl font-bold text-gray-600 mb-4 text-center"> Sabado y Domingo: 24 horas en el contestador automatico.</h1>
+                <h1 class="text-3xl font-bold text-gray-600 mb-4 text-center">{{__('contacto')}}</h1>
+                <h1 class="text-1xl font-bold text-gray-600 mb-4 text-center"> {{__('Telefono')}} : +34 555-2368 </h1>
+                <h1 class="text-1xl font-bold text-gray-600 mb-4 text-center"> {{__('email')}}: contacto@hellheimvending.com </h1>
+                <h1 class="text-3xl font-bold text-gray-600 mb-4 text-center">{{__('Horario')}}</h1>
+                <h1 class="text-1xl font-bold text-gray-600 mb-4 text-center"> {{__('Horas')}} </h1>
+                <h1 class="text-1xl font-bold text-gray-600 mb-4 text-center"> {{__('FinSemana')}}</h1>
             </aside>
         </div>
 

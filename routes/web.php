@@ -87,7 +87,8 @@ Route::middleware(localeMiddleware::class)->group(function () {
     //actualizar usuarios
     Route::get('/update/{id}', [adminController::class, 'edit'])->middleware('admin')->name('admin.users.edit');
     Route::Post('/update/{id}', [adminController::class, 'update'])->middleware('admin')->name('admin.users.update');
-
+    //Detalles de los usuarios
+    Route::get('/infoUser/{id}', [adminController::class, 'show'])->middleware('admin')->name('admin.users.show');
     //Control de Noticias.
     Route::get('/allNews', [NodoController::class, 'list'])->middleware('edit')->name('web.admin.list');
     Route::post('/allNews', [NodoController::class, 'filter'])->middleware('edit')->name('web.admin.filter');
