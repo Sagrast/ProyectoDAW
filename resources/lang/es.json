@@ -774,7 +774,7 @@
     "AguaFria": "Agua Fría",
     "Espirales": "Espirales",
     "Si": "Si",
-    "HistrialInstalaciones": "Historial de Instalaciones",
+    "HistorialInstalaciones": "Historial de Instalaciones",
     "Servicio": "Servicio",
     "FechaInstalacion": "Fecha de Instalacion",
     "FechaRetirada": "Fecha de Retirada",
@@ -808,7 +808,16 @@
     "Asociar": "Asociar",
     "Clientes": "Clientes",
     "Cargas": "Cargas",
-    "Informacion": "Informacion"
+    "Informacion": "Informacion",
+    "Cantidad" : "Cantidad",
+    "FechaCarga": "Fecha de Carga",
+    "Historial": "Historial",
+    "Escoge": "Escoge",
+    "Empleado": "Empleado",
+    "Administrador": "Administrador",
+    "Comercial": "Comercial",
+    "InformacionUsuario": "Información del Usuario"
+
 
 
 

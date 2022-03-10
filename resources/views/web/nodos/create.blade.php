@@ -25,7 +25,7 @@
                             @enderror
                         </div>
                         <div class="mb-4">
-                            <label class="text-xl text-gray-600">{{ __('imagen') }}  <span class="text-red-500">*</span></label></br>
+                            <label class="text-xl text-gray-600">{{ __('Imagen') }}  <span class="text-red-500">*</span></label></br>
                             <input type="file" name="image" id="image">
                         </div>
 

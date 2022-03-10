@@ -15,15 +15,14 @@
                 name="titulo" id="titulo" placeholder="Introduce titulo" type="text">
             <br/>
                 <button type="submit"
-                    class="inline-block px-6 py-2.5 bg-blue-400 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-500 hover:shadow-lg focus:bg-blue-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-600 active:shadow-lg transition duration-150 ease-in-out">Filtrar</button>
+                    class="inline-block px-6 py-2.5 bg-blue-400 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-500 hover:shadow-lg focus:bg-blue-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-600 active:shadow-lg transition duration-150 ease-in-out">{{ __('Filtrar') }}</button>
                 <a href="{{ route('web.admin.list') }}">
                     <button type="submit"
-                        class="inline-block px-6 py-2.5 bg-blue-400 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-500 hover:shadow-lg focus:bg-blue-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-600 active:shadow-lg transition duration-150 ease-in-out">Ver
-                        Todos</button>
+                        class="inline-block px-6 py-2.5 bg-blue-400 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-500 hover:shadow-lg focus:bg-blue-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-600 active:shadow-lg transition duration-150 ease-in-out"> {{ __('VerTodos') }}</button>
                 </a>
             </form>
             <p class="text-xl pb-3 flex items-center">
-                <i class="fas fa-list mr-3"></i> Noticias
+                <i class="fas fa-list mr-3"></i> {{ __('Noticias') }}
             </p>
             <div class="bg-white overflow-auto">
                 <table class="text-left w-full border-collapse">
@@ -32,16 +31,16 @@
                         <tr>
                             <th
                                 class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
-                                Foto</th>
+                                {{ __('Photo') }}</th>
                             <th
                                 class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
-                                Titulo</th>
+                                {{ __('Titulo') }}</th>
                             <th
                                 class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
-                                Editar</th>
+                                {{ __('Edit') }}</th>
                             <th
                                 class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
-                                Borrar</th>
+                                {{ __('Delete') }}</th>
                         </tr>
                     </thead>
                     <tbody>

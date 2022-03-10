@@ -11,7 +11,7 @@
             <div class="flex flex-wrap -mx-3 mb-6">
                 <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                     <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="name">
-                        Nombre:
+                        {{ __('Nombre') }}:
                     </label>
                     <input value="{{ $user->name }}" required
                         class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
@@ -23,7 +23,7 @@
 
                 <div class="w-full md:w-1/2 px-3">
                     <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="email">
-                        Email:
+                        {{ __('Email') }}:
                     </label>
                     <input value="{{ $user->email }}"
                         class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
@@ -37,7 +37,7 @@
             <div class="flex flex-wrap -mx-3 mb-6">
                 <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                     <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="telefono">
-                        Telefono:
+                        {{ __('Telefono') }}:
                     </label>
                     @if (isset($user->perfils->telefono))
                         <input value="{{ $user->perfils->telefono }}"
@@ -88,10 +88,9 @@
                         <select required
                             class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                             id="rol" name="rol">
-                            <option value="cliente">Cliente</option>
-                            <option value="Comercial">Comercial</option>
-                            <option value="empleado">Empleado</option>
-                            <option value="admin">Administrador</option>
+                            <option value="Comercial">{{ __('Comercial') }}</option>
+                            <option value="empleado">{{ __('Empleado') }}</option>
+                            <option value="admin">{{ __('Administrador') }}</option>
                         </select>
                         @error('rol')
                             <p class="error-message">{{ $message }}</p>
@@ -108,7 +107,7 @@
                     <div class="w-full px-3">
                         <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
                             for="password">
-                            Contraseña:
+                            {{ __('Password') }}:
                         </label>
                         <input
                             class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
@@ -119,7 +118,7 @@
                     <div class="w-full md:full px-3 mb-6 md:mb-0">
                         <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
                             for="direccion">
-                            Direccion:
+                            {{ __('Direccion') }}:
                         </label>
                         @if (isset($user->perfils->direccion))
                             <input value="{{ $user->perfils->direccion }}"
@@ -142,7 +141,7 @@
             </div>
             <button
                 class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded object-center"
-                type="submit">Actualizar</button>
+                type="submit">{{ __('Update') }}</button>
         </form>
         @if (session('status'))
             <div class="bg-teal-100 border-t-4 border-teal-500 rounded-b text-teal-900 px-4 py-3 shadow-md"

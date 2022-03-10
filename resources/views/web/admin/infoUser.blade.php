@@ -11,7 +11,7 @@
     <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 py-8 capitalize">
         <div class="w-full mt-12">
                <p class="text-xl pb-3 flex items-center">
-                    <i class="fas fa-list mr-3"></i> Información de Usuario
+                    <i class="fas fa-list mr-3"></i> {{ __('InformacionUsuario') }}
                 </p>
                 <div class="bg-white overflow-auto">
                     <table class="text-left w-full border-collapse">
@@ -20,10 +20,10 @@
                             <tr>
                                 <th
                                     class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
-                                    Nombre</th>
+                                    {{ __('Nombre') }}</th>
                                 <th
                                     class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
-                                    Email</th>
+                                    {{ __('Email') }}</th>
                                 <th
                                     class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
                                     ROL</th>
@@ -32,10 +32,10 @@
                                     DNI</th>
                                     <th
                                     class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
-                                    Telefono</th>
+                                    {{ __('Telefono') }}</th>
                                     <th
                                     class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
-                                    Direccion</th>
+                                    {{ __('Direccion') }}</th>
                             </tr>
                         </thead>
                         <tbody>

@@ -23,7 +23,7 @@
         <div class="w-full mt-12">
             <form action="{{ route('admin.users.index') }}" method="post">
                 @csrf
-                <label for="rol">Filtros: </label>
+                <label for="rol">{{ __('Filtros') }}: </label>
                 <select name="rol" id="rol"
                     class="orm-select appearance-none
                 block
@@ -40,13 +40,12 @@
                 ease-in-out
                 m-0
                 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none">
-                    <option value="null">Escoge Rol</option>
-                    <option value="empleado">Empleado</option>
-                    <option value="admin">Administrador</option>
-                    <option value="cliente">Cliente</option>
-                    <option value="comercial">Comercial</option>
+                    <option value="null">{{ __('Escoge') }} Rol</option>
+                    <option value="empleado">{{ __('Empleado') }}</option>
+                    <option value="admin">{{ __('Administrador') }}</option>
+                    <option value="comercial">{{ __('Comercial') }}</option>
                 </select>
-                <label for="name">Nombre</label>
+                <label for="name">{{ __('nombre') }}</label>
                 <input
                     class="focus:border-blue-600 appearance-none block w-1/4 bg-white text-black border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
                     name="name" id="name" placeholder="Introduce nombre" type="text">
@@ -62,7 +61,7 @@
                 </a>
             </form>
             <p class="text-xl pb-3 flex items-center">
-                <i class="fas fa-list mr-3"></i> Usuarios
+                <i class="fas fa-list mr-3"></i> {{ __('Usuarios') }}
             </p>
             <div class="bg-white overflow-auto">
                 <table class="text-left w-full border-collapse">
@@ -71,25 +70,25 @@
                         <tr>
                             <th
                                 class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
-                                Foto</th>
+                                {{ __('Photo') }}</th>
                             <th
                                 class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
-                                Nombre</th>
+                                {{ __('Nombre') }}</th>
                             <th
                                 class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
-                                Email</th>
+                                {{ __('Email') }}</th>
                             <th
                                 class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
                                 Rol</th>
                             <th
                                 class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
-                                Informacion Detallada</th>
+                                {{ __('Detalles') }}</th>
                                 <th
                                 class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
-                                Editar</th>
+                                {{ __('Edit') }}</th>
                             <th
                                 class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
-                                Borrar</th>
+                                {{ __('Delete') }}</th>
                         </tr>
                     </thead>
                     <tbody>

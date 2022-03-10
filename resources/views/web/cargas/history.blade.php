@@ -72,13 +72,13 @@
                     <tr>
                         <th
                             class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
-                            Marca</th>
+                            {{__('Marca')}}</th>
                         <th
                             class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
-                            Cantidad</th>
+                            {{__('Cantidad')}}</th>
                         <th
                             class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
-                            Fecha</th>
+                            {{__('Fecha')}}</th>
                     </tr>
                 </thead>
                 <tbody>
