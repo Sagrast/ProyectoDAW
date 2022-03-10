@@ -20,7 +20,7 @@ class Machine extends Model
     //Relacion con Averías. Una máquina puede sufrir distintas averías.
 
     public function failures(){
-        return $this->hasMany(Failure::class);
+        return $this->belongsToMany(Failure::class);
     }
 
     //Relación con productos. Una máquina puede cargar distintas clases de productos.

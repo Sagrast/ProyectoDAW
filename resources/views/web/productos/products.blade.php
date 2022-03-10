@@ -44,12 +44,12 @@
                 m-0
                 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none">
                     <option value="null">Escoge Tipo</option>
-                    <option value="agua">Agua</option>
-                    <option value="cafe">Café</option>
-                    <option value="tabaco">Tabaco</option>
-                    <option value="snacks">Snacks</option>
+                    <option value="agua">{{ __('Agua') }}</option>
+                    <option value="cafe">{{ __('Cafe') }}</option>
+                    <option value="tabaco">{{ __('Tabaco') }}</option>
+                    <option value="snacks">{{ __('Snacks') }}</option>
                 </select>
-                <label for="lote">Lote</label>
+                <label for="lote">{{ __('Lote') }}</label>
                 <input
                     class="focus:border-blue-600 appearance-none block w-1/4 bg-white text-black border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
                     name="lote" id="lote" placeholder="Introduce nombre" type="text">
@@ -58,21 +58,20 @@
                 <br />
 
                 <button type="submit"
-                    class="inline-block px-6 py-2.5 bg-blue-400 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-500 hover:shadow-lg focus:bg-blue-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-600 active:shadow-lg transition duration-150 ease-in-out">Filtrar</button>
+                    class="inline-block px-6 py-2.5 bg-blue-400 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-500 hover:shadow-lg focus:bg-blue-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-600 active:shadow-lg transition duration-150 ease-in-out">{{ __('Filtrar') }}</button>
                 <a href="{{ route('web.products.index') }}">
                     <button type="submit"
-                        class="inline-block px-6 py-2.5 bg-blue-400 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-500 hover:shadow-lg focus:bg-blue-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-600 active:shadow-lg transition duration-150 ease-in-out">Ver
-                        Todos</button>
+                        class="inline-block px-6 py-2.5 bg-blue-400 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-500 hover:shadow-lg focus:bg-blue-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-600 active:shadow-lg transition duration-150 ease-in-out">{{ __('VerTodos') }}</button>
                 </a>
             </form>
             <div class="py-6 grid place-items-end">
                 <a href="{{ route('web.products.create') }}">
                     <button
-                    class="inline-block px-6 py-2.5 bg-purple-400 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-purple-500 hover:shadow-lg focus:bg-purple-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-600 active:shadow-lg transition duration-150 ease-in-out">Añadir</button>
+                    class="inline-block px-6 py-2.5 bg-purple-400 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-purple-500 hover:shadow-lg focus:bg-purple-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-600 active:shadow-lg transition duration-150 ease-in-out">{{ __('Add') }}</button>
                 </a>
             </div>
             <p class="text-xl pb-3 flex items-center">
-                <i class="fas fa-list mr-3"></i> Maquinas Expendedoras
+                <i class="fas fa-list mr-3"></i> {{ __('Productos') }}
             </p>
             <div class="bg-white overflow-auto">
                 <table class="text-left w-full border-collapse">
@@ -81,7 +80,7 @@
                         <tr>
                             <th
                                 class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
-                                Nombre</th>
+                                {{ __('nombre') }}</th>
                             <th
                                 class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
                                 Stock Disponible</th>
@@ -90,17 +89,17 @@
                                 tipo</th>
                                 <th
                                 class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
-                                Fecha de Caducidad</th>
+                                {{ __('FechaCaducidad') }}</th>
                                 <th
                                 class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
                                 Lote</th>
 
                             <th
                                 class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
-                                Editar</th>
+                                {{ __('Edit') }}</th>
                             <th
                                 class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
-                                Borrar</th>
+                                {{ __('Delete') }}</th>
                         </tr>
                     </thead>
                     <tbody>

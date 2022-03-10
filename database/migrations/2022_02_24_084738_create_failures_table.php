@@ -16,10 +16,7 @@ class CreateFailuresTable extends Migration
         Schema::create('failures', function (Blueprint $table) {
             $table->id();
             $table->text('descripcion');
-            $table->date('fecha');
-            $table->enum('estado',['Arreglado','Pendiente']);
-            $table->unsignedBigInteger('machine_id');
-            $table->foreign('machine_id')->references('id')->on('machines')->onDelete('cascade');
+            $table->enum('tipo',['cafe','tabaco','snacks','agua']);
             $table->timestamps();
         });
     }
