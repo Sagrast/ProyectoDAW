@@ -162,6 +162,10 @@ Route::middleware(localeMiddleware::class)->group(function () {
     Route::post('/addMachine', [machineController::class, 'add'])->middleware('gestor')->name('web.machines.add');
     //Cerrar incidencias
     Route::get('/failure/{id}', [machineController::class, 'close'])->middleware('gestor')->name('web.machines.close');
+    //Averías
+    Route::get('/failure',[machineController::class,'failures'])->middleware('gestor')->name('web.machines.failures');
+
+
 
     /*
 |--------------------------------------------------------------------------

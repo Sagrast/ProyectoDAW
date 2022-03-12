@@ -1,5 +1,5 @@
 <?php
-
+use Illuminate\Support\Facades\Auth;
 use App\Providers\RouteServiceProvider;
 use Laravel\Fortify\Features;
 
@@ -62,6 +62,7 @@ return [
     */
 
     'home' => RouteServiceProvider::HOME,
+
 
     /*
     |--------------------------------------------------------------------------
