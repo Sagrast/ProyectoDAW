@@ -101,7 +101,7 @@ class machineController extends Controller
     {
         $machine = Machine::find($id);
         $clients = $machine->clients()->latest('instalacion')->get();
-        $averias = $machine->failures()->latest('fecha')->get();
+        //$averias = $machine->failures()->latest('fecha')->get();
         $tipo = "";
 
         if ($machine->tipo == 'tabaco'){
@@ -112,7 +112,7 @@ class machineController extends Controller
             $tipo = $machine->machineWater;
         }
 
-        return view('web.machines.infoMachine', compact('machine', 'clients', 'averias','tipo'));
+        return view('web.machines.infoMachine', compact('machine', 'clients','tipo'));
     }
 
     /**
@@ -193,9 +193,8 @@ class machineController extends Controller
 
     public function close($id)
     {
-        $failure = Failure::find($id);
-        $failure->estado = 'Arreglado';
-        $failure->update();
+
+        DB::update('UPDATE failure_machine SET status = "arreglado" where failure_id = '.$id.'');
 
         return back()->with('Status', 'Incidencia cerrada');
     }

@@ -69,7 +69,7 @@ class clienteController extends Controller
             $client->servicio = $request->servicio;
             $client->save();
 
-            return back()->with('status', 'Cliente añadido conrrectamente');
+            return back()->with('status', 'Cliente añadido correctamente');
         } else {
             return back()->withInput();
         }
@@ -162,7 +162,7 @@ class clienteController extends Controller
             $client->telefono = $request->telefono;
             $client->update();
 
-            return back()->with('status', 'Cliente actualizado conrrectamente');
+            return back()->with('status', 'Cliente actualizado correctamente');
         } else {
             return back()->withInput();
         }

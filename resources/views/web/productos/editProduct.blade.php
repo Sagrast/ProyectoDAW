@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Añadir Producto') }}
+            {{ __('Editar Producto') }}
         </h2>
     </x-slot>
     @if (Auth::user()->rol == 'empleado' || Auth::user()->rol == 'admin')
@@ -72,11 +72,11 @@
                         <select
                             class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                             id="tipo" name="tipo">
-                            <option value="">Selecciona Tipo</option>
-                            <option value="agua">Agua</option>
-                            <option value="cafe">Cafe</option>
-                            <option value="tabaco">Tabaco</option>
-                            <option value="snack">Snacks</option>
+                            <option value="">{{ __('EscogeTipo') }}</option>
+                            <option value="agua">{{ __('Agua') }}</option>
+                            <option value="cafe">{{ __('Cafe') }}</option>
+                            <option value="tabaco">{{ __('Tabaco') }}</option>
+                            <option value="snack">{{ __('Snacks') }}</option>
                         </select>
                         @error('tipo')
                             <p class="error-message">{{ $message }}</p>

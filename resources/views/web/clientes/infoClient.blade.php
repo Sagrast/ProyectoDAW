@@ -153,11 +153,11 @@
                                                         Máquinas Instaladas
                          -----------------------------------------------------------------------------------------------------------------------------------}}
 
-                    <table class="text-left w-full border-collapse py-6">
+                    <table class="text-left w-full border-collapse py-6 align-items:center">
                         <!--Border collapse doesn't work on this site yet but it's available in newer tailwind versions -->
                         <thead>
                             <tr>
-                                <th colspan="8" class="bg-black text-white text-center py-2 ">{{__('MaquinasInstaladas')}}</th>
+                                <th colspan="9" class="bg-black text-white text-center py-2 ">{{__('MaquinasInstaladas')}}</th>
                             </tr>
                             <tr>
                                 <th
@@ -184,6 +184,9 @@
                                     <th
                                     class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
                                     {{__('Retirar')}}</th>
+                                    <th
+                                    class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
+                                    {{__('FichaMaquina')}}</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -204,6 +207,12 @@
                                 </a>
                                 </td>
                                 @endif
+                                <td>
+                                    <a href="{{ route('web.machines.show', $mach->id) }}">
+                                        <button
+                                            class="bg-purple-500 hover:bg-purple-700 text-black font-bold  border border-purple-700 rounded">{{__('Descripcion')}}</button>
+                                    </a>
+                                    </td>
                             </tr>
                             @endforeach
                         </tbody>

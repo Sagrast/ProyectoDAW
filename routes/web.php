@@ -8,6 +8,7 @@ use App\Http\Controllers\vehicleController;
 use App\Http\Controllers\machineController;
 use App\Http\Controllers\productController;
 use App\Http\Middleware\localeMiddleware;
+use App\Http\Controllers\failureController;
 
 
 //A traves de un middleware gestionamos el idioma de la aplicación. Asignando el idioma
@@ -162,9 +163,26 @@ Route::middleware(localeMiddleware::class)->group(function () {
     Route::post('/addMachine', [machineController::class, 'add'])->middleware('gestor')->name('web.machines.add');
     //Cerrar incidencias
     Route::get('/failure/{id}', [machineController::class, 'close'])->middleware('gestor')->name('web.machines.close');
-    //Averías
-    Route::get('/failure',[machineController::class,'failures'])->middleware('gestor')->name('web.machines.failures');
 
+    /*
+|--------------------------------------------------------------------------
+| Averias
+|--------------------------------------------------------------------------
+*/
+    //Averías
+    Route::get('/failure',[failureController::class,'index'])->middleware('gestor')->name('web.failures.index');
+    Route::post('/failure', [failureController::class, 'filter'])->middleware('gestor')->name('web.failures.filter');
+    //Añadir Averías
+    Route::get('/addFailure', [failureController::class, 'create'])->middleware('gestor')->name('web.failures.create');
+    Route::post('/addFailure', [failureController::class, 'add'])->middleware('gestor')->name('web.failures.add');
+    //Editar Averías
+    Route::get('/editFailure/{id}', [failureController::class, 'edit'])->middleware('gestor')->name('web.failures.edit');
+    Route::post('/editFailure/{id}', [failureController::class, 'update'])->middleware('gestor')->name('web.failures.update');
+    //Eliminar Averías
+    Route::get('/destroyFailure/{id}', [failureController::class, 'destroy'])->middleware('gestor')->name('web.failures.destroy');
+    //Abrir una incidencia
+    Route::get('/alert/{id}',[failureController::class,'show'])->middleware('gestor')->name('web.failures.show');
+    Route::post('/alert',[failureController::class,'store'])->middleware('gestor')->name('web.failures.store');
 
 
     /*

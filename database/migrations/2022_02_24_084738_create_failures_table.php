@@ -16,7 +16,7 @@ class CreateFailuresTable extends Migration
         Schema::create('failures', function (Blueprint $table) {
             $table->id();
             $table->text('descripcion');
-            $table->enum('tipo',['cafe','tabaco','snacks','agua']);
+            $table->enum('servicio',['cafe','tabaco','snacks','agua']);
             $table->timestamps();
         });
     }

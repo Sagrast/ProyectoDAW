@@ -109,42 +109,7 @@
                         </tbody>
                     </table>
 
-                    <table class="text-left w-full border-collapse py-6">
-                        <!--Border collapse doesn't work on this site yet but it's available in newer tailwind versions -->
-                        <thead>
-                            <tr>
-                                <th colspan="6" class="bg-black text-white text-center py-2 ">{{ __('Averias') }}</th>
-                            </tr>
-                            <tr>
-                                <th
-                                    class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
-                                    {{ __('Descripcion') }}</th>
-                                <th
-                                    class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
-                                    {{ __('Estado') }}</th>
-                                <th
-                                    class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
-                                    {{ __('Fecha') }}</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                             @foreach ($averias as $fail)
-                            <tr class="hover:bg-grey-lighter">
-                                <td class="py-4 px-6 border-b border-grey-light">{{ $fail->descripcion }}</td>
-                                <td class="py-4 px-6 border-b border-grey-light">{{ $fail->estado }}</td>
-                                <td class="py-4 px-6 border-b border-grey-light">{{ $fail->fecha }}</td>
-                                <td class="py-4 px-6 border-b border-grey-light">
-                                @if($fail->estado == 'Pendiente')
-                                <a href="{{ route('web.machines.close', $fail->id) }}">
-                                    <button
-                                        class="bg-red-500 hover:bg-red-700 text-black font-bold  border border-red-700 rounded">{{ __('CerrarIncidencia') }}</button>
-                                </a>
-                                </td>
-                                @endif
-                            </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
+
 
 
                     <div class="py-6 grid place-items-center">

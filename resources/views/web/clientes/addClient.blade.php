@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Añadir Clientes') }}
+            {{ __('AñadirClientes') }}
         </h2>
     </x-slot>
     @if (Auth::user()->rol == 'empleado' || Auth::user()->rol == 'admin')

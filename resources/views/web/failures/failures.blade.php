@@ -25,7 +25,7 @@
     <div class="max-w-7xl mx-auto py-3 px-4 sm:px-6 lg:px-8 py-8 capitalize">
         <div class="w-full mt-12">
 
-            <form action="{{ route('web.clientes.filter') }}" method="post">
+            <form action="{{ route('web.failures.filter') }}" method="post">
                 @csrf
                 <label for="servicio">{{__('Filtros')}}: </label>
                 <select name="servicio" id="servicio"
@@ -47,13 +47,12 @@
                     <option value="null">{{__('Servicio')}}</option>
                     <option value="agua">{{__('Agua')}}</option>
                     <option value="cafe">{{__('Cafe')}}</option>
-                    <option value="distribucion">{{__('Distribucion')}}</option>
                     <option value="tabaco">{{__('Tabaco')}}</option>
                 </select>
-                <label for="name">{{__('Nombre')}}</label>
+                <label for="descripcion">{{__('descripcion')}}</label>
                 <input
                     class="focus:border-blue-600 appearance-none block w-1/4 bg-white text-black border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-                    name="name" id="name" placeholder="Introduce nombre" type="text">
+                    name="descripcion" id="descripcion" placeholder="Introduce descripcion" type="text">
                 <br />
                 <br />
 
@@ -65,13 +64,13 @@
                 </a>
             </form>
             <div class="py-6 grid place-items-end">
-                <a href="{{ route('web.clientes.create') }}">
+                <a href="{{ route('web.failures.create') }}">
                     <button
                     class="inline-block px-6 py-2.5 bg-purple-400 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-purple-500 hover:shadow-lg focus:bg-purple-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-600 active:shadow-lg transition duration-150 ease-in-out">{{__('Add')}}</button>
                 </a>
             </div>
             <p class="text-xl pb-3 flex items-center">
-                <i class="fas fa-list mr-3"></i> {{__('Clientes')}}
+                <i class="fas fa-list mr-3"></i> {{__('Averias')}}
             </p>
             <div class="bg-white overflow-auto">
                 <table class="text-left w-full border-collapse">
@@ -80,23 +79,10 @@
                         <tr>
                             <th
                                 class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
-                                {{__('Empresa')}}</th>
+                                {{__('Descripcion')}}</th>
                             <th
                                 class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
-                                {{__('Telefono')}}</th>
-                            <th
-                                class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
-                                {{__('Servicio')}}</th>
-                            <th
-                                class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
-                                {{__('Cargas')}}</th>
-                            <th
-                                class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
-                                {{__('Informacion')}}</th>
-                                <th
-                                class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
-                                {{__('Incidencia')}}</th>
-
+                                {{__('Tipo')}}</th>
                             <th
                                 class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
                                 {{__('Edit')}}</th>
@@ -106,38 +92,19 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($clients as $client)
+                        @foreach ($averias as $fail)
                             <tr class="hover:bg-grey-lighter">
-                                <td class="py-4 px-6 border-b border-grey-light">{{ $client->nombre }}</td>
-                                <td class="py-4 px-6 border-b border-grey-light">{{ $client->telefono }}</td>
-                                <td class="py-4 px-6 border-b border-grey-light">{{ $client->servicio }}</td>
+                                <td class="py-4 px-6 border-b border-grey-light">{{ $fail->descripcion }}</td>
+                                <td class="py-4 px-6 border-b border-grey-light">{{ $fail->servicio}}</td>
+
                                 <td class="py-4 px-6 border-b border-grey-light">
-                                    <a href="{{ route('web.products.show', $client->id) }}">
-                                        <button
-                                            class="bg-amber-500 hover:bg-amber-700 text-white font-bold py-2 px-4 border border-amber-700 rounded">{{__('Cargas')}}</button>
-                                    </a>
-                                </td>
-                                <td class="py-4 px-6 border-b border-grey-light">
-                                    <a href="{{ route('web.clientes.show', $client->id) }}">
-                                        <button
-                                            class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 border border-green-700 rounded">{{__('Informacion')}}</button>
-                                    </a>
-                                </td>
-                                <td class="py-4 px-6 border-b border-grey-light">
-                                    <a href="{{ route('web.failures.show', $client->id) }}">
-                                        <button
-                                            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">Crear</button>
-                                    </a>
-                                </td>
-                                <td class="py-4 px-6 border-b border-grey-light">
-                                    <a href="{{ route('web.clientes.edit', $client->id) }}">
+                                    <a href="{{ route('web.failures.edit', $fail->id) }}">
                                         <button
                                             class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">Editar</button>
                                     </a>
                                 </td>
-
                                 <td class="py-4 px-6 border-b border-grey-light">
-                                    <a href="{{ route('web.clientes.destroy', $client->id) }}">
+                                    <a href="{{ route('web.failures.destroy', $fail->id) }}">
                                         <button
                                             class="bg-red-500 hover:bg-red-700 text-black font-bold py-2 px-4 border border-red-700 rounded">Borrar</button>
                                     </a>
@@ -146,12 +113,47 @@
                         @endforeach
                     </tbody>
                 </table>
+                <table class="text-left w-full border-collapse py-6">
+                    <!--Border collapse doesn't work on this site yet but it's available in newer tailwind versions -->
+                    <thead>
+                        <tr>
+                            <th colspan="6" class="bg-black text-white text-center py-2 ">{{ __('Averias') }}</th>
+                        </tr>
+                        <tr>
+                            <th
+                                class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
+                                {{ __('Descripcion') }}</th>
+                            <th
+                                class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
+                                {{ __('Estado') }}</th>
+                            <th
+                                class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
+                                {{ __('Fecha') }}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                         @foreach ($open as $pendiente)
+                        <tr class="hover:bg-grey-lighter">
+                            <td class="py-4 px-6 border-b border-grey-light">{{ $pendiente->descripcion }}</td>
+                            <td class="py-4 px-6 border-b border-grey-light">{{ $pendiente->status }}</td>
+                            <td class="py-4 px-6 border-b border-grey-light">{{ $pendiente->fecha }}</td>
+                            <td class="py-4 px-6 border-b border-grey-light">
+                            <a href="{{ route('web.machines.close', $pendiente->failure_id) }}">
+                                <button
+                                    class="bg-red-500 hover:bg-red-700 text-black font-bold  border border-red-700 rounded">{{ __('CerrarIncidencia') }}</button>
+                            </a>
+                            </td>
+
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
 
             </div>
         </div>
     </div>
     <div class="py-6">
-        {{$clients->links()}}
+        {{$averias->links()}}
         </div>
 
 </x-app-layout>
