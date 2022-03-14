@@ -816,5 +816,6 @@
     "Empleado": "Empregado",
     "Administrador": "Administrador",
     "Comercial": "Comercial",
-    "InformacionUsuario": "Información do Usuario"
+    "InformacionUsuario": "Información do Usuario",
+    "FechaCaducidad": "Data de Caducidade"
 }

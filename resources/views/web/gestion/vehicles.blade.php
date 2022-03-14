@@ -4,9 +4,11 @@
             {{ __('Vehiculos') }}
         </h2>
     </x-slot>
+    {{-- El menu de navegación se mostrará en función del rol del usuario --}}
     @if (Auth::user()->rol == 'empleado' || Auth::user()->rol == 'admin')
         @livewire('inner-menu')
     @endif
+    {{-- Contenedor del mensaje de estado --}}
     @if (session('status'))
         <div class="bg-teal-100 border-t-4 border-teal-500 rounded-b text-teal-900 px-4 py-3 shadow-md" role="alert">
             <div class="flex">
@@ -82,6 +84,7 @@
                         </tr>
                     </thead>
                     <tbody>
+                        {{-- Bucle que recorre el array de objetos recibido del controlador y añade los botones de funciones de borrado, edicion,etc.. --}}
                         @foreach ($vehicles as $car)
                             <tr class="hover:bg-grey-lighter">
                                 <td class="py-4 px-6 border-b border-grey-light">{{ $car->descripcion }}</td>

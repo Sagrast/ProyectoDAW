@@ -4,6 +4,7 @@
             {{ __('Información detallada de Cliente') }}
         </h2>
     </x-slot>
+    {{-- Muestra el menu de gestión en funcion del rol del usuario --}}
     @if (Auth::user()->rol == 'empleado' || Auth::user()->rol == 'admin')
         @livewire('inner-menu')
     @endif

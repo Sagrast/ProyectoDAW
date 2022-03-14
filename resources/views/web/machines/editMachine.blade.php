@@ -4,9 +4,12 @@
             {{ __('Editar Maquina') }}
         </h2>
     </x-slot>
+    {{-- El menu de navegación se mostrará en función del rol del usuario --}}
+
     @if (Auth::user()->rol == 'empleado' || Auth::user()->rol == 'admin')
         @livewire('inner-menu')
     @endif
+    {{-- Contenedor del mensaje de estado --}}
     @if (session('status'))
         <div class="bg-teal-100 border-t-4 border-teal-500 rounded-b text-teal-900 px-4 py-3 shadow-md" role="alert">
             <div class="flex">
@@ -119,7 +122,7 @@
                         @enderror
                     </div>
                 </div>
-
+                {{-- Condicional que muestra un contenedor en función del atributo del objeto recibido del controlador. --}}
                 @if ($machine->tipo == 'tabaco')
                     <div class="flex flex-wrap -mx-3 mb-6">
                         <div class="w-full px-3">
@@ -182,6 +185,7 @@
                             <p class="error-message">{{ $message }}</p>
                         @enderror
                 @endif
+                {{-- Fin Condicional --}}
             </div>
             <div class="grid place-items-center py-12">
                 <button

@@ -15,29 +15,29 @@
                     {!! $post->contidoHTML !!}
                 </div>
                 <div class="py-6">
-                {{-- Añadimos una condición para mostrar los botones de edicion y borrado, solo será visibles si el usuario tiene el rol adecuado
+                    {{-- Añadimos una condición para mostrar los botones de edicion y borrado, solo será visibles si el usuario tiene el rol adecuado
                     Esta comprobación solo se realizará si hay una sesión iniciada --}}
 
-                @auth
-
-                @if (Auth::user()->rol == 'comercial' || Auth::user()->rol == 'admin')
-                    <a href="{{ route('web.nodos.edit', $post->id) }}">
-                        <button
-                            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">{{ __('Editar') }}</button>
-                    </a>
-                    <a href="{{ route('web.nodos.destroy', $post->id) }}">
-                        <button
-                            class="bg-red-500 hover:bg-red-700 text-black font-bold py-2 px-4 border border-red-700 rounded">{{ __('Borrar') }}</button>
-                    </a>
-                @endif
-                @endauth
-            </div>
+                    @auth
+                        @if (Auth::user()->rol == 'comercial' || Auth::user()->rol == 'admin')
+                            <a href="{{ route('web.nodos.edit', $post->id) }}">
+                                <button
+                                    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">{{ __('Editar') }}</button>
+                            </a>
+                            <a href="{{ route('web.nodos.destroy', $post->id) }}">
+                                <button
+                                    class="bg-red-500 hover:bg-red-700 text-black font-bold py-2 px-4 border border-red-700 rounded">{{ __('Borrar') }}</button>
+                            </a>
+                        @endif
+                    @endauth
+                </div>
             </div>
 
             {{-- Contenido relacionado --}}
             <aside>
                 <h1 class="text-2xl font-bold text-gray-600 mb-4">{{ __('TemasRelacionados') }}: </h1>
                 <ul>
+                    {{-- Bucle que recorre el array de objetos recibido del controlador --}}
                     @foreach ($equals as $equal)
                         <li class="mb-4">
                             <a class="flex" href={{ route('web.nodos.show', $equal) }}>
