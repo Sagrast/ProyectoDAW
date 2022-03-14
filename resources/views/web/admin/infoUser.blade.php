@@ -1,9 +1,10 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Vehiculos') }}
+            {{ __('Información de Usuario') }}
         </h2>
     </x-slot>
+    {{-- Si el usuario tiene el rol adecuado se mostrará el menú de navegación --}}
     @if (Auth::user()->rol == 'empleado' || Auth::user()->rol == 'admin')
         @livewire('inner-menu')
     @endif

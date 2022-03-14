@@ -15,6 +15,7 @@ class contactMail extends Mailable
     public $datos;
 
 //Clase Mail para el envío de correos de contacto.
+
     /**
      * Create a new message instance.
      *

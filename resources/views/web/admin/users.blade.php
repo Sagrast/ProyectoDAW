@@ -5,6 +5,8 @@
             {{ __('Panel de Control de Usuarios') }}
         </h2>
     </x-slot>
+
+    {{-- Contenedor para mostrar los mensajes de estado --}}
     @if (session('status'))
         <div class="bg-teal-100 border-t-4 border-teal-500 rounded-b text-teal-900 px-4 py-3 shadow-md" role="alert">
             <div class="flex">
@@ -92,6 +94,9 @@
                         </tr>
                     </thead>
                     <tbody>
+
+                        {{-- Bucle que recorre todos los objetos recibidos del controlador y los muestra en una tabla
+                            además de los botones que lleva a su edicion, borrado, etc... --}}
                         @foreach ($users as $user)
                             <tr class="hover:bg-grey-lighter">
                                 <td class="py-4 px-6 border-b border-grey-light"><img
@@ -124,6 +129,7 @@
             </div>
         </div>
     </div>
+    {{-- Contenedor para los enlaces de paginación --}}
     <div class="py-6">
         {{$users->links()}}
         </div>

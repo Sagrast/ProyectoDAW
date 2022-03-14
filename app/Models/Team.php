@@ -1,5 +1,7 @@
 <?php
 
+//Clase instalado por JetStream y sin uso en el proyecto
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;

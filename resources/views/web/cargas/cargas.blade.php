@@ -4,9 +4,11 @@
             {{ __('Gestion de Cargas') }}
         </h2>
     </x-slot>
+    {{-- Si el usuario tiene el rol correcto se muestra el menú de administración --}}
     @if (Auth::user()->rol == 'empleado' || Auth::user()->rol == 'admin')
         @livewire('inner-menu')
     @endif
+    {{-- Contenedor de mensajes de estado --}}
     @if (session('status'))
         <div class="bg-teal-100 border-t-4 border-teal-500 rounded-b text-teal-900 px-4 py-3 shadow-md" role="alert">
             <div class="flex">
@@ -21,7 +23,7 @@
             </div>
         </div>
     @endif
-
+{{-- Formulario de creación de nuevas cargas --}}
     <div class="max-w-7xl mx-auto py-3 px-4 sm:px-6 lg:px-8 py-8 capitalize">
         <div class="w-full mt-12">
             <h1 class="text-3xl">{{ $client->nombre }}</h1>

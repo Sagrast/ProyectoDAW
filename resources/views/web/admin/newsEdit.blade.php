@@ -1,4 +1,6 @@
 {{-- Source: <a class="underline" href="https://tailwindcomponents.com/component/table">https://tailwindcomponents.com/component/table</a> --}}
+
+{{-- Listado de todos los nodos y los botones que llevan al borrado o la edicion  --}}
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
@@ -44,6 +46,8 @@
                         </tr>
                     </thead>
                     <tbody>
+
+                        {{-- Bucle que recorre todos los objetos recibidos del controlador y los muestra en una tabla --}}
                         @foreach ($nodos as $post)
                             <tr class="hover:bg-grey-lighter">
                                 <td class="py-4 px-6 border-b border-grey-light"><img
