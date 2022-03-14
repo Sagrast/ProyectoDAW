@@ -15,6 +15,8 @@ class clienteController extends Controller
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
+     *
+     * Lista paginados la lista total de clientes en la base de datos.
      */
     public function index()
     {
@@ -22,6 +24,12 @@ class clienteController extends Controller
 
         return view('web.clientes.client', compact('clients'));
     }
+
+    /**
+     * Funcion de filtrado de usuarios.
+     * Devuelve la vista client con el resultado de obetenido según los valores enviados mediante el objeto Request.
+     *
+     *  */
 
     public function filter(Request $request)
     {
@@ -58,7 +66,7 @@ class clienteController extends Controller
             'email' => 'required',
             'servicio' => 'required',
         ]);
-
+        //Si las validaciones son correctas, asocia los valores obtenidos en el Request con los atributos del objeto Client
         if ($validado) {
             $client = new Client;
             $client->nombre = $request->nombre;
@@ -108,12 +116,18 @@ class clienteController extends Controller
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
+     *
+     * Devuelve la vista infoCliente con los datos asociados al ID que recibe como parametro.
      */
     public function show($id)
     {
+        //Busca el cliente con el ID recibido
         $cliente = Client::find($id);
+        //Devuelve los usuarios que han tenido relación con dicho cliente ordenados de por fecha descendiente.
         $data = $cliente->users()->latest('fecha')->get();
+        //Devuelve los usuarios cuyo rol sea distinto a cliente.
         $users = User::where('rol', '!=', 'cliente')->get();
+        //Devuelve las máquinas asociadas al cliente seleccionado por ID
         $machine = $cliente->machine()->get();
 
 
@@ -125,6 +139,8 @@ class clienteController extends Controller
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
+     *
+     * Devuelve la vista de edicion de clientes y las máquinas disponibles que se corresponden con el servicio prestado al cliente.
      */
     public function edit($id)
     {
@@ -140,6 +156,9 @@ class clienteController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
+     *
+     * Mediente el objeto request recibimos los nuevos parametros a validar.
+     * Tras realizar la validacion de estos, se procede a realizar la actualización en la BDD.
      */
     public function update(Request $request, $id)
     {
@@ -173,6 +192,9 @@ class clienteController extends Controller
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
+     *
+     * Recibe un ID por el cual filtrar el cliente a borrar.
+     * Una vez encontrado se llama a la función delete()
      */
     public function destroy($id)
     {
