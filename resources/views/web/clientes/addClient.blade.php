@@ -4,9 +4,11 @@
             {{ __('AñadirClientes') }}
         </h2>
     </x-slot>
+    {{-- Control del menú de gestion en función del rol del usuario --}}
     @if (Auth::user()->rol == 'empleado' || Auth::user()->rol == 'admin')
         @livewire('inner-menu')
     @endif
+    {{-- Contenedor de los mensajes de estado --}}
     @if (session('status'))
         <div class="bg-teal-100 border-t-4 border-teal-500 rounded-b text-teal-900 px-4 py-3 shadow-md" role="alert">
             <div class="flex">
@@ -27,11 +29,12 @@
             <div class="flex flex-wrap -mx-3 mb-6">
                 <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                     <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="nombre">
-                        {{__('nombre')}}
+                        {{ __('nombre') }}
                     </label>
                     <input value="{{ old('nombre') }}"
                         class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
                         id="nombre" type="text" name="nombre">
+                    {{-- Mensaje de error --}}
                     @error('nombre')
                         <p class="error-message">{{ $message }}</p>
                     @enderror
@@ -39,11 +42,12 @@
 
                 <div class="w-full md:w-1/2 px-3">
                     <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="direccion">
-                        {{__('Direccion')}}:
+                        {{ __('Direccion') }}:
                     </label>
                     <input value="{{ old('direccion') }} "
                         class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                         id="direccion" type="text" name="direccion" min="0">
+                    {{-- Mensaje de error --}}
                     @error('direccion')
                         <p class="error-message">{{ $message }}</p>
                     @enderror
@@ -55,6 +59,7 @@
                     <input value="{{ old('cif') }} "
                         class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                         id="cif" type="text" name="cif" maxlength="9">
+                    {{-- Mensaje de error --}}
                     @error('cif')
                         <p class="error-message">{{ $message }}</p>
                     @enderror
@@ -63,12 +68,13 @@
                     <div class="w-full px-3">
                         <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
                             for="telefono">
-                            {{__('Telefono')}}
+                            {{ __('Telefono') }}
                         </label>
                         <input
                             class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                             id="telefono" type="text" name="telefono">
                     </div>
+                    {{-- Mensaje de error --}}
                     @error('telefono')
                         <p class="error-message">{{ $message }}</p>
                     @enderror
@@ -76,29 +82,31 @@
                 <div class="flex flex-wrap -mx-3 mb-6">
                     <div class="w-full px-3">
                         <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="email">
-                            {{__('Email')}}
+                            {{ __('Email') }}
                         </label>
                         <input
                             class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                             id="email" type="email" name="email">
                     </div>
+                    {{-- Mensaje de error --}}
                     @error('email')
                         <p class="error-message">{{ $message }}</p>
                     @enderror
                     <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
                         <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
                             for="grid-state">
-                            {{__('Servicio')}}
+                            {{ __('Servicio') }}
                         </label>
                         <div class="relative">
                             <select
                                 class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                                 id="servicio" name="servicio">
-                                <option value="agua">{{__('Agua')}}</option>
-                                <option value="snacks">{{__('Snacks')}}</option>
-                                <option value="cafe">{{__('Cafe')}}</option>
-                                <option value="tabaco">{{__('Tabaco')}}</option>
+                                <option value="agua">{{ __('Agua') }}</option>
+                                <option value="snacks">{{ __('Snacks') }}</option>
+                                <option value="cafe">{{ __('Cafe') }}</option>
+                                <option value="tabaco">{{ __('Tabaco') }}</option>
                             </select>
+                            {{-- Mensaje de error --}}
                             @error('servicio')
                                 <p class="error-message">{{ $message }}</p>
                             @enderror
@@ -117,7 +125,7 @@
             <div class="grid place-items-center">
                 <button
                     class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded object-center"
-                    type="submit">{{__('Add')}}</button>
+                    type="submit">{{ __('Add') }}</button>
             </div>
         </form>
 

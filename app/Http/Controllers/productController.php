@@ -13,12 +13,18 @@ class productController extends Controller
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
+     *
+     * Función que devuelve la vista con el listado de productos incluido en la BDD de forma páginada.
      */
     public function index()
     {
         $products = Product::paginate(50);
         return view('web.productos.products', compact('products'));
     }
+
+    /**
+     * Funcion que devuelve la lista de productos basada en los parametros recibidos.
+     */
 
     public function filter(Request $request)
     {
@@ -35,12 +41,21 @@ class productController extends Controller
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
+     *
+     * Función que devuelve la vista de creación de nuevos productos.
      */
     public function create()
     {
         return view('web.productos.addProduct');
     }
 
+
+    /**
+     *
+     * Función que recibe un objeto Request con los valores del nuevo producto a insertar en la BDD.
+     * Si los parametros son validados correctamente se procede a la inserción.
+     *
+     */
     public function add(Request $request)
     {
         $validado = $request->validate([
@@ -74,6 +89,9 @@ class productController extends Controller
      * @return \Illuminate\Http\Response
      *
      * Función que añade la carga de los productos en las máquinas del cliente escogido.
+     * Recibe un array con la Id de los productos a insertar y su cantidad, para recorrer un bucle.
+     * Antes de cada inserción comprueba que el stock disponible es suficiente, de no ser así interrumpe el proceso avisando de que no hay stock suficinte.
+     *
      */
     public function store(Request $request)
     {
@@ -106,7 +124,9 @@ class productController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      *
-     * //Devuelve el formulario de insercion de productos en máquinas.
+     * Devuelve la vista de cargas de producto del cliente seleccionado.
+     * Se comprueba que el cliente tenga una máquina instalada.
+     * Se devuelven los productos que complan con el servicio suminitrado al cliente.
      */
     public function show($id)
     {
@@ -126,6 +146,8 @@ class productController extends Controller
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
+     *
+     * Devuelve la vista de edición del producto cuya ID se recibe como parametro.
      */
     public function edit($id)
     {
@@ -140,6 +162,10 @@ class productController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
+     *
+     * Actualiza el producto cuya ID se recibe como parametro.
+     * Realiza la validacion de los parametros recibidos por el objeto Request y si son correctos procede a la actualizacion.
+     *
      */
     public function update(Request $request, $id)
     {
@@ -171,6 +197,8 @@ class productController extends Controller
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
+     *
+     * Elimina el producto cuya ID se recibe como parametro.
      */
     public function destroy($id)
     {
@@ -194,6 +222,7 @@ class productController extends Controller
         }
     }
 
+    //Función que filtra el historico de cargas por una Fecha recibida en el formulario
 
     public function filterLoadDate(Request $request)
     {

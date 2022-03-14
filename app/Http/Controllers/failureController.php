@@ -15,21 +15,20 @@ class failureController extends Controller
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
+     *
+     * Devuelve la listas de averías conocidas en la BDD.
+     * Así como un listado de incidencias sin solucionar.
      */
     public function index()
     {
-
-
         $nueva = new Failure;
         $averias = $nueva->paginate(50);
         $open = DB::select('SELECT * FROM machines INNER JOIN failure_machine ON machines.id = failure_machine.machine_id INNER JOIN failures ON failure_machine.failure_id = failures.id WHERE status = "pendiente"');
 
-
-
         return view('web.failures.failures',compact('averias','open'));
     }
 
-    //Funcion de busqueda.
+    //Funcion de busqueda. Devuelve a la vista failures los valores de la BDD que corresponden con los criterios de búsqueda.
 
     public function filter(Request $request)
     {
@@ -46,11 +45,17 @@ class failureController extends Controller
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
+     *
+     * Devuelve la vista con el formulario de creación de nuevos tipos de averías.
      */
     public function create()
     {
         return view('web.failures.addFailure');
     }
+
+    /**
+     * Tras validar los parametros recibidos, procede a la inserción en la BDD de un nuevo tipo de avería.
+     */
 
     public function add(Request $request){
         $validado = $request->validate([
@@ -77,6 +82,10 @@ class failureController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
+     *
+     * Inserta en la tabla pivote la asociación entre una avería y una máquina permitiendo llevar un historial de averías de cada máquina.
+     * además de marcarlas como solucionadas o no.
+     *
      */
     public function store(Request $request)
     {
@@ -99,6 +108,10 @@ class failureController extends Controller
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
+     *
+     * Devuelve los datos del cliente cuya ID recibimos por parametro.
+     * Devuelve la máquina que tiene asociada.
+     * Devuelve una coleccion de averías asociadas al servicio que recibe el cliente.
      */
     public function show($id)
     {
@@ -115,6 +128,8 @@ class failureController extends Controller
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
+     *
+     * Permite editar una avería seleccionada por el ID recibido.
      */
     public function edit($id)
     {
@@ -129,6 +144,9 @@ class failureController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
+     *
+     * Actualiza la avería editada en la vista de Edicion.
+     * Si la validación es correcta,  actualiza los datos recibidos en la base de datos.
      */
     public function update(Request $request, $id)
     {
@@ -157,6 +175,8 @@ class failureController extends Controller
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
+     *
+     * Elimina una avería de la base de datos filtrandola por el ID recibido como parametro.
      */
     public function destroy($id)
     {

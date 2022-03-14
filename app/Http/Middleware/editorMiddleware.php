@@ -18,7 +18,7 @@ class editorMiddleware
      * Middleware encargado re restringir el acceso a la edición de noticias. El acceso está restringido al usuario administrador y a los comerciales de la empresa.
      */
     public function handle(Request $request, Closure $next)
-    {
+        {
         if (Auth::user()->rol == 'admin' || Auth::user()->rol == 'comercial'){
             return $next($request);
           } else {

@@ -14,6 +14,9 @@ class machineController extends Controller
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
+     *
+     * Devuelve la vista indice con el listado de máquinas de la base de datos de forma paginada.
+     *
      */
     public function index()
     {
@@ -21,6 +24,11 @@ class machineController extends Controller
         return view('web.machines.machine', compact('machines'));
     }
 
+    /**
+     *
+     * Devuelve la vista indice con los datos recibidos por la consulta que ejecuta el filtrado.
+     *
+     */
     public function filter(Request $request)
     {
 
@@ -36,12 +44,21 @@ class machineController extends Controller
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
+     *
+     * Devuelve la vista que se contiene el formulario para añadir nuevos productos.
      */
     public function create()
     {
         return view('web.machines.addMachine');
     }
 
+    /**
+     *
+     * Funcion que añade una nueva máquina a la base de datos.
+     * Si la validación de parametros es correcta, asocia los atributos del objeto request con los del objeo machine
+     * y llama la función salvar.
+     *
+     */
     public function add(Request $request) {
 
             $validado = $request->validate([
@@ -62,6 +79,9 @@ class machineController extends Controller
             $machine->serial = $request->serial;
 
             $machine->save();
+
+            //Para los atributos correspondientes a las tablas de especialización usamos el metodo que nos devuelve el ultimo insert realizado
+            //y realizamos un insert en la tabla correspondiente del parametro recibido.
 
             $machineID = DB::getPdo()->lastInsertId();
 
@@ -96,12 +116,14 @@ class machineController extends Controller
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
+     * Devuelve la vista detallada de una máquina seleccionada mediante la ID recibida.
+     *
+     * En ella devolvemos tambien los clientes con los que ha sido relacionada en orden descendiente por fecha de instalación.
      */
     public function show($id)
     {
         $machine = Machine::find($id);
         $clients = $machine->clients()->latest('instalacion')->get();
-        //$averias = $machine->failures()->latest('fecha')->get();
         $tipo = "";
 
         if ($machine->tipo == 'tabaco'){
@@ -120,6 +142,8 @@ class machineController extends Controller
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
+     *
+     * Vista que devuelve la vista de edicion de máqinas y los valores de la máquina seleccionada mediante el ID recibido
      */
     public function edit($id)
     {
@@ -143,6 +167,9 @@ class machineController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
+     *
+     * Funcion de actualización de máquinas. Si la validación de parametros es correcta, procedemos a la asociacion de valores de atributos
+     * y realizamos la actualizacion.
      */
     public function update(Request $request, $id)
     {
@@ -182,6 +209,8 @@ class machineController extends Controller
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
+     *
+     * Función que elimina una máqina seleccionandola por e ID recibido como parametro.
      */
     public function destroy($id)
     {
@@ -190,6 +219,10 @@ class machineController extends Controller
 
         return back()->with('Status', 'Máquina eliminada correctamente');
     }
+
+    /**
+     * Funcion que cierra una incidencia. Marca el estado de una incidencia asociada a una máquina en su tabla pivote como arreglado.
+     */
 
     public function close($id)
     {

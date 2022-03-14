@@ -4,9 +4,12 @@
             {{ __('AñadirAverias') }}
         </h2>
     </x-slot>
+        {{-- Muestra el menu de gestión en funcion del rol del usuario --}}
+
     @if (Auth::user()->rol == 'empleado' || Auth::user()->rol == 'admin')
         @livewire('inner-menu')
     @endif
+    {{-- Contenedor para el mensaje de estado --}}
     @if (session('status'))
         <div class="bg-teal-100 border-t-4 border-teal-500 rounded-b text-teal-900 px-4 py-3 shadow-md" role="alert">
             <div class="flex">

@@ -4,9 +4,11 @@
             {{ __('Vehiculos') }}
         </h2>
     </x-slot>
+    {{-- El menu de navegación se mostrará en función del rol del usuario --}}
     @if (Auth::user()->rol == 'empleado' || Auth::user()->rol == 'admin')
         @livewire('inner-menu')
     @endif
+    {{-- Contenedor del mensaje de estado --}}
     @if (session('status'))
         <div class="bg-teal-100 border-t-4 border-teal-500 rounded-b text-teal-900 px-4 py-3 shadow-md" role="alert">
             <div class="flex">
@@ -46,7 +48,7 @@
             <div class="grid place-items-end py-5">
                 <a href="{{ route('web.vehicles.create') }}">
                     <button type="submit"
-                        class="inline-block px-6 py-2.5 bg-purple-400 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-purple-500 hover:shadow-lg focus:bg-purple-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-600 active:shadow-lg transition duration-150 ease-in-out">{{__('add')}}</button>
+                        class="inline-block px-6 py-2.5 bg-purple-400 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-purple-500 hover:shadow-lg focus:bg-purple-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-600 active:shadow-lg transition duration-150 ease-in-out">{{__('Add')}}</button>
                 </a>
             </div>
 
@@ -82,6 +84,7 @@
                         </tr>
                     </thead>
                     <tbody>
+                        {{-- Bucle que recorre el array de objetos recibido del controlador y añade los botones de funciones de borrado, edicion,etc.. --}}
                         @foreach ($vehicles as $car)
                             <tr class="hover:bg-grey-lighter">
                                 <td class="py-4 px-6 border-b border-grey-light">{{ $car->descripcion }}</td>

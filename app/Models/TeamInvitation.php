@@ -1,5 +1,5 @@
 <?php
-
+//Clase instalado por JetStream y sin uso en el proyecto
 namespace App\Models;
 
 use Laravel\Jetstream\Jetstream;

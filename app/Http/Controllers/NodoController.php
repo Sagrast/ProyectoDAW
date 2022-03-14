@@ -41,6 +41,10 @@ class NodoController extends Controller
         return view('web.nodos.article', compact('post', 'equals'));
     }
 
+    /**
+     * Funcion que devuelve todos los nodos que contienen la misma etiqueta de forma pagiada.
+     */
+
     public function labels(label $label)
     {
 
@@ -50,6 +54,7 @@ class NodoController extends Controller
         return view('web.nodos.labels', compact('equals', 'label'));
     }
 
+    //funcion que devuelve la página de creación de nodos.
     public function create()
     {
         //array de Categorias
@@ -58,6 +63,8 @@ class NodoController extends Controller
         $etiquetas = Label::all();
         return view('web.nodos.create', compact('categoria', 'etiquetas'));
     }
+
+    //Funcion que almacena en la BDD los nuevos nodos.
 
     public function store(Request $request)
     {
@@ -81,7 +88,7 @@ class NodoController extends Controller
             $nodos->data = now();
             $nodos->category_id = $request->category;
 
-
+            //Inserción de una imagen en la carpeta destinada para ello y su ruta en la BDD
             if ($request->hasFile('image')) {
                 $image = $request->file('image');
                 $imgName = Str::slug($request->title) . "." . $image->guessExtension();
@@ -93,7 +100,7 @@ class NodoController extends Controller
 
             $nodos->save();
 
-
+            //Asociacion de nodos y sus etiquetas seleccionadas.
             $nodos->Labels()->attach($request->etiquetas);
 
 
@@ -102,6 +109,8 @@ class NodoController extends Controller
             return back()->withInput();
         }
     }
+
+    //función de edición de nodos. Devuelve la vista de edicion con los datos del nodo a editar cuya ID se ha recibido como parametro.
 
     public function edit($id){
         $nodo = Nodo::find($id);
@@ -113,6 +122,7 @@ class NodoController extends Controller
         return view('web.nodos.editArticle',compact('nodo','categoria','etiquetas'));
     }
 
+    //Función que elimina un nodo. Recibe como parametro la ID del nodo a buscar para eliminar.
     public function destroy($id){
         $delete = Nodo::find($id);
         $delete->delete();
@@ -165,12 +175,15 @@ class NodoController extends Controller
         }
     }
 
+    //Función que devuelve la lista de todos los nodos de la BDD
     public function list()
     {
         $nodos = Nodo::all();
 
         return view('web.admin.newsEdit', compact('nodos'));
     }
+
+    //Función que devuelve la lista de todos los nodos que coinciden con el parametro de búsqueda.
 
     public function filter(Request $request){
 
@@ -179,6 +192,8 @@ class NodoController extends Controller
         return view('web.admin.newsEdit',compact('nodos'));
     }
 
+
+    //Función que envía un correo electronico. Usando una cuenta de GMAIL.
 
     public function correo(Request $request){
 
@@ -200,7 +215,7 @@ class NodoController extends Controller
 
     }
 
-
+    //Función que devuelve la vista contact.
     public function contact(){
         return view('web.contact');
     }

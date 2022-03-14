@@ -12,6 +12,9 @@ class adminController extends Controller
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
+     *
+     * Funcion index: Devuelve la página principal del controlador admin (panel de control de usuarios).
+     * De forma paginada
      */
     public function index()
     {
@@ -19,6 +22,10 @@ class adminController extends Controller
         return view('web.admin.users', compact('users'));
     }
 
+    /**
+     * Funcion filter: Devuelve una vista con los usuarios filtrados en función de los parametros recibidos por el objeto Request.
+     *
+     */
     public function filter(Request $request)
     {
 
@@ -56,6 +63,9 @@ class adminController extends Controller
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
+     *
+     * Devuelve la vista infoUser, datos detallados del usuario seleccionado en la base de datos
+     * mediante el valor recibido por el parametro ID
      */
     public function show($id)
     {
@@ -69,6 +79,9 @@ class adminController extends Controller
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
+     *
+     * Devuelve la vista de edicion de usuarios. Selecciona un usuario basado en el ID recibido como parametro y lo devuelve
+     * Con la vista para mostrar los datos actuales antes de su edición, si fuese necesario.
      */
     public function edit($id)
     {
@@ -82,11 +95,12 @@ class adminController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
+     *  Funcion update: Recibe como parametros un objeto Request y una ID de usuario.
+     * Si se cumplen las validaciones, se procede a realizar la actualización de la base de datos.
+     *
      */
     public function update(Request $request, $id)
     {
-
-
         $validar = $request->validate([
             'name' => 'required',
             'rol' => 'required',
@@ -98,15 +112,18 @@ class adminController extends Controller
 
         if ($validar) {
 
+            //En una variable se almacena el objeto usuario devuelto en la búsqueda.
+            //Y se asocian los lo valores del request con los atributos del objeto.
             $update = User::findOrFail($id);
             $update->name = $request->name;
             $update->email = $request->email;
+            //Si se recibe un nuevo password, lo asociamos con su atributo.
             if ($request->password) {
                 $update->password = $request->password;
             }
             $update->rol = $request->rol;
             $update->save();
-
+            //salvamos los atributos correspondientes a la tabla Usuario y revisamos los campos de la tabla 1:1
             if (!isset($update->perfils->id)) {
                 DB::insert('INSERT INTO `perfils`(`id`, `created_at`, `updated_at`, `DNI`, `direccion`, `telefono`, `user_id`)
                 VALUES (NULL,"' . now() . '","' . now() . '","' . $request->dni . '","' . $request->direccion . '",' . $request->telefono . ',' . $request->id . ')');
@@ -124,11 +141,14 @@ class adminController extends Controller
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
+     *
+     * Recibe un ID para buscar el usuario que deseamos eliminar y se llama a la funcion delete.
+     *
      */
     public function destroy($id)
     {
         $delete = User::find($id);
         $delete->delete();
-        return back();
+        return back()->with('status','Usuario eliminado correctamente.');
     }
 }

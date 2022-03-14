@@ -9,6 +9,8 @@ class Failure extends Model
 {
     use HasFactory;
 
+    //Metodo de relación con Máqinas, una avería puede producirse en distintas máquinas.
+
     public function machines(){
         return $this->belongsToMany(Machine::class)->withPivot('fecha','status');
     }

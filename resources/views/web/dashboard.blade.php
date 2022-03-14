@@ -4,12 +4,9 @@
             {{ __('Control') }}
         </h2>
     </x-slot>
-
     @if (Auth::user()->rol == 'empleado' || Auth::user()->rol == 'admin')
     @livewire('inner-menu')
     @endif
-
-
     @if (session('status'))
         <div class="bg-teal-100 border-t-4 border-teal-500 rounded-b text-teal-900 px-4 py-3 shadow-md" role="alert">
             <div class="flex">

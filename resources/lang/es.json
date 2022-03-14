@@ -735,7 +735,7 @@
     "apellido": "Apellido",
     "email": "Correo Electrónico",
     "Mensaje": "Mensaje",
-    "contacto": "Contacto",
+    "Contacto": "Contacto",
     "Localizacion": "Localizacion",
     "DondeEstamos": "Dónde estamos",
     "Direccion": "Direccion",
@@ -816,7 +816,8 @@
     "Empleado": "Empleado",
     "Administrador": "Administrador",
     "Comercial": "Comercial",
-    "InformacionUsuario": "Información del Usuario"
+    "InformacionUsuario": "Información del Usuario",
+    "FechaCaducidad": "Fecha de Caducidad"
 
 
 

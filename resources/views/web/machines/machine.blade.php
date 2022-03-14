@@ -5,10 +5,12 @@
             {{ __('Expendedoras') }}
         </h2>
     </x-slot>
+    {{-- El menu de navegación se mostrará en función del rol del usuario --}}
     @if (Auth::user()->rol == 'empleado' || Auth::user()->rol == 'admin')
-    @livewire('inner-menu')
-@endif
-@if (session('status'))
+        @livewire('inner-menu')
+    @endif
+    {{-- Contenedor del mensaje de estado --}}
+    @if (session('status'))
         <div class="bg-teal-100 border-t-4 border-teal-500 rounded-b text-teal-900 px-4 py-3 shadow-md" role="alert">
             <div class="flex">
                 <div class="py-1"><svg class="fill-current h-6 w-6 text-teal-500 mr-4"
@@ -61,13 +63,13 @@
                     class="inline-block px-6 py-2.5 bg-blue-400 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-500 hover:shadow-lg focus:bg-blue-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-600 active:shadow-lg transition duration-150 ease-in-out">{{ __('Aplicar') }}</button>
                 <a href="{{ route('web.machines.index') }}">
                     <button type="submit"
-                        class="inline-block px-6 py-2.5 bg-blue-400 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-500 hover:shadow-lg focus:bg-blue-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-600 active:shadow-lg transition duration-150 ease-in-out">{{__('VerTodos')}}</button>
+                        class="inline-block px-6 py-2.5 bg-blue-400 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-500 hover:shadow-lg focus:bg-blue-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-600 active:shadow-lg transition duration-150 ease-in-out">{{ __('VerTodos') }}</button>
                 </a>
             </form>
             <div class="py-6 grid place-items-end">
                 <a href="{{ route('web.machines.create') }}">
                     <button
-                    class="inline-block px-6 py-2.5 bg-purple-400 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-purple-500 hover:shadow-lg focus:bg-purple-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-600 active:shadow-lg transition duration-150 ease-in-out">Añadir</button>
+                        class="inline-block px-6 py-2.5 bg-purple-400 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-purple-500 hover:shadow-lg focus:bg-purple-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-600 active:shadow-lg transition duration-150 ease-in-out">Añadir</button>
                 </a>
             </div>
             <p class="text-xl pb-3 flex items-center">
@@ -87,7 +89,7 @@
                             <th
                                 class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
                                 {{ __('Tipo') }}</th>
-                                <th
+                            <th
                                 class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
                                 {{ __('Detalles') }}</th>
 
@@ -100,6 +102,7 @@
                         </tr>
                     </thead>
                     <tbody>
+                        {{-- Bucle que recorre el array de objetos recibido del controlador y genera también los botones de fuciones como editar, borrar etc... --}}
                         @foreach ($machines as $machine)
                             <tr class="hover:bg-grey-lighter">
                                 <td class="py-4 px-6 border-b border-grey-light">{{ $machine->marca }}</td>
@@ -132,7 +135,7 @@
         </div>
     </div>
     <div class="py-6">
-        {{$machines->links()}}
-        </div>
+        {{ $machines->links() }}
+    </div>
 
 </x-app-layout>

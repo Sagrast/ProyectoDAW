@@ -9,6 +9,8 @@ class MachineSnack extends Model
 {
     use HasFactory;
 
+    //Relacion con tabla padre Máquinas.
+
     public function machines(){
         return $this->hasOne(Machine::class);
     }

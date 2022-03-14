@@ -18,6 +18,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+
+        //comentados para usar una BDD ya definitiva.
+
+
        /*  Client::factory(100)->create();
         Machine::factory(100)->create();
         Failure::factory(100)->create();
