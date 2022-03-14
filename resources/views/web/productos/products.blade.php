@@ -6,7 +6,7 @@
         </h2>
     </x-slot>
     @if (Auth::user()->rol == 'empleado' || Auth::user()->rol == 'admin')
-    @livewire('inner-menu')
+        @livewire('inner-menu')
     @endif
     @if (session('status'))
         <div class="bg-teal-100 border-t-4 border-teal-500 rounded-b text-teal-900 px-4 py-3 shadow-md" role="alert">
@@ -26,7 +26,7 @@
         <div class="w-full mt-12">
             <form action="{{ route('web.products.filter') }}" method="post">
                 @csrf
-                <label for="servicio">Filtros: </label>
+                <label for="servicio">{{ __('Filtros') }}: </label>
                 <select name="servicio" id="servicio"
                     class="orm-select appearance-none
                 block
@@ -43,7 +43,7 @@
                 ease-in-out
                 m-0
                 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none">
-                    <option value="null">Escoge Tipo</option>
+                    <option value="null">{{ __('EscogeTipo') }}</option>
                     <option value="agua">{{ __('Agua') }}</option>
                     <option value="cafe">{{ __('Cafe') }}</option>
                     <option value="tabaco">{{ __('Tabaco') }}</option>
@@ -67,7 +67,7 @@
             <div class="py-6 grid place-items-end">
                 <a href="{{ route('web.products.create') }}">
                     <button
-                    class="inline-block px-6 py-2.5 bg-purple-400 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-purple-500 hover:shadow-lg focus:bg-purple-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-600 active:shadow-lg transition duration-150 ease-in-out">{{ __('Add') }}</button>
+                        class="inline-block px-6 py-2.5 bg-purple-400 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-purple-500 hover:shadow-lg focus:bg-purple-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-600 active:shadow-lg transition duration-150 ease-in-out">{{ __('Add') }}</button>
                 </a>
             </div>
             <p class="text-xl pb-3 flex items-center">
@@ -83,14 +83,14 @@
                                 {{ __('nombre') }}</th>
                             <th
                                 class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
-                                Stock Disponible</th>
+                                Stock {{ __('Disponible') }}</th>
                             <th
                                 class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
-                                tipo</th>
-                                <th
+                                {{ __('Servicio') }}</th>
+                            <th
                                 class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
                                 {{ __('FechaCaducidad') }}</th>
-                                <th
+                            <th
                                 class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
                                 Lote</th>
 
@@ -103,48 +103,56 @@
                         </tr>
                     </thead>
                     <tbody>
+                        {{-- Bucle que recorre el array de objetos que recibe del controlador. También comprueba el valor del atributo Stock
+                            Cambiando el color de la tabla si el valor es menor a la cantidad indicada --}}
                         @foreach ($products as $product)
-                        @if ($product->stock < 100)
-                            <tr class="hover:bg-grey-lighter">
-                                <td class="py-4 px-6 border-b bg-red-400 border-grey-light">{{ $product->nombre }}</td>
-                                <td class="py-4 px-6 border-b bg-red-400 border-grey-light">{{ $product->stock }}</td>
-                                <td class="py-4 px-6 border-b bg-red-400 border-grey-light">{{ $product->tipo }}</td>
-                                <td class="py-4 px-6 border-b bg-red-400 border-grey-light">{{ $product->fechaCaducidad }}</td>
-                                <td class="py-4 px-6 border-b bg-red-400 border-grey-light">{{ $product->lote }}</td>
-                                <td class="py-4 px-6 border-b bg-red-400 border-grey-light">
-                                    <a href="{{ route('web.products.edit', $product->id) }}">
-                                        <button
-                                            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">Editar</button>
-                                    </a>
-                                </td>
-                                <td class="py-4 px-6 border-b  bg-red-400 border-grey-light">
-                                    <a href="{{ route('web.products.destroy', $product->id) }}">
-                                        <button
-                                            class="bg-red-500 hover:bg-red-700 text-black font-bold py-2 px-4 border border-red-700 rounded">Borrar</button>
-                                    </a>
-                                </td>
-                            </tr>
-                        @else
-                        <tr class="hover:bg-grey-lighter">
-                            <td class="py-4 px-6 border-b border-grey-light">{{ $product->nombre }}</td>
-                            <td class="py-4 px-6 border-b border-grey-light">{{ $product->stock }}</td>
-                            <td class="py-4 px-6 border-b border-grey-light">{{ $product->tipo }}</td>
-                            <td class="py-4 px-6 border-b border-grey-light">{{ $product->fechaCaducidad }}</td>
-                            <td class="py-4 px-6 border-b border-grey-light">{{ $product->lote }}</td>
-                            <td class="py-4 px-6 border-b border-grey-light">
-                                <a href="{{ route('web.products.edit', $product->id) }}">
-                                    <button
-                                        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">Editar</button>
-                                </a>
-                            </td>
-                            <td class="py-4 px-6 border-b border-grey-light">
-                                <a href="{{ route('web.products.destroy', $product->id) }}">
-                                    <button
-                                        class="bg-red-500 hover:bg-red-700 text-black font-bold py-2 px-4 border border-red-700 rounded">Borrar</button>
-                                </a>
-                            </td>
-                        </tr>
-                        @endif
+                            @if ($product->stock < 100)
+                                <tr class="hover:bg-grey-lighter">
+                                    <td class="py-4 px-6 border-b bg-red-400 border-grey-light">
+                                        {{ $product->nombre }}</td>
+                                    <td class="py-4 px-6 border-b bg-red-400 border-grey-light">{{ $product->stock }}
+                                    </td>
+                                    <td class="py-4 px-6 border-b bg-red-400 border-grey-light">{{ $product->tipo }}
+                                    </td>
+                                    <td class="py-4 px-6 border-b bg-red-400 border-grey-light">
+                                        {{ $product->fechaCaducidad }}</td>
+                                    <td class="py-4 px-6 border-b bg-red-400 border-grey-light">{{ $product->lote }}
+                                    </td>
+                                    <td class="py-4 px-6 border-b bg-red-400 border-grey-light">
+                                        <a href="{{ route('web.products.edit', $product->id) }}">
+                                            <button
+                                                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">Editar</button>
+                                        </a>
+                                    </td>
+                                    <td class="py-4 px-6 border-b  bg-red-400 border-grey-light">
+                                        <a href="{{ route('web.products.destroy', $product->id) }}">
+                                            <button
+                                                class="bg-red-500 hover:bg-red-700 text-black font-bold py-2 px-4 border border-red-700 rounded">Borrar</button>
+                                        </a>
+                                    </td>
+                                </tr>
+                            @else
+                                <tr class="hover:bg-grey-lighter">
+                                    <td class="py-4 px-6 border-b border-grey-light">{{ $product->nombre }}</td>
+                                    <td class="py-4 px-6 border-b border-grey-light">{{ $product->stock }}</td>
+                                    <td class="py-4 px-6 border-b border-grey-light">{{ $product->tipo }}</td>
+                                    <td class="py-4 px-6 border-b border-grey-light">{{ $product->fechaCaducidad }}
+                                    </td>
+                                    <td class="py-4 px-6 border-b border-grey-light">{{ $product->lote }}</td>
+                                    <td class="py-4 px-6 border-b border-grey-light">
+                                        <a href="{{ route('web.products.edit', $product->id) }}">
+                                            <button
+                                                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">Editar</button>
+                                        </a>
+                                    </td>
+                                    <td class="py-4 px-6 border-b border-grey-light">
+                                        <a href="{{ route('web.products.destroy', $product->id) }}">
+                                            <button
+                                                class="bg-red-500 hover:bg-red-700 text-black font-bold py-2 px-4 border border-red-700 rounded">Borrar</button>
+                                        </a>
+                                    </td>
+                                </tr>
+                            @endif
                         @endforeach
                     </tbody>
                 </table>
@@ -153,7 +161,7 @@
         </div>
     </div>
     <div class="py-6">
-        {{$products->links()}}
-        </div>
+        {{ $products->links() }}
+    </div>
 
 </x-app-layout>
