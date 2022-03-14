@@ -9,6 +9,8 @@ class Label extends Model
 {
     use HasFactory;
 
+    //Relacion de etiquetas con Nodos, una etiqueta puede estar en varios nodos.
+
     public function Nodos(){
         return $this->belongsToMany(Nodo::class);
     }

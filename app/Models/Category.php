@@ -9,6 +9,8 @@ class Category extends Model
 {
     use HasFactory;
 
+    //Relación con nodos, una categoria puede pertenercer a varios nodos.
+
     public function Nodos(){
         return $this->hasMany(Nodo::class);
     }

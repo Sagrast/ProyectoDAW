@@ -9,6 +9,8 @@ class Perfil extends Model
 {
     use HasFactory;
 
+    //Relación con usuarios. Todo usuario tiene un unico perfil
+
     public function users(){
         return $this->hasOne(User::class);
     }
