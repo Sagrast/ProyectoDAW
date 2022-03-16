@@ -197,7 +197,6 @@ class NodoController extends Controller
 
     public function correo(Request $request){
 
-        return $request;
 
         $validado = $request->validate([
             'nombre' => 'required',
@@ -206,12 +205,17 @@ class NodoController extends Controller
             'message' => 'required'
         ]);
 
+        if ($validado){
+
         $destinatario = 'hellheimvending@gmail.com';
 
         $correo = new contactMail($request->all());
         Mail::to($destinatario)->send($correo);
 
-        return back();
+        return back()->with('status','Su solicitude correo se ha envíado de forma correcta.');
+        } else {
+            return back()->withInput();
+        }
 
     }
 
