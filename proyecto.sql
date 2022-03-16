@@ -7,6 +7,12 @@
 -- Server version: 8.0.28
 -- PHP Version: 7.4.28
 
+DROP DATABASE IF EXISTS proyecto;
+CREATE DATABASE IF NOT EXISTS proyecto;
+
+USE proyecto;
+
+
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
@@ -597,16 +603,16 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `two_factor_secret`, `two_factor_recovery_codes`, `remember_token`, `current_team_id`, `profile_photo_path`, `created_at`, `updated_at`, `rol`) VALUES
-(1, 'Eduardo Cervántez Tercero', 'nfont@example.com', '2022-03-13 13:18:34', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', NULL, NULL, 'LjDxHTdWpq', NULL, NULL, '2022-03-13 13:18:34', '2022-03-13 13:18:34', 'cliente'),
-(2, 'Ángela Caldera Segundo', 'cabrera.sandra@example.org', '2022-03-13 13:18:34', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', NULL, NULL, 'XR89Ko6wjX', NULL, NULL, '2022-03-13 13:18:34', '2022-03-13 13:18:34', 'cliente'),
-(3, 'Unai Pelayo', 'mar82@example.net', '2022-03-13 13:18:34', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', NULL, NULL, 'IYBt1jPz3W', NULL, NULL, '2022-03-13 13:18:34', '2022-03-13 13:18:34', 'cliente'),
-(4, 'Lic. Pilar Tijerina', 'olivia96@example.net', '2022-03-13 13:18:34', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', NULL, NULL, 'tEFbm8RRKA', NULL, NULL, '2022-03-13 13:18:34', '2022-03-13 13:18:34', 'cliente'),
-(5, 'Jimena Echevarría', 'alexandra.sotelo@example.com', '2022-03-13 13:18:34', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', NULL, NULL, 'kO0ZZps5n1', NULL, NULL, '2022-03-13 13:18:34', '2022-03-13 13:18:34', 'cliente'),
-(6, 'Vera Alonzo Tercero', 'lorena58@example.net', '2022-03-13 13:18:34', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', NULL, NULL, 'kfBmTbMIzi', NULL, NULL, '2022-03-13 13:18:34', '2022-03-13 13:18:34', 'cliente'),
-(7, 'Alexia Villagómez', 'quezada.ignacio@example.org', '2022-03-13 13:18:34', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', NULL, NULL, 'zm8Arpel0I', NULL, NULL, '2022-03-13 13:18:34', '2022-03-13 13:18:34', 'cliente'),
-(8, 'Julia Grijalva', 'ymarquez@example.com', '2022-03-13 13:18:34', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', NULL, NULL, 'H3JwcKl6hg', NULL, NULL, '2022-03-13 13:18:34', '2022-03-13 13:18:34', 'cliente'),
-(9, 'María Andrés', 'focampo@example.net', '2022-03-13 13:18:34', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', NULL, NULL, 'LGox9pevYa', NULL, NULL, '2022-03-13 13:18:34', '2022-03-13 13:18:34', 'cliente'),
-(10, 'Álvaro Lucas', 'pol29@example.com', '2022-03-13 13:18:34', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', NULL, NULL, '9pgEt3AcUv', NULL, NULL, '2022-03-13 13:18:34', '2022-03-13 13:18:34', 'cliente'),
+(1, 'Eduardo Cervántez Tercero', 'nfont@example.com', '2022-03-13 13:18:34', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', NULL, NULL, 'LjDxHTdWpq', NULL, NULL, '2022-03-13 13:18:34', '2022-03-13 13:18:34', 'comercial'),
+(2, 'Ángela Caldera Segundo', 'cabrera.sandra@example.org', '2022-03-13 13:18:34', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', NULL, NULL, 'XR89Ko6wjX', NULL, NULL, '2022-03-13 13:18:34', '2022-03-13 13:18:34', 'empleado'),
+(3, 'Unai Pelayo', 'mar82@example.net', '2022-03-13 13:18:34', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', NULL, NULL, 'IYBt1jPz3W', NULL, NULL, '2022-03-13 13:18:34', '2022-03-13 13:18:34', 'comercial'),
+(4, 'Lic. Pilar Tijerina', 'olivia96@example.net', '2022-03-13 13:18:34', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', NULL, NULL, 'tEFbm8RRKA', NULL, NULL, '2022-03-13 13:18:34', '2022-03-13 13:18:34', 'empleado'),
+(5, 'Jimena Echevarría', 'alexandra.sotelo@example.com', '2022-03-13 13:18:34', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', NULL, NULL, 'kO0ZZps5n1', NULL, NULL, '2022-03-13 13:18:34', '2022-03-13 13:18:34', 'comercial'),
+(6, 'Vera Alonzo Tercero', 'lorena58@example.net', '2022-03-13 13:18:34', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', NULL, NULL, 'kfBmTbMIzi', NULL, NULL, '2022-03-13 13:18:34', '2022-03-13 13:18:34', 'empleado'),
+(7, 'Alexia Villagómez', 'quezada.ignacio@example.org', '2022-03-13 13:18:34', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', NULL, NULL, 'zm8Arpel0I', NULL, NULL, '2022-03-13 13:18:34', '2022-03-13 13:18:34', 'comercial'),
+(8, 'Julia Grijalva', 'ymarquez@example.com', '2022-03-13 13:18:34', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', NULL, NULL, 'H3JwcKl6hg', NULL, NULL, '2022-03-13 13:18:34', '2022-03-13 13:18:34', 'empleado'),
+(9, 'María Andrés', 'focampo@example.net', '2022-03-13 13:18:34', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', NULL, NULL, 'LGox9pevYa', NULL, NULL, '2022-03-13 13:18:34', '2022-03-13 13:18:34', 'empleado'),
+(10, 'Álvaro Lucas', 'pol29@example.com', '2022-03-13 13:18:34', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', NULL, NULL, '9pgEt3AcUv', NULL, NULL, '2022-03-13 13:18:34', '2022-03-13 13:18:34', 'empleado'),
 (11, 'Owen Feeney', 'johanna58@example.org', '2022-03-13 13:18:34', '$2y$10$J4pDp/SMCijuOOLa5eJinOYH.yOaMCWaUVfTo7p6QZFXB/qpT.NBK', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'empleado'),
 (12, 'Kyle Spencer', 'godfrey.hamill@example.org', '2022-03-13 13:18:34', '$2y$10$Wg1qjXmQIepoM/UtchCnpuHxyyVpZGwGF/NTaG73cM1GjN.hjQ9EO', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'empleado'),
 (13, 'Sigmund Keeling DVM', 'marlee.eichmann@example.net', '2022-03-13 13:18:34', '$2y$10$gjG0VtxnNZrbrSHKJJZJ0OkhTZqtlQ3s9YiqsQ6j9Lz7ZjEsY.V1G', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'comercial'),

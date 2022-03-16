@@ -84,7 +84,7 @@
                         <thead>
                             <tr>
                                 <th colspan="4" class="bg-black text-white text-center py-2 ">
-                                    {{ __('AñadirConductor') }}:
+                                    {{ __('AñadirConductor') }}
                                 </th>
                             </tr>
                         </thead>
@@ -106,7 +106,7 @@
                             <tr>
                                 <td>
                                     <button role="submit" class="p-3 bg-blue-500 text-white hover:bg-blue-400" required>
-                                        {{ __('Add') }}:
+                                        {{ __('Add') }}
                                     </button>
                                 </td>
                             </tr>

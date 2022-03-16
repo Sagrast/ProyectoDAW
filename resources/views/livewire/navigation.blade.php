@@ -5,14 +5,14 @@
     $nav_links = [
 
         [
-        'name' => 'Noticias',
-        'route' => "/news",
+        'name' => 'Inicio',
+        'route' => "/",
         'active' => request()->routeIs('web.nodos.news'),
 
         ],
         [
-            'name' => 'Servicios',
-            'route' => '/services',
+            'name' => 'Blog',
+            'route' => '/news',
             'active' => request()->routeIs('services')
         ],
         [
