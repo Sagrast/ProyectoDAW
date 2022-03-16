@@ -95,10 +95,10 @@
 
                             <th
                                 class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
-                                {{ __('Editar') }}</th>
+                                {{ __('Edit') }}</th>
                             <th
                                 class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
-                                {{ __('Borrar') }}</th>
+                                {{ __('Delete') }}</th>
                         </tr>
                     </thead>
                     <tbody>

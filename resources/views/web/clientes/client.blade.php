@@ -129,20 +129,20 @@
                                 <td class="py-4 px-6 border-b border-grey-light">
                                     <a href="{{ route('web.failures.show', $client->id) }}">
                                         <button
-                                            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">Crear</button>
+                                            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">{{__('Add')}}</button>
                                     </a>
                                 </td>
                                 <td class="py-4 px-6 border-b border-grey-light">
                                     <a href="{{ route('web.clientes.edit', $client->id) }}">
                                         <button
-                                            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">Editar</button>
+                                            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">{{__('Edit')}}</button>
                                     </a>
                                 </td>
 
                                 <td class="py-4 px-6 border-b border-grey-light">
                                     <a href="{{ route('web.clientes.destroy', $client->id) }}">
                                         <button
-                                            class="bg-red-500 hover:bg-red-700 text-black font-bold py-2 px-4 border border-red-700 rounded">Borrar</button>
+                                            class="bg-red-500 hover:bg-red-700 text-black font-bold py-2 px-4 border border-red-700 rounded">{{__('Delete')}}</button>
                                     </a>
                                 </td>
                             </tr>

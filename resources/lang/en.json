@@ -98,5 +98,9 @@
     "InformacionUsuario": "User Information",
     "FechaCaducidad": "Expiration Date",
     "CerrarAvería": "Close Failure",
-    "VerMaquina": "Machine Information"
+    "VerMaquina": "Machine Information",
+    "Vehiculos": "Vehicle",
+    "Maquinas": "Machines",
+    "Productos": "Products",
+    "Incidencia": "Alert"
 }
