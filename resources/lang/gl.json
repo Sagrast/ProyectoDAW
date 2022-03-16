@@ -817,5 +817,7 @@
     "Administrador": "Administrador",
     "Comercial": "Comercial",
     "InformacionUsuario": "Información do Usuario",
-    "FechaCaducidad": "Data de Caducidade"
+    "FechaCaducidad": "Data de Caducidade",
+    "CerrarAvería": "Pechar Incidencia",
+    "VerMaquina": "Ver Maquina"
 }

@@ -96,5 +96,7 @@
     "Administrador": "Administrator",
     "Comercial": "Sales Agent",
     "InformacionUsuario": "User Information",
-    "FechaCaducidad": "Expiration Date"
+    "FechaCaducidad": "Expiration Date",
+    "CerrarAvería": "Close Failure",
+    "VerMaquina": "Machine Information"
 }

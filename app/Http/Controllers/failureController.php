@@ -21,9 +21,10 @@ class failureController extends Controller
      */
     public function index()
     {
-        $nueva = new Failure;
-        $averias = $nueva->paginate(50);
-        $open = DB::select('SELECT * FROM machines INNER JOIN failure_machine ON machines.id = failure_machine.machine_id INNER JOIN failures ON failure_machine.failure_id = failures.id WHERE status = "pendiente"');
+
+        $averias = Failure::paginate(50);
+        $open = DB::select('SELECT failure_machine.id, descripcion,status, fecha, machines.id as machine  FROM machines INNER JOIN failure_machine ON machines.id = failure_machine.machine_id INNER JOIN failures ON failure_machine.failure_id = failures.id WHERE status = "pendiente"');
+
 
         return view('web.failures.failures',compact('averias','open'));
     }
@@ -119,7 +120,12 @@ class failureController extends Controller
         $machine = $cliente->machine()->get();
         $failure = Failure::where('servicio','=',$cliente->servicio)->get();
 
-        return view('web.failures.alert',compact('cliente','machine','failure'));
+        //Comprobamos el valor de la coleccion machine. Si no tiene valor, retornamos al índice
+        if (count($machine) != 0) {
+            return view('web.failures.alert',compact('cliente','machine','failure'));
+        } else {
+            return back()->with('status','El cliente aún no tiene máquina asignada');
+        }
 
     }
 
