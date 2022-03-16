@@ -5,14 +5,14 @@
     $nav_links = [
 
         [
-        'name' => 'Noticias',
-        'route' => "/news",
+        'name' => 'Inicio',
+        'route' => "/",
         'active' => request()->routeIs('web.nodos.news'),
 
         ],
         [
-            'name' => 'Servicios',
-            'route' => '/services',
+            'name' => 'Blog',
+            'route' => '/news',
             'active' => request()->routeIs('services')
         ],
         [
@@ -162,7 +162,7 @@
         <a href="{{route('login')}}" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Login</a>
         <a href="{{route('register')}}" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Registro</a>
 
-        @endif
+        @endauth
 
       </div>
     </div>

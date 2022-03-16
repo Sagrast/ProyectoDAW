@@ -125,10 +125,10 @@ class adminController extends Controller
             $update->save();
             //salvamos los atributos correspondientes a la tabla Usuario y revisamos los campos de la tabla 1:1
             if (!isset($update->perfils->id)) {
-                DB::insert('INSERT INTO `perfils`(`id`, `created_at`, `updated_at`, `DNI`, `direccion`, `telefono`, `user_id`)
-                VALUES (NULL,"' . now() . '","' . now() . '","' . $request->dni . '","' . $request->direccion . '",' . $request->telefono . ',' . $request->id . ')');
+                DB::insert('INSERT INTO `perfils`(`id`, `DNI`, `direccion`, `telefono`, `user_id`)
+                VALUES (NULL,"' . $request->dni . '","' . $request->direccion . '",' . $request->telefono . ',' . $request->id . ')');
             } else {
-                DB::update('UPDATE `perfils` SET updated_at="' . now() . '",DNI="' . $request->dni . '",direccion="' . $request->direccion . '",telefono="' . $request->telefono . '" WHERE user_id = ' . $request->id . '');
+                DB::update('UPDATE `perfils` SET updated_at="' . now() . '",DNI="' . $request->dni . '",direccion="' . $request->direccion . '",telefono="'.$request->telefono.'" WHERE user_id = ' . $request->id . '');
             }
             return back()->with('status', 'Datos Actualizados Correctamente');
         } else {

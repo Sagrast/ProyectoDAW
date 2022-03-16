@@ -41,13 +41,6 @@ Route::middleware(localeMiddleware::class)->group(function () {
     Route::post('/contact', [NodoController::class, 'correo'])->name('web.nodos.mail');
 
 
-    route::get(
-        '/services',
-        function () {
-            return view('/web/services');
-        }
-    );
-
     /*
 |--------------------------------------------------------------------------
 | Nodos
