@@ -97,6 +97,7 @@
             </a>
          </div>
          {{-- Menu perfil que se muestra cuando hay un usuario autenticado --}}
+         @if
          @auth
           <!-- Profile dropdown -->
           {{-- Añadimos el evento Alpine on Click para cambiar el valor de la variable Open de la etiqueta x-data --}}
@@ -114,6 +115,7 @@
             Usando los metodos de Alpine hacemos que cambie el valor de la variable Open:
             x-Show = Mostrará el contenido del Div cuando la variable pase a true:
             x-on:click.away = La variable open pasará a false cuando se haga click en cualquier otro lado de la pantalla --}}
+
             <div x-show="open" x-on:click.away="open = false" class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
               <!-- Active: "bg-gray-100", Not Active: "" -->
               <x-jet-dropdown-link href="{{ route('profile.show') }}">
@@ -155,15 +157,12 @@
           </div>
 
         </div>
+        @endauth
         @else
         <a href="{{route('login')}}" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Login</a>
-        @endauth
-        {{-- Solo el administrador podrá registrar nuevos usuarios --}}
-        @auth
-        @if(Auth::user()->rol == 'admin')
         <a href="{{route('register')}}" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Registro</a>
+
         @endif
-        @endauth
 
       </div>
     </div>
