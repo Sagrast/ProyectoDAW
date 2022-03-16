@@ -19,7 +19,7 @@ class editorMiddleware
      */
     public function handle(Request $request, Closure $next)
         {
-        if (Auth::user()->rol == 'admin' || Auth::user()->rol == 'comercial'){
+        if (auth() == null || auth()->user() == null || Auth::user()->rol == 'admin' || Auth::user()->rol == 'comercial'){
             return $next($request);
           } else {
             return back()->with('status',"No tienes permiso de edicion!");

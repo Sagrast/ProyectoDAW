@@ -18,7 +18,7 @@ class gestionMiddleware
     public function handle(Request $request, Closure $next)
     {
         //Comprueba que el usuario autentificado sea administrador o empleado para poder entrar en la parte de gestión.
-        if (Auth::user()->rol == 'admin' || Auth::user()->rol == 'empleado'){
+        if (auth() == null || auth()->user() == null || Auth::user()->rol == 'admin' || Auth::user()->rol == 'empleado'){
             return $next($request);
           } else {
             return back()->with('status',"No tienes permiso para entrar en este página");

@@ -18,7 +18,7 @@ class AdminMiddleware
     public function handle(Request $request, Closure $next)
     {
         //Comproba que o Rol de usuario sexa 1 (Admin), de non ser así limitará o acceso.
-        if (Auth::user()->rol == 'admin'){
+        if (auth() == null || auth()->user() == null || Auth::user()->rol == 'admin'){
             return $next($request);
           } else {
             return back()->with('status',"No eres administrador!");
