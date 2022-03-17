@@ -13,7 +13,7 @@
         [
             'name' => 'Blog',
             'route' => '/news',
-            'active' => request()->routeIs('services')
+            'active' => request()->routeIs('web.nodos.news')
         ],
         [
             'name' => 'Contacto',

@@ -48,7 +48,7 @@ Route::middleware(localeMiddleware::class)->group(function () {
 */
 
     //Indice de noticias
-    Route::get('/news', [NodoController::class, 'news'])->name('web.nodos.news');
+    Route::get('/news', [NodoController::class, 'index'])->name('web.nodos.news');
 
     //Ver noticia por ID
     Route::get('/article/{post}', [NodoController::class, 'show'])->name('web.nodos.show');

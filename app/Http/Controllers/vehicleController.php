@@ -69,8 +69,18 @@ class vehicleController extends Controller
      */
     public function store(Request $request)
     {
+        $validar = $request->validate([
+            'user' => 'required',
+            'fecha' => 'required',
+        ]);
+
+
+        if ($validar) {
        DB::insert('INSERT INTO user_vehicle (user_id,vehicle_id,fecha) VALUES ('.$request->user.','.$request->vehicle.',"'.$request->fecha.'")');
         return back()->with('status','Insercion correcta');
+        } else {
+            return back()->withInput();
+        }
     }
 
     //Funcion de filtrado: Busca en la bdd matriculas que contengan la cadena envíada y devuelve los resultados encontrados.

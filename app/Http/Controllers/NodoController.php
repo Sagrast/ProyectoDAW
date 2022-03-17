@@ -19,7 +19,7 @@ use Illuminate\Support\Str;
 
 class NodoController extends Controller
 {
-    public function news()
+    public function index()
     {
         $nodos = Nodo::latest('data')->paginate(5);
 

@@ -99,7 +99,7 @@
                                     </select>
                                 </td>
                                 <td>
-                                    <input class="border-2 border-gray-300 p-2 w-full" type="date" name="fecha"
+                                    <input class="border-2 border-gray-300 p-2 w-full" type="date" name="fecha" required
                                         id="fecha">
                                 </td>
                             </tr>
