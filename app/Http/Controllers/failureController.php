@@ -25,7 +25,6 @@ class failureController extends Controller
         $averias = Failure::paginate(50);
         $open = DB::select('SELECT failure_machine.id, descripcion,status, fecha, machines.id as machine  FROM machines INNER JOIN failure_machine ON machines.id = failure_machine.machine_id INNER JOIN failures ON failure_machine.failure_id = failures.id WHERE status = "pendiente"');
 
-
         return view('web.failures.failures',compact('averias','open'));
     }
 

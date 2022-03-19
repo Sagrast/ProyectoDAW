@@ -204,14 +204,15 @@
                                 <td>
                                 <a href="{{ route('web.machines.withdraw', [$mach->id,$cliente->id]) }}">
                                     <button
-                                        class="bg-red-500 hover:bg-red-700 text-black font-bold  border border-red-700 rounded">Retirar Máquina</button>
+                                        class="bg-red-500 hover:bg-red-700 text-white font-bold px-4 border border-red-700 rounded py-2">{{__('Retirar')}}</button>
                                 </a>
                                 </td>
+                                @else <td class="py-4 px-6 border-b border-grey-light"></td>
                                 @endif
                                 <td>
                                     <a href="{{ route('web.machines.show', $mach->id) }}">
                                         <button
-                                            class="bg-purple-500 hover:bg-purple-700 text-black font-bold  border border-purple-700 rounded">{{__('Descripcion')}}</button>
+                                            class="bg-purple-500 hover:bg-purple-700 text-white font-bold px-4 border border-purple-700 rounded py-2">{{__('Descripcion')}}</button>
                                     </a>
                                     </td>
                             </tr>

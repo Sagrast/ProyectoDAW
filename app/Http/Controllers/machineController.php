@@ -227,7 +227,7 @@ class machineController extends Controller
     public function close($id)
     {
 
-        DB::update('UPDATE failure_machine SET status = "arreglado" where failure_id = '.$id.'');
+        DB::update('UPDATE failure_machine SET status = "arreglado" where id = '.$id.'');
 
         return back()->with('Status', 'Incidencia cerrada');
     }
