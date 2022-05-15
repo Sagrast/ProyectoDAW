@@ -18,8 +18,8 @@
             </div>
         </div>
     @endif
-    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 py-8">
-        <form class="w-full max-w-lg mx-auto" action="{{ route('web.nodos.mail') }}" method="POST">
+    <div id="fadeJs" class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 py-8">
+        <form name="form_contact" class="w-full max-w-lg mx-auto" action="{{ route('web.nodos.mail') }}" method="POST">
             @csrf
             <div class="flex flex-wrap -mx-3 mb-6">
                 <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">

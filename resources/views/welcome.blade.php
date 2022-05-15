@@ -4,7 +4,8 @@
             {{ __('bienvenido') }}
         </h2>
     </x-slot>
-    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+    <div id="fadeJs">
+     <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
         <section class="relative">
             <div class="container flex flex-col-reverse lg:flex-row items-center gap-2 mt-14 lg:mt-28">
                 <!-- Content -->
@@ -58,7 +59,6 @@
                 </div>
             </div>
         </section>
-
-
     </div>
+</div>
 </x-app-layout>

@@ -4,7 +4,7 @@
             {{ __('Localizacion') }}
         </h2>
     </x-slot>
-    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 py-8">
+    <div id="fadeJs" class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 py-8">
         <h1 class="font-semibold text-4xl text-gray-800 leading-tight py-6 text-center"> {{__('DondeEstamos')}}? </h1>
         <div class="grid grid-cols-1 gap-6 lg:grid-cols-3 mx-auto">
                         <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
