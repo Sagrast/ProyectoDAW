@@ -4,23 +4,81 @@ $(document).ready(function(){
    
 });
 
-$('#form_contact[nombre]').blur(function() {
-    if ($(this).val().length == 0) {
-        document.getElementById("errorInputDni").innerHTML = "* Debes introducir un número de DNI";
-        document.getElementById("errorInputDni").style.color = "red";
-    } else {
-        document.getElementById("inputDNI").innerHTML = "";
-        let dni = document.getElementById('inputDNI').value;
-        var re = /^[0-9]{8}[A-Za-z]{1}$/;
-        if (re.test(dni) == true) {
-            document.getElementById("errorInputDni").innerHTML = "";
-        } else {
-            document.getElementById("errorInputDni").innerHTML = "* El DNI está mal escrito";
-            document.getElementById("errorInputDni").style.color = "red";
+var cont=0;
+function loopSlider(){
+  var xx= setInterval(function(){
+        switch(cont)
+        {
+        case 0:{
+            $("#slider-1").fadeOut(400);
+            $("#slider-2").delay(400).fadeIn(400);
+            $("#sButton1").removeClass("bg-purple-800");
+            $("#sButton2").addClass("bg-purple-800");
+        cont=1;
+        
+        break;
         }
-    }
-});
+        case 1:
+        {
+        
+            $("#slider-2").fadeOut(400);
+            $("#slider-1").delay(400).fadeIn(400);
+            $("#sButton2").removeClass("bg-purple-800");
+            $("#sButton1").addClass("bg-purple-800");
+           
+        cont=0;
+        
+        break;
+        }
+        
+        
+        }},8000);
 
+}
+
+function reinitLoop(time){
+clearInterval(xx);
+setTimeout(loopSlider(),time);
+}
+
+
+
+function sliderButton1(){
+
+    $("#slider-2").fadeOut(400);
+    $("#slider-1").delay(400).fadeIn(400);
+    $("#sButton2").removeClass("bg-purple-800");
+    $("#sButton1").addClass("bg-purple-800");
+    reinitLoop(4000);
+    cont=0
+    
+    }
+    
+    function sliderButton2(){
+    $("#slider-1").fadeOut(400);
+    $("#slider-2").delay(400).fadeIn(400);
+    $("#sButton1").removeClass("bg-purple-800");
+    $("#sButton2").addClass("bg-purple-800");
+    reinitLoop(4000);
+    cont=1
+    
+    }
+
+    $(window).ready(function(){
+        $("#slider-2").hide();
+        $("#sButton1").addClass("bg-purple-800");
+        
+
+        loopSlider();
+     
+        
+    
+    
+    
+    
+    });
+
+  
 
 
 
