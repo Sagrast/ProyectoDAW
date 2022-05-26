@@ -1,9 +1,13 @@
+//Fade out
+
 $(document).ready(function(){
     $("#fadeJs").hide(0).fadeIn(1500);
 
    
 });
 
+
+//Carroussel.
 var cont=0;
 function loopSlider(){
   var xx= setInterval(function(){

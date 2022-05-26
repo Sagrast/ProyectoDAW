@@ -19,7 +19,7 @@
         </div>
     @endif
     <div id="fadeJs" class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 py-8">
-        <form name="form_contact" class="w-full max-w-lg mx-auto" action="{{ route('web.nodos.mail') }}" method="POST">
+        <form id="contactForm" action name="form_contact" class="w-full max-w-lg mx-auto" action="{{ route('web.nodos.mail') }}" method="POST">
             @csrf
             <div class="flex flex-wrap -mx-3 mb-6">
                 <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
@@ -30,7 +30,7 @@
                         class="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
                         id="nombre" type="text" name="nombre">
                         @error('nombre')
-                        <p class="error-message">{{ $message }}</p>
+                        <p class="error-message border border-red-500 background-red-100 text-red-500 p-2 mt-2">{{ $message }}</p>
                     @enderror
                 </div>
                 <div class="w-full md:w-1/2 px-3">
@@ -41,7 +41,7 @@
                         class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                         id="apellido" type="text" name="apellido">
                         @error('apellido')
-                        <p class="error-message">{{ $message }}</p>
+                        <p class="error-message border border-red-500 background-red-100 text-red-500 p-2 mt-2">{{ $message }}</p>
                     @enderror
                 </div>
             </div>
@@ -54,7 +54,7 @@
                         class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                         id="email" type="email" name="email">
                         @error('email')
-                        <p class="error-message">{{ $message }}</p>
+                        <p class="error-message border border-red-500 background-red-100 text-red-500 p-2 mt-2">{{ $message }}</p>
                     @enderror
                 </div>
             </div>
@@ -67,22 +67,28 @@
                         class="no-resize appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 h-48 resize-none"
                         id="message" name="message"></textarea>
                         @error('message')
-                        <p class="error-message">{{ $message }}</p>
+                        <p class="error-message border border-red-500 background-red-100 text-red-500 p-2 mt-2">{{ $message }}</p>
                     @enderror
 
                 </div>
             </div>
-            <div class="md:flex md:items-center">
-                <div class="md:w-1/3">
+            <div class="md:flex md:items-center ">
+                <div class="md:w-1/3 mx-auto">
                     <button
+                        id="sendButton"
                         class="shadow bg-teal-400 hover:bg-teal-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
                         type="submit">
                         {{ __('Enviar') }}
                     </button>
-                </div>
-                <div class="md:w-2/3"></div>
+                    <button
+                        id="resetBtn"
+                        class="shadow bg-teal-400 hover:bg-teal-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
+                        type="submit">
+                        {{ __('Reset') }}
+                    </button>
+                </div>                
             </div>
         </form>
     </div>
-
+    <script src="{{ mix('js/validation.js') }}" defer></script>
 </x-app-layout>
