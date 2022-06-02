@@ -1,9 +1,7 @@
 //Fade out
 
 $(document).ready(function(){
-    $("#fadeJs").hide(0).fadeIn(1500);
-
-   
+    $("#fadeJs").hide(0).fadeIn(1500);   
 });
 
 
